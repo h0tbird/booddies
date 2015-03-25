@@ -1,0 +1,18 @@
+[submodule "containers/docker-boot"]
+	path = containers/docker-boot
+	url = https://github.com/h0tbird/docker-boot.git
+[submodule "containers/docker-data"]
+	path = containers/docker-data
+	url = https://github.com/h0tbird/docker-data.git
+[submodule "containers/docker-gito"]
+	path = containers/docker-gito
+	url = https://github.com/h0tbird/docker-gito.git
+[submodule "containers/docker-cgit"]
+	path = containers/docker-cgit
+	url = https://github.com/h0tbird/docker-cgit.git
+[submodule "data/kickstart"]
+	path = data/kickstart
+	url = https://github.com/h0tbird/kickstart
+[submodule "data/pxelinux"]
+	path = data/pxelinux
+	url = https://github.com/h0tbird/pxelinux
