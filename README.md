@@ -1,7 +1,7 @@
 # Booddies
 
 Boot buddies is a set of Docker containers used to bootstrapp a DCOS-like platform.
-It is not a general purpose bootstrapping system.
+Although it can be used to boot any PXE based system, it is not a general purpose bootstrapping system.
 
 Setup the file system:
 ```
