@@ -8,6 +8,16 @@ Although it can be used to boot any PXE compliant system, it is not a general pu
 git clone --recursive https://github.com/h0tbird/booddies.git
 ```
 
+###### Install
+```
+cd booddies
+for i in `ls containers`; do
+  pushd containers/${i}
+  sudo ./bin/install
+  popd
+done
+```
+
 ###### Setup the file system:
 ```
 sudo mkdir -p /data/{boot,data,gito,regi}
