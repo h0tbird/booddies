@@ -20,17 +20,12 @@ done
 
 ###### Setup the file system:
 ```
-sudo mkdir -p /data/{boot,data,gito,regi}
-sudo git clone https://github.com/h0tbird/pxelinux /data/boot/pxelinux
-sudo git clone https://github.com/h0tbird/kickstart /data/data/kickstarts
+Todo ...
 ```
 
 ###### Start the services:
 ```
-git clone https://github.com/h0tbird/systemd-units
-sudo cp systemd-units/arch/docker.service /usr/lib/systemd/system/
-sudo cp systemd-units/arch/{boot,gito,regi,repo,cgit}*.service /etc/systemd/system/
-sudo systemctl enable docker boot data gito cgit regi
+sudo systemctl start boot data gito cgit
 ```
 
 ###### Synchronize external data:
