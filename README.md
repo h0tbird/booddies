@@ -1,7 +1,7 @@
 # Booddies
 
 Boot buddies is a set of Docker containers used to bootstrapp a DCOS-like platform.
-Although it can be used to boot any PXE compliant system, it is not a general purpose bootstrapping system.
+Although it can be used to boot any PXE compliant system, it is not intended to be a general purpose bootstrapping system.
 
 ###### Clone
 ```
@@ -16,11 +16,6 @@ for i in `ls containers`; do
   sudo ./bin/install
   popd
 done
-```
-
-###### Setup the file system:
-```
-Todo ...
 ```
 
 ###### Start the services:
