@@ -6,6 +6,7 @@ Although it can be used to boot any PXE compliant system, it is not a general pu
 ###### Clone
 ```
 git clone --recursive https://github.com/h0tbird/booddies.git
+git submodule foreach git checkout master
 ```
 
 ###### Install
