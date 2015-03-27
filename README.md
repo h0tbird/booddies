@@ -3,7 +3,7 @@
 Boot buddies is a set of Docker containers used to bootstrapp a DCOS-like platform.
 Although it can be used to boot any PXE compliant system, it is not intended to be a general purpose bootstrapping system.
 
-| Container     | ID            | Process       | Service       |
+| Docker Image  | Container ID  | Process       | Service       |
 | ------------- | ------------- | ------------- | ------------- |
 | h0tbird/boot  | boot01        | dnsmasq       | DNS,DHCP,TFTP |
 | h0tbird/data  | data01        | httpd         | Apache        |
