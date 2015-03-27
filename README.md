@@ -3,6 +3,13 @@
 Boot buddies is a set of Docker containers used to bootstrapp a DCOS-like platform.
 Although it can be used to boot any PXE compliant system, it is not intended to be a general purpose bootstrapping system.
 
+| Container     | ID            | Process       | Service       |
+| ------------- | ------------- | ------------- | ------------- |
+| h0tbird/boot  | boot01        | dnsmasq       | DNS,DHCP,TFTP |
+| h0tbird/data  | data01        | httpd         | Apache        |
+| h0tbird/gito  | gito01        | sshd          | Gitolite      |
+| h0tbird/cgit  | cgit01        | httpd         | CGit          |
+
 ###### Install
 ```
 git clone --recursive https://github.com/h0tbird/booddies.git
