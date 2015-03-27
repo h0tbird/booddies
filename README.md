@@ -39,14 +39,15 @@ docker exec -it data01 datasync misc
 
 ###### Devel:
 ```
-cd booddies
-git remote set-url origin `git config --get remote.origin.url | sed s/github/h0tbird@github/`
+git remote set-url origin `git config --get remote.origin.url | \
+sed s/github/h0tbird@github/`
 git submodule foreach git checkout master
 
 for i in containers data; do
   for j in `ls $i`; do
     pushd ${i}/${j}
-    git remote set-url origin `git config --get remote.origin.url | sed s/github/h0tbird@github/`
+    git remote set-url origin `git config --get remote.origin.url | \
+    sed s/github/h0tbird@github/`
     popd
   done
 done
