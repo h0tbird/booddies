@@ -1,5 +1,8 @@
 # Booddies
 
+[ ![Containers counter] [containers-counter] ] [containers]
+[ ![License] [license-image] ] [license]
+
 Boot buddies is a set of Docker containers used to bootstrapp a DCOS-like platform.
 Although it can be used to boot any PXE compliant system, it is not intended to be a general purpose bootstrapping system.
 
@@ -54,3 +57,8 @@ done
 
 git submodule foreach git config --get remote.origin.url
 ```
+
+[containers-counter]: https://img.shields.io/badge/containers-4-brightgreen.svg
+[containers]: https://hub.docker.com/u/h0tbird/
+[license-image]: http://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
+[license]: http://www.apache.org/licenses/LICENSE-2.0
