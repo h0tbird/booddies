@@ -3,6 +3,9 @@
 [ ![Containers counter] [containers-counter] ] [containers]
 [ ![License] [license-image] ] [license]
 
+<img src="https://www.lucidchart.com/publicSegments/view/551701de-fe3c-4e49-84e1-431d0a008e9b/image.png"
+ alt="Booddies logo" title="Booddies" align="right" />
+
 Boot buddies is a set of Docker containers used to bootstrapp a DCOS-like platform.
 Although it can be used to boot any PXE compliant system, it is not intended to be a general purpose bootstrapping system.
 
