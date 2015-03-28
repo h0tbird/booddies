@@ -18,12 +18,14 @@ Six containers are planned:
 - [ ] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization. 
 
-| Docker Image  | Container ID  | Process Name  | Service Name  |
-| ------------- | ------------- | ------------- | ------------- |
-| h0tbird/boot  | boot01        | dnsmasq       | DNS,DHCP,TFTP |
-| h0tbird/data  | data01        | httpd         | Apache        |
-| h0tbird/gito  | gito01        | sshd          | Gitolite      |
-| h0tbird/cgit  | cgit01        | httpd         | CGit          |
+## The containers
+
+| Docker Image | Container ID | Config file               | Systemd unit |
+| ------------ | ------------ | ------------------------- | ------------ |
+| h0tbird/boot | boot01       | */etc/booddies/boot.conf* | boot.service |
+| h0tbird/data | data01       | */etc/booddies/data.conf* | data.service |
+| h0tbird/gito | gito01       | */etc/booddies/gito.conf* | gito.service |
+| h0tbird/cgit | cgit01       | */etc/booddies/cgit.conf* | cgit.service |
 
 ###### Install
 ```
