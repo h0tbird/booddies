@@ -14,7 +14,7 @@ Six containers are planned:
 - [x] **boot:** A [`dnsmasq`][dnsmasq-web] server that handles PXE, DHCP, TFTP, and DNS.
 - [x] **data:** An [`apache`][apache-web] server with YUM repositories and other data.
 - [x] **gito:** A [`gitolite`][gitolite-web] server with R10K and Puppet code.
-- [x] **cgit:** An [`apache`][apache-web] server acting as a frontend to `gitolite`.
+- [x] **cgit:** An `apache` server acting as a frontend to `gitolite`.
 - [ ] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization. 
 
@@ -27,7 +27,8 @@ Six containers are planned:
 | h0tbird/gito | [![gito][gito-image]][gito-web] | gito01       | */etc/booddies/gito.conf* | gito.service |
 | h0tbird/cgit | [![cgit][cgit-image]][cgit-web] | cgit01       | */etc/booddies/cgit.conf* | cgit.service |
 
-###### Install
+## Installation
+###### Clone and install:
 ```
 git clone --recursive https://github.com/h0tbird/booddies.git
 
