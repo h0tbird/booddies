@@ -18,7 +18,36 @@ Six containers are planned:
 - [ ] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization. 
 
-## The containers
+## Batteries included
+
+This is what you get when you install `booddies`:
+
+```
+/
+├── data <------------------------------ Persistent data directories mounted by the containers.
+│   ├── boot/
+│   ├── data/
+│   └── gito/
+├── etc
+│   ├── boodies <----------------------- Per container configuration files.
+│   │   ├── boot.conf
+│   │   ├── cgit.conf
+│   │   ├── data.conf
+│   │   └── gito.conf
+│   └── systemd
+│       └── system <-------------------- Systemd service unit files.
+│           ├── boot.service
+│           ├── cgit.service
+│           ├── data.service
+│           └── gito.service
+└── usr
+    └── local
+        └── sbin <---------------------- Pre-run, run and post-run logic.
+            ├── runctl-boot
+            ├── runctl-cgit
+            ├── runctl-data
+            └── runctl-gito
+```
 
 | Docker Image | Status                          | Container ID | Config file                              | Systemd unit |
 | ------------ | ------------------------------- | ------------ | ---------------------------------------- | --------------------------- |
