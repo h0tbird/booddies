@@ -20,12 +20,12 @@ Six containers are planned:
 
 ## The containers
 
-| Docker Image | Status                          | Container ID | Config file               | Systemd unit |
-| ------------ | ------------------------------- | ------------ | ------------------------- | ------------ |
-| h0tbird/boot | [![boot][boot-image]][boot-web] | boot01       | */etc/booddies/boot.conf* | boot.service |
-| h0tbird/data | [![data][data-image]][data-web] | data01       | */etc/booddies/data.conf* | data.service |
-| h0tbird/gito | [![gito][gito-image]][gito-web] | gito01       | */etc/booddies/gito.conf* | gito.service |
-| h0tbird/cgit | [![cgit][cgit-image]][cgit-web] | cgit01       | */etc/booddies/cgit.conf* | cgit.service |
+| Docker Image | Status                          | Container ID | Config file                              | Systemd unit |
+| ------------ | ------------------------------- | ------------ | ---------------------------------------- | ------------ |
+| h0tbird/boot | [![boot][boot-image]][boot-web] | boot01       | [*/etc/booddies/boot.conf*][boot-config] | boot.service |
+| h0tbird/data | [![data][data-image]][data-web] | data01       | [*/etc/booddies/data.conf*][data-config] | data.service |
+| h0tbird/gito | [![gito][gito-image]][gito-web] | gito01       | [*/etc/booddies/gito.conf*][gito-config] | gito.service |
+| h0tbird/cgit | [![cgit][cgit-image]][cgit-web] | cgit01       | [*/etc/booddies/cgit.conf*][cgit-config] | cgit.service |
 
 ## Installation
 ###### Clone and install:
@@ -98,6 +98,7 @@ limitations under the License.
 [apache-web]: http://httpd.apache.org
 [gitolite-web]: http://gitolite.com
 [registry-web]: https://github.com/docker/docker-registry
+
 [boot-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
 [boot-web]: https://registry.hub.docker.com/u/h0tbird/boot
 [data-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
@@ -106,3 +107,8 @@ limitations under the License.
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
 [cgit-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
 [cgit-web]: https://registry.hub.docker.com/u/h0tbird/cgit
+
+[boot-config]: https://github.com/h0tbird/docker-boot/blob/master/boot.conf
+[data-config]: https://github.com/h0tbird/docker-data/blob/master/data.conf
+[gito-config]: https://github.com/h0tbird/docker-gito/blob/master/gito.conf
+[cgit-config]: https://github.com/h0tbird/docker-cgit/blob/master/cgit.conf
