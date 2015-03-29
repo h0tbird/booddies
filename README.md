@@ -49,12 +49,12 @@ This is what you get when you install `booddies`:
             └── runctl-gito
 ```
 
-| Docker Image | Status                          | Container ID | Config file                              | Systemd unit |
-| ------------ | ------------------------------- | ------------ | ---------------------------------------- | --------------------------- |
-| h0tbird/boot | [![boot][boot-image]][boot-web] | boot01       | [*/etc/booddies/boot.conf*][boot-config] | [*boot.service*][boot-unit] |
-| h0tbird/data | [![data][data-image]][data-web] | data01       | [*/etc/booddies/data.conf*][data-config] | [*data.service*][data-unit] |
-| h0tbird/gito | [![gito][gito-image]][gito-web] | gito01       | [*/etc/booddies/gito.conf*][gito-config] | [*gito.service*][gito-unit] |
-| h0tbird/cgit | [![cgit][cgit-image]][cgit-web] | cgit01       | [*/etc/booddies/cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] |
+| Docker Image | Status                          | ID     | Config file                | Systemd unit                                        | Run logic |
+| ------------ | ------------------------------- | ------ | -------------------------- | --------------------------- | ------------------------- |
+| h0tbird/boot | [![boot][boot-image]][boot-web] | boot01 | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
+| h0tbird/data | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
+| h0tbird/gito | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
+| h0tbird/cgit | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
 
 ## Installation
 ###### Clone and install:
@@ -146,3 +146,8 @@ limitations under the License.
 [data-unit]: https://github.com/h0tbird/docker-data/blob/master/data.service
 [gito-unit]: https://github.com/h0tbird/docker-gito/blob/master/gito.service
 [cgit-unit]: https://github.com/h0tbird/docker-cgit/blob/master/cgit.service
+
+[boot-run]: https://github.com/h0tbird/docker-boot/blob/master/bin/runctl
+[data-run]: https://github.com/h0tbird/docker-data/blob/master/bin/runctl
+[gito-run]: https://github.com/h0tbird/docker-gito/blob/master/bin/runctl
+[cgit-run]: https://github.com/h0tbird/docker-cgit/blob/master/bin/runctl
