@@ -49,8 +49,10 @@ This is what you get when you install `booddies`:
             └── runctl-gito
 ```
 
+And of course you also get the docker images:
+
 | Docker Image | Status                          | ID     | Config file                | Systemd unit                                        | Run logic |
-| ------------ | ------------------------------- | ------ | -------------------------- | --------------------------- | ------------------------- |
+| ------------ | ------------------------------- |:------:| -------------------------- | --------------------------- | ------------------------- |
 | h0tbird/boot | [![boot][boot-image]][boot-web] | boot01 | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
 | h0tbird/data | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
 | h0tbird/gito | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
