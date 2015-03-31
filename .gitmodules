@@ -16,3 +16,6 @@
 [submodule "data/pxelinux"]
 	path = data/pxelinux
 	url = https://github.com/h0tbird/pxelinux
+[submodule "containers/docker-regi"]
+	path = containers/docker-regi
+	url = https://github.com/h0tbird/docker-regi.git
