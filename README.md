@@ -24,29 +24,33 @@ This is what you get when you install `booddies`:
 
 ```
 /
-├── data <------------------------------ Persistent data directories mounted by the containers.
+├── data <-------------------------- Persistent data directories mounted by containers.
 │   ├── boot/
 │   ├── data/
-│   └── gito/
+│   ├── gito/
+│   └── regi/
 ├── etc
-│   ├── boodies <----------------------- Per container configuration files.
+│   ├── boodies <------------------- Per container configuration files.
 │   │   ├── boot.conf
 │   │   ├── cgit.conf
 │   │   ├── data.conf
-│   │   └── gito.conf
+│   │   ├── gito.conf
+│   │   └── regi.conf
 │   └── systemd
-│       └── system <-------------------- Systemd service unit files.
+│       └── system <---------------- Systemd service unit files.
 │           ├── boot.service
 │           ├── cgit.service
 │           ├── data.service
-│           └── gito.service
+│           ├── gito.service
+│           └── regi.service
 └── usr
     └── local
-        └── sbin <---------------------- Pre-run, run and post-run logic.
+        └── sbin <------------------ Pre-run, run and post-run logic.
             ├── runctl-boot
             ├── runctl-cgit
             ├── runctl-data
-            └── runctl-gito
+            ├── runctl-gito
+            └── runctl-regi
 ```
 
 And of course you also get the docker images:
