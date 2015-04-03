@@ -15,7 +15,7 @@ Six containers are planned:
 - [x] **data:** An [`apache`][apache-web] server with YUM repositories and other data.
 - [x] **gito:** A [`gitolite`][gitolite-web] server with R10K and Puppet code.
 - [x] **cgit:** An `apache` server acting as a frontend to `gitolite`.
-- [ ] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
+- [x] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization. 
 
 ## Batteries included
@@ -61,7 +61,7 @@ And of course you also get the docker images:
 | h0tbird/data | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
 | h0tbird/gito | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
 | h0tbird/cgit | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
-
+| h0tbird/regi | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 ## Installation
 ###### Clone and install:
 ```
@@ -76,7 +76,7 @@ done
 
 ###### Start the services:
 ```
-sudo systemctl start boot data gito cgit
+sudo systemctl start boot data gito cgit regi
 ```
 
 ###### Synchronize external data:
@@ -124,7 +124,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-[containers-counter]: https://img.shields.io/badge/containers-4/6-yellow.svg
+[containers-counter]: https://img.shields.io/badge/containers-5/6-yellow.svg
 [containers]: https://hub.docker.com/u/h0tbird
 [license-image]: http://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: http://www.apache.org/licenses/LICENSE-2.0
@@ -142,18 +142,23 @@ limitations under the License.
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
 [cgit-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
 [cgit-web]: https://registry.hub.docker.com/u/h0tbird/cgit
+[regi-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
+[regi-web]: https://registry.hub.docker.com/u/h0tbird/regi
 
 [boot-config]: https://github.com/h0tbird/docker-boot/blob/master/boot.conf
 [data-config]: https://github.com/h0tbird/docker-data/blob/master/data.conf
 [gito-config]: https://github.com/h0tbird/docker-gito/blob/master/gito.conf
 [cgit-config]: https://github.com/h0tbird/docker-cgit/blob/master/cgit.conf
+[regi-config]: https://github.com/h0tbird/docker-regi/blob/master/regi.conf
 
 [boot-unit]: https://github.com/h0tbird/docker-boot/blob/master/boot.service
 [data-unit]: https://github.com/h0tbird/docker-data/blob/master/data.service
 [gito-unit]: https://github.com/h0tbird/docker-gito/blob/master/gito.service
 [cgit-unit]: https://github.com/h0tbird/docker-cgit/blob/master/cgit.service
+[regi-unit]: https://github.com/h0tbird/docker-regi/blob/master/regi.service
 
 [boot-run]: https://github.com/h0tbird/docker-boot/blob/master/bin/runctl
 [data-run]: https://github.com/h0tbird/docker-data/blob/master/bin/runctl
 [gito-run]: https://github.com/h0tbird/docker-gito/blob/master/bin/runctl
 [cgit-run]: https://github.com/h0tbird/docker-cgit/blob/master/bin/runctl
+[regi-run]: https://github.com/h0tbird/docker-regi/blob/master/bin/runctl
