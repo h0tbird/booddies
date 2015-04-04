@@ -63,7 +63,7 @@ And of course you also get the docker images:
 | h0tbird/cgit | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
 | h0tbird/regi | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 ## Installation
-###### Clone and install:
+###### 1. Clone and install:
 ```
 git clone --recursive https://github.com/h0tbird/booddies.git
 
@@ -74,12 +74,12 @@ cd booddies && for i in `ls containers`; do
 done
 ```
 
-###### Start the services:
+###### 2. Start the services:
 ```
 sudo systemctl start boot data gito cgit regi
 ```
 
-###### Synchronize external data:
+###### 3. Synchronize external data:
 ```
 docker exec -it data01 datasync base
 docker exec -it data01 datasync updates
@@ -90,7 +90,12 @@ docker exec -it data01 datasync coreos
 docker exec -it data01 datasync misc
 ```
 
-###### Populate the private registry:
+###### 4. Kernel and initramfs:
+```
+Todo
+```
+
+###### 5. Populate the private registry:
 ```
 docker pull jplock/zookeeper
 docker tag jplock/zookeeper regi01.demo.lan:5000/zookeeper
@@ -109,7 +114,7 @@ docker tag mesosphere/marathon:v0.7.5 regi01.demo.lan:5000/marathon:v0.7.5
 docker push regi01.demo.lan:5000/marathon:v0.7.5
 ```
 
-###### Devel:
+## Devel:
 ```
 git remote set-url origin `git config --get remote.origin.url | \
 sed s/github/h0tbird@github/`
