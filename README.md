@@ -90,6 +90,21 @@ docker exec -it data01 datasync coreos
 docker exec -it data01 datasync misc
 ```
 
+###### Populate the private registry:
+```
+docker pull jplock/zookeeper
+docker tag jplock/zookeeper regi01.demo.lan:5000/zookeeper
+docker push regi01.demo.lan:5000/zookeeper
+
+docker pull mesosphere/mesos-master:0.20.1
+docker tag mesosphere/mesos-master:0.20.1 regi01.demo.lan:5000/mesos-master:0.20.1
+docker push regi01.demo.lan:5000/mesos-master:0.20.1
+
+docker pull mesosphere/mesos-slave:0.20.1
+docker tag mesosphere/mesos-slave:0.20.1 regi01.demo.lan:5000/mesos-slave:0.20.1
+docker push regi01.demo.lan:5000/mesos-slave:0.20.1
+```
+
 ###### Devel:
 ```
 git remote set-url origin `git config --get remote.origin.url | \
