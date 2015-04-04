@@ -55,20 +55,20 @@ This is what you get when you install `booddies`:
 
 And of course you also get the docker images:
 
-| Docker Image | Status                          | ID     | Config file                | Systemd unit                                        | Run logic |
-| ------------ | ------------------------------- |:------:| -------------------------- | --------------------------- | ------------------------- |
-| h0tbird/boot | [![boot][boot-image]][boot-web] | boot01 | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
-| h0tbird/data | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
-| h0tbird/gito | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
-| h0tbird/cgit | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
-| h0tbird/regi | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
+| Docker Image               | Status                          | ID     | Config file                | Systemd unit                                        | Run logic |
+| -------------------------- | ------------------------------- |:------:| -------------------------- | --------------------------- | ------------------------- |
+| [h0tbird/boot][boot-image] | [![boot][boot-image]][boot-web] | boot01 | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
+| [h0tbird/data][data-image] | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
+| [h0tbird/gito][gito-image] | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
+| [h0tbird/cgit][cgit-image] | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
+| [h0tbird/regi][regi-image] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 ## Installation
 ##### 1. Clone and install
 A recursive git clone is needed in order to pull all git submodules:
 ```
 git clone --recursive https://github.com/h0tbird/booddies.git
 ```
-Loop through all the container submodules and execute `./bin/install`. This will provide the file and directory structure previously detailed:
+Loop through all the container submodules and execute `sudo ./bin/install`. This will provide the file and directory structure previously detailed:
 ```
 cd booddies && for i in containers/*; do
   pushd $i
