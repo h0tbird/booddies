@@ -68,7 +68,7 @@ A recursive git clone is needed in order to pull all git submodules:
 ```
 git clone --recursive https://github.com/h0tbird/booddies.git
 ```
-Loop through all containers submodules and execute `./bin/install`. This will provide you the file and directory structure previously detailed:
+Loop through all containers submodules and execute `./bin/install`. This will provide the file and directory structure previously detailed:
 ```
 cd booddies && for i in containers/*; do
   pushd $i
@@ -96,26 +96,37 @@ docker exec -it data01 datasync coreos
 docker exec -it data01 datasync misc
 ```
 
-##### 4. Kernel and initramfs
+##### 4. Kernel and initrd
+This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
 ```
 sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/
 sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/
 ```
 
 ##### 5. Populate the private registry
+Zookeeper:
 ```
 docker pull jplock/zookeeper
 docker tag jplock/zookeeper regi01.demo.lan:5000/zookeeper
 docker push regi01.demo.lan:5000/zookeeper
+```
 
+Mesos master:
+```
 docker pull mesosphere/mesos-master:0.20.1
 docker tag mesosphere/mesos-master:0.20.1 regi01.demo.lan:5000/mesos-master:0.20.1
 docker push regi01.demo.lan:5000/mesos-master:0.20.1
+```
 
+Mesos slave:
+```
 docker pull mesosphere/mesos-slave:0.20.1
 docker tag mesosphere/mesos-slave:0.20.1 regi01.demo.lan:5000/mesos-slave:0.20.1
 docker push regi01.demo.lan:5000/mesos-slave:0.20.1
+```
 
+Marathon:
+```
 docker pull mesosphere/marathon:v0.7.5
 docker tag mesosphere/marathon:v0.7.5 regi01.demo.lan:5000/marathon:v0.7.5
 docker push regi01.demo.lan:5000/marathon:v0.7.5
