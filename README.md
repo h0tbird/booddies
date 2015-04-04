@@ -37,7 +37,7 @@ This is what you get when you install `booddies`:
 │   │   ├── gito.conf
 │   │   └── regi.conf
 │   └── systemd
-│       └── system <---------------- Systemd service unit files.
+│       └── system <---------------- Per container systemd service unit files.
 │           ├── boot.service
 │           ├── cgit.service
 │           ├── data.service
