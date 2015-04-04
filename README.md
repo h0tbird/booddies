@@ -63,10 +63,13 @@ And of course you also get the docker images:
 | h0tbird/cgit | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
 | h0tbird/regi | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 ## Installation
-###### 1. Clone and install:
+##### 1. Clone and install
+A recursive git clone is needed in order to pull all git submodules:
 ```
 git clone --recursive https://github.com/h0tbird/booddies.git
-
+```
+Loop through all containers and execute `./bin/install`:
+```
 cd booddies && for i in `ls containers`; do
   pushd containers/${i}
   sudo ./bin/install
@@ -74,12 +77,14 @@ cd booddies && for i in `ls containers`; do
 done
 ```
 
-###### 2. Start the services:
+##### 2. Start the services
+The `boot` container is needed by all the other containers so it will start first.
 ```
 sudo systemctl start boot data gito cgit regi
 ```
 
-###### 3. Synchronize external data:
+##### 3. Synchronize external data
+About 15GB of data will be downloaded.
 ```
 docker exec -it data01 datasync base
 docker exec -it data01 datasync updates
@@ -90,12 +95,13 @@ docker exec -it data01 datasync coreos
 docker exec -it data01 datasync misc
 ```
 
-###### 4. Kernel and initramfs:
+##### 4. Kernel and initramfs
 ```
-Todo
+sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/
+sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/
 ```
 
-###### 5. Populate the private registry:
+##### 5. Populate the private registry
 ```
 docker pull jplock/zookeeper
 docker tag jplock/zookeeper regi01.demo.lan:5000/zookeeper
