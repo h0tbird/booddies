@@ -103,6 +103,10 @@ docker push regi01.demo.lan:5000/mesos-master:0.20.1
 docker pull mesosphere/mesos-slave:0.20.1
 docker tag mesosphere/mesos-slave:0.20.1 regi01.demo.lan:5000/mesos-slave:0.20.1
 docker push regi01.demo.lan:5000/mesos-slave:0.20.1
+
+docker pull mesosphere/marathon:v0.7.5
+docker tag mesosphere/marathon:v0.7.5 regi01.demo.lan:5000/marathon:v0.7.5
+docker push regi01.demo.lan:5000/marathon:v0.7.5
 ```
 
 ###### Devel:
