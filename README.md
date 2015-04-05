@@ -30,7 +30,7 @@ This is what you get when you install `booddies`:
 │   ├── gito/
 │   └── regi/
 ├── etc
-│   ├── booddies <------------------- Per container configuration files.
+│   ├── booddies <------------------ Per container configuration files.
 │   │   ├── boot.conf
 │   │   ├── cgit.conf
 │   │   ├── data.conf
