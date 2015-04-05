@@ -129,6 +129,7 @@ yum install -y ruby-devel gcc libffi-devel make rpm-build
 gem install --no-document --verbose fpm
 mkdir /tmp/gems
 gem install --no-document --verbose --install-dir /tmp/gems \$GEM
+sed -i 's/1.2/~> 1.2/' /tmp/gems/gems/r10k-1.5.0/r10k.gemspec
 cd /newgems
 find /tmp/gems -name '*.gem' | \
 xargs -rn1 fpm -d ruby -d rubygems --prefix /usr/share/gems -s gem -t rpm"
