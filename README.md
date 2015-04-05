@@ -93,17 +93,35 @@ docker exec -it data01 datasync puppetlabs-products
 docker exec -it data01 datasync puppetlabs-deps
 docker exec -it data01 datasync epel
 docker exec -it data01 datasync coreos
+```
+
+##### 4. Package R10K
+R10K is not in EPEL so it must be provided by other means. Using docker and `fpm` is a very nice solution.
+```
+docker run -it --rm -e GEM=r10k \
+-v /data/data/centos/7/misc:/newgems centos:7 bash -c "
+yum install -y ruby-devel gcc libffi-devel make rpm-build
+gem install --no-document --verbose fpm
+mkdir /tmp/gems
+gem install --no-document --verbose --install-dir /tmp/gems \$GEM
+cd /newgems
+find /tmp/gems -name '*.gem' | \
+xargs -rn1 fpm -d ruby -d rubygems --prefix /usr/share/gems -s gem -t rpm"
+```
+
+Now the misc repository can be generated.
+```
 docker exec -it data01 datasync misc
 ```
 
-##### 4. Kernel and initrd
+##### 5. Kernel and initrd
 This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
 ```
 sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/
 sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/
 ```
 
-##### 5. Populate the private registry
+##### 6. Populate the private registry
 Zookeeper:
 ```
 docker pull jplock/zookeeper
