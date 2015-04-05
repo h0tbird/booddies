@@ -62,6 +62,29 @@ And of course you also get the docker images:
 | [h0tbird/gito][gito-image] | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
 | [h0tbird/cgit][cgit-image] | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
 | [h0tbird/regi][regi-image] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
+
+## Prerequisites
+Docker must be installed in the system and the option `--insecure-registry` must be used for the private docker registry to work. This is how it looks like in my Arch Linux:
+
+```
+[0] ~ >> systemctl cat docker
+# /usr/lib/systemd/system/docker.service
+[Unit]
+Description=Docker Application Container Engine
+Documentation=http://docs.docker.com
+After=network.target docker.socket
+Requires=docker.socket
+
+[Service]
+ExecStart=/usr/bin/docker -d -H fd:// --insecure-registry regi01.demo.lan:5000
+MountFlags=slave
+LimitNOFILE=1048576
+LimitNPROC=1048576
+
+[Install]
+WantedBy=multi-user.target
+```
+
 ## Installation
 ##### 1. Clone and install
 A recursive git clone is needed in order to pull all git submodules:
