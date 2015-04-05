@@ -119,7 +119,7 @@ docker exec -it data01 datasync coreos
 ```
 
 ##### 4. Package R10K
-R10K is not in EPEL so it must be provided by other means. Using docker and `fpm` is a very nice solution.
+R10K is not in EPEL so it must be provided by other means. Using docker and [`fpm`][fpm-web] is a very nice solution.
 ```
 docker run -it --rm -e GEM=r10k \
 -v /data/data/centos/7/misc:/newgems centos:7 bash -c "
@@ -132,7 +132,7 @@ find /tmp/gems -name '*.gem' | \
 xargs -rn1 fpm -d ruby -d rubygems --prefix /usr/share/gems -s gem -t rpm"
 ```
 
-Now the misc repository can be generated.
+Now the `misc` repository can be generated.
 ```
 docker exec -it data01 datasync misc
 ```
@@ -144,7 +144,7 @@ sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/
 sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/
 ```
 
-##### 6. Populate the private registry
+##### 6. Populate the private docker registry
 Zookeeper:
 ```
 docker pull jplock/zookeeper
@@ -216,6 +216,7 @@ limitations under the License.
 [apache-web]: http://httpd.apache.org
 [gitolite-web]: http://gitolite.com
 [registry-web]: https://github.com/docker/docker-registry
+[fpm-web]: https://github.com/jordansissel/fpm
 
 [boot-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
 [boot-web]: https://registry.hub.docker.com/u/h0tbird/boot
