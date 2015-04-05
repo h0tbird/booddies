@@ -13,7 +13,7 @@ Six containers are planned:
 
 - [x] **boot:** A [`dnsmasq`][dnsmasq-web] server that handles PXE, DHCP, TFTP, and DNS.
 - [x] **data:** An [`apache`][apache-web] server with YUM repositories and other data.
-- [x] **gito:** A [`gitolite`][gitolite-web] server with R10K and Puppet code.
+- [x] **gito:** A [`gitolite`][gitolite-web] server with [`R10K`][r10k-web] and Puppet code.
 - [x] **cgit:** An `apache` server acting as a frontend to `gitolite`.
 - [x] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization. 
@@ -121,7 +121,7 @@ docker exec -it data01 datasync coreos
 ```
 
 ##### 4. Package R10K
-R10K is not in EPEL so it must be provided by other means. Using docker and [`fpm`][fpm-web] is a very nice solution.
+R10K is not in EPEL so it must be provided by other means. Using docker and [`fpm`][fpm-web] is a very clean solution.
 ```
 docker run -it --rm -e GEM=r10k \
 -v /data/data/centos/7/misc:/newgems centos:7 bash -c "
@@ -217,6 +217,7 @@ limitations under the License.
 [dnsmasq-web]: http://www.thekelleys.org.uk/dnsmasq/doc.html
 [apache-web]: http://httpd.apache.org
 [gitolite-web]: http://gitolite.com
+[r10k-web]: https://github.com/puppetlabs/r10k
 [registry-web]: https://github.com/docker/docker-registry
 [datasync-code]: https://github.com/h0tbird/docker-data/blob/master/rootfs/usr/sbin/datasync
 [fpm-web]: https://github.com/jordansissel/fpm
