@@ -102,7 +102,7 @@ done
 
 ##### 2. Start the services
 All docker images will be downloaded from the public docker hub the first time you start the services.
-The `boot` service is needed by all the other services and systemd will ensure it boots first.
+The `boot` service is required by all the other services and systemd will ensure it boots first.
 ```
 sudo systemctl start boot data gito cgit regi
 ```
