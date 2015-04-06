@@ -175,6 +175,33 @@ docker tag mesosphere/marathon:v0.7.5 regi01.demo.lan:5000/marathon:v0.7.5
 docker push regi01.demo.lan:5000/marathon:v0.7.5
 ```
 
+##### 7. Populate the gitolite repositories
+
+Add a new user's ssh public key:
+```
+git clone /data/gito/repos/gitolite-admin.git /tmp/gitolite-admin
+cd /tmp/gitolite-admin && mkdir keydir
+cp ~/.ssh/id_rsa.pub keydir/marc.pub
+```
+
+Grant RW+ permissions on the `gitolite-admin` repository:
+```
+cat << EOF > conf/gitolite.conf
+repo gitolite-admin
+  config gitweb.owner       = Marc Villacorta
+  config gitweb.description = Gitolite config repository
+  config gitweb.category    = Configurations
+  RW+                       = marc
+EOF
+```
+
+Commit and push:
+```
+git add keydir/ conf/
+git commit -am "Adding user marc"
+git push
+```
+
 ## Devel:
 ```
 git remote set-url origin `git config --get remote.origin.url | \
