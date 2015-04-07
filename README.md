@@ -202,6 +202,17 @@ git commit -am "Adding user marc"
 git push
 ```
 
+Push to mirror:
+```
+docker exec -it gito01 su git -c '            
+for i in ~/repositories/*; do                 
+  pushd $i                                    
+  target=$(git config --get gitolite.mirror.simple)
+  [ -z "$target" ] || git push --mirror $target
+  popd
+done'
+```
+
 ## Devel:
 ```
 git remote set-url origin `git config --get remote.origin.url | \
