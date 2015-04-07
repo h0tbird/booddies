@@ -196,6 +196,20 @@ repo gitolite-admin
 EOF
 ```
 
+Import `puppet-config.git`:
+```
+cd /data/gito/repos
+git clone --bare https://github.com/h0tbird/puppet-config.git
+cd /tmp/gitolite-admin
+cat << EOF > conf/gitolite.conf
+repo puppet-config
+  config gitweb.owner       = Marc Villacorta
+  config gitweb.description = Puppet config repository
+  config gitweb.category    = Configurations
+  RW+                       = marc
+EOF
+```
+
 Commit and push:
 ```
 git add keydir/ conf/
