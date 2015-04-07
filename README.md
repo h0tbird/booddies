@@ -201,7 +201,7 @@ Import `puppet-config.git`:
 cd /data/gito/repos
 git clone --bare https://github.com/h0tbird/puppet-config.git
 cd /tmp/gitolite-admin
-cat << EOF > conf/gitolite.conf
+cat << EOF >> conf/gitolite.conf
 repo puppet-config
   config gitweb.owner       = Marc Villacorta
   config gitweb.description = Puppet config repository
