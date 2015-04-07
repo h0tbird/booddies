@@ -217,21 +217,15 @@ git commit -am "Adding user marc"
 git push
 ```
 
-Push to mirror:
+## Devel:
+##### Switch git repos to RW mode:
+First the parent:
 ```
-docker exec -it gito01 su git -c '            
-for i in ~/repositories/*; do                 
-  pushd $i                                    
-  target=$(git config --get gitolite.mirror.simple)
-  [ -z "$target" ] || git push --mirror $target
-  popd
-done'
+git remote set-url origin `git config --get remote.origin.url | sed s/github/h0tbird@github/`
 ```
 
-## Devel:
+Now the submodules:
 ```
-git remote set-url origin `git config --get remote.origin.url | \
-sed s/github/h0tbird@github/`
 git submodule foreach git checkout master
 
 for i in containers data; do
@@ -242,8 +236,21 @@ for i in containers data; do
     popd
   done
 done
+```
 
+Verify:
+```
 git submodule foreach git config --get remote.origin.url
+```
+##### Push local changes to mirror repos:
+```
+docker exec -it gito01 su git -c '            
+for i in ~/repositories/*; do                 
+  pushd $i                                    
+  target=$(git config --get gitolite.mirror.simple)
+  [ -z "$target" ] || git push --mirror $target
+  popd
+done'
 ```
 
 ## License
