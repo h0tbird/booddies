@@ -142,8 +142,9 @@ docker exec -it data01 datasync misc
 ##### 5. Kernel and initrd
 This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
 ```
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/
+sudo mkdir -p /data/boot/images/centos/7/x86_64
+sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/centos/7/x86_64/
+sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/centos/7/x86_64/
 ```
 
 ##### 6. Populate the private docker registry
