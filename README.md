@@ -142,8 +142,9 @@ docker exec -it data01 datasync misc
 ##### 5. Kernel and initrd
 This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
 ```
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/
+sudo mkdir -p /data/boot/images/centos/7/x86_64
+sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/centos/7/x86_64/
+sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/centos/7/x86_64/
 ```
 
 ##### 6. Populate the private docker registry
@@ -195,6 +196,20 @@ repo gitolite-admin
 EOF
 ```
 
+Import `puppet-config.git`:
+```
+cd /data/gito/repos
+git clone --bare https://github.com/h0tbird/puppet-config.git
+cd /tmp/gitolite-admin
+cat << EOF >> conf/gitolite.conf
+repo puppet-config
+  config gitweb.owner       = Marc Villacorta
+  config gitweb.description = Puppet config repository
+  config gitweb.category    = Configurations
+  RW+                       = marc
+EOF
+```
+
 Commit and push:
 ```
 git add keydir/ conf/
@@ -203,9 +218,14 @@ git push
 ```
 
 ## Devel:
+##### Switch git repos to RW mode:
+First the parent:
 ```
-git remote set-url origin `git config --get remote.origin.url | \
-sed s/github/h0tbird@github/`
+git remote set-url origin `git config --get remote.origin.url | sed s/github/h0tbird@github/`
+```
+
+Now the submodules:
+```
 git submodule foreach git checkout master
 
 for i in containers data; do
@@ -216,8 +236,21 @@ for i in containers data; do
     popd
   done
 done
+```
 
+Verify:
+```
 git submodule foreach git config --get remote.origin.url
+```
+##### Push local changes to mirror repos:
+```
+docker exec -it gito01 su git -c '            
+for i in ~/repositories/*; do                 
+  pushd $i                                    
+  target=$(git config --get gitolite.mirror.simple)
+  [ -z "$target" ] || git push --mirror $target
+  popd
+done'
 ```
 
 ## License
