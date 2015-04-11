@@ -154,14 +154,9 @@ docker push regi01.demo.lan:5000/marathon:v0.7.5
 
 ##### 5. Populate the gitolite repositories
 
+This will clone the puppet code that will be applyed in the target systems:
 ```
-docker exec -it gito01 repoimport \
---admin admin \
---owner 'Marc Villacorta' \
---description 'Masterless puppet config' \
---category configuration \
---repo https://github.com/h0tbird/puppet-config.git \
---mirror
+cd booddies && ./bin/feed-gito
 ```
 
 ## Devel:
@@ -208,7 +203,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
