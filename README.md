@@ -178,43 +178,14 @@ docker push regi01.demo.lan:5000/marathon:v0.7.5
 
 ##### 7. Populate the gitolite repositories
 
-Add a new user's ssh public key:
 ```
-git clone /data/gito/repos/gitolite-admin.git /tmp/gitolite-admin
-cd /tmp/gitolite-admin && mkdir keydir
-cp ~/.ssh/id_rsa.pub keydir/marc.pub
-```
-
-Grant RW+ permissions on the `gitolite-admin` repository:
-```
-cat << EOF > conf/gitolite.conf
-repo gitolite-admin
-  config gitweb.owner       = Marc Villacorta
-  config gitweb.description = Gitolite config repository
-  config gitweb.category    = Configurations
-  RW+                       = marc
-EOF
-```
-
-Import `puppet-config.git`:
-```
-cd /data/gito/repos
-git clone --bare https://github.com/h0tbird/puppet-config.git
-cd /tmp/gitolite-admin
-cat << EOF >> conf/gitolite.conf
-repo puppet-config
-  config gitweb.owner       = Marc Villacorta
-  config gitweb.description = Puppet config repository
-  config gitweb.category    = Configurations
-  RW+                       = marc
-EOF
-```
-
-Commit and push:
-```
-git add keydir/ conf/
-git commit -am "Adding user marc"
-git push
+docker exec -it gito01 repoimport \
+--admin admin \
+--owner 'Marc Villacorta' \
+--description 'Masterless puppet config' \
+--category configuration \
+--repo https://github.com/h0tbird/puppet-config.git \
+--mirror
 ```
 
 ## Devel:
