@@ -93,18 +93,13 @@ A recursive git clone is needed in order to pull all git submodules:
 ```
 git clone --recursive https://github.com/h0tbird/booddies.git
 ```
-Loop through all the container submodules and execute `sudo ./bin/install`. This will provide the file and directory structure previously detailed:
+This will provide the file and directory structure previously detailed:
 ```
-cd booddies && for i in containers/*; do
-  pushd $i
-  sudo ./bin/install
-  popd
-done
+cd booddies && ./bin/install
 ```
 
 ##### 2. Start the services
-All docker images will be downloaded from the public docker hub the first time you start the services.
-The `boot` service is required by all the other services and systemd will ensure it boots first.
+The first time you start the services all docker images will be downloaded from the docker hub.
 ```
 sudo systemctl start boot data gito cgit regi
 ```
