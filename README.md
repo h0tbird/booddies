@@ -95,11 +95,7 @@ git clone --recursive https://github.com/h0tbird/booddies.git
 ```
 Loop through all the container submodules and execute `sudo ./bin/install`. This will provide the file and directory structure previously detailed:
 ```
-cd booddies && for i in containers/*; do
-  pushd $i
-  sudo ./bin/install
-  popd
-done
+cd booddies && ./bin/install
 ```
 
 ##### 2. Start the services
