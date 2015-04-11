@@ -1,0 +1,33 @@
+#!/bin/bash
+
+array1=( 'Masterless puppet config' 'configuration' 'true' 'https://github.com/h0tbird/puppet-config.git' )
+array2=( 'Puppet KVM control repository' 'configuration' 'true' 'https://github.com/h0tbird/r10k-kvm.git' )
+array3=( 'Puppet KVM role' 'Puppet roles' 'true' 'https://github.com/h0tbird/puppet-r_kvm.git' )
+array4=( 'Puppet base role' 'Puppet roles' 'true' 'https://github.com/h0tbird/puppet-r_base.git' )
+array5=( 'SSH profile module' 'Puppet profiles' 'true' 'https://github.com/h0tbird/puppet-p_ssh.git' )
+array6=( 'Puppet miscellany library module' 'Puppet modules' 'true' 'https://github.com/h0tbird/puppet-m_misclib.git' )
+array7=( 'Manages system users' 'Puppet modules' 'true' 'https://github.com/h0tbird/puppet-m_users.git' )
+array8=( 'Manages the SSH service' 'Puppet modules' 'true' 'https://github.com/h0tbird/puppet-m_ssh.git' )
+array9=( 'Manages the terminfo database' 'Puppet modules' 'true' 'https://github.com/h0tbird/puppet-m_terminfo.git' )
+array10=( 'Puppet Labs Standard Library module' 'Puppet modules' 'false' 'https://github.com/puppetlabs/puppetlabs-stdlib.git' 'puppet-m_stdlib' )
+
+for i in `seq 10`; do
+
+  eval desc=\${array${i}[0]}
+  eval cat=\${array${i}[1]}
+  eval mirror=\${array${i}[2]}
+  eval repo=\${array${i}[3]}
+  eval name=\${array${i}[4]}
+
+  echo -e "\n:::: $desc ::::\n"
+
+  docker exec -it gito01 gitosync \
+  --admin admin \
+  --owner 'The bootstrapping fellowship' \
+  --description "${desc}" \
+  --category "${cat}" \
+  --repo "${repo}" \
+  --mirror "${mirror}" \
+  --name "${name}"
+
+done
