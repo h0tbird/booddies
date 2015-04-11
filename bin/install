@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in containers/*; do
+  pushd $i
+  sudo ./bin/install
+  popd
+done
