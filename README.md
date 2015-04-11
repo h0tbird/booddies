@@ -64,7 +64,7 @@ And of course you also get the docker images:
 | [h0tbird/regi][regi-image] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 ## Prerequisites
-* Docker must be installed in the system and the option `--insecure-registry regi01.demo.lan:5000` must be used for the private docker registry to work.
+* Start Docker with `--insecure-registry regi01.demo.lan:5000`.
 * Also make sure you have about 20GB of free space in `/data`.
 
 ## Installation
