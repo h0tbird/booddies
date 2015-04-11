@@ -93,7 +93,7 @@ A recursive git clone is needed in order to pull all git submodules:
 ```
 git clone --recursive https://github.com/h0tbird/booddies.git
 ```
-Loop through all the container submodules and execute `sudo ./bin/install`. This will provide the file and directory structure previously detailed:
+This will provide the file and directory structure previously detailed:
 ```
 cd booddies && ./bin/install
 ```
