@@ -86,7 +86,7 @@ sudo systemctl start boot data gito cgit regi
 
 ## Data synchronization
 ##### 1. Mirror external repositories
-About 15GB of data will be downloaded, check the [`datasync`][datasync-code] code for more details:
+About 15GB of data will be downloaded, check [`datasync`][datasync-code] for more details:
 ```
 docker exec -it data01 datasync base
 docker exec -it data01 datasync updates
