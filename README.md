@@ -154,7 +154,7 @@ docker push regi01.demo.lan:5000/marathon:v0.7.5
 
 ##### 5. Populate the gitolite repositories
 
-This will clone the puppet code that will be applyed in the target systems:
+This will clone the puppet code that will be applied in the target systems:
 ```
 cd booddies && ./bin/feed-gito
 ```
