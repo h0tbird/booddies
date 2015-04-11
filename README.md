@@ -64,28 +64,8 @@ And of course you also get the docker images:
 | [h0tbird/regi][regi-image] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 ## Prerequisites
-Docker must be installed in the system and the option `--insecure-registry` must be used for the private docker registry to work. This is how it looks like in my Arch Linux:
-
-```
-[0] ~ >> systemctl cat docker
-# /usr/lib/systemd/system/docker.service
-[Unit]
-Description=Docker Application Container Engine
-Documentation=http://docs.docker.com
-After=network.target docker.socket
-Requires=docker.socket
-
-[Service]
-ExecStart=/usr/bin/docker -d -H fd:// --insecure-registry regi01.demo.lan:5000
-MountFlags=slave
-LimitNOFILE=1048576
-LimitNPROC=1048576
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Also make sure you have about 20GB of free space in `/data`.
+* Docker must be installed in the system and the option `--insecure-registry regi01.demo.lan:5000` must be used for the private docker registry to work.
+* Also make sure you have about 20GB of free space in `/data`.
 
 ## Installation
 ##### 1. Clone and install
@@ -99,7 +79,7 @@ cd booddies && ./bin/install
 ```
 
 ##### 2. Start the services
-The first time you start the services all docker images will be downloaded from the docker hub:
+The first time you start the services all docker images will be downloaded from docker hub:
 ```
 sudo systemctl start boot data gito cgit regi
 ```
