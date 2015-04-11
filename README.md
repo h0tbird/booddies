@@ -99,13 +99,14 @@ cd booddies && ./bin/install
 ```
 
 ##### 2. Start the services
-The first time you start the services all docker images will be downloaded from the docker hub.
+The first time you start the services all docker images will be downloaded from the docker hub:
 ```
 sudo systemctl start boot data gito cgit regi
 ```
 
-##### 3. Synchronize external data
-About 15GB of data will be downloaded, check the [`datasync`][datasync-code] code for more details.
+## Data synchronization
+##### 1. Mirror external repositories
+About 15GB of data will be downloaded, check the [`datasync`][datasync-code] code for more details:
 ```
 docker exec -it data01 datasync base
 docker exec -it data01 datasync updates
@@ -115,8 +116,8 @@ docker exec -it data01 datasync epel
 docker exec -it data01 datasync coreos
 ```
 
-##### 4. Package R10K
-R10K is not in EPEL so it must be provided by other means. Using docker and [`fpm`][fpm-web] is a very clean solution.
+##### 2. Package R10K
+R10K is not in EPEL so it must be provided by other means. Using docker and [`fpm`][fpm-web] is a very clean solution:
 ```
 docker run -it --rm -e GEM=r10k \
 -v /data/data/centos/7/misc:/newgems centos:7 bash -c "
@@ -134,7 +135,7 @@ Now the `misc` repository can be generated.
 docker exec -it data01 datasync misc
 ```
 
-##### 5. Kernel and initrd
+##### 3. Kernel and initrd
 This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
 ```
 sudo mkdir -p /data/boot/images/centos/7/x86_64
@@ -142,7 +143,7 @@ sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/c
 sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/centos/7/x86_64/
 ```
 
-##### 6. Populate the private docker registry
+##### 4. Populate the private docker registry
 Zookeeper:
 ```
 docker pull jplock/zookeeper
@@ -171,7 +172,7 @@ docker tag mesosphere/marathon:v0.7.5 regi01.demo.lan:5000/marathon:v0.7.5
 docker push regi01.demo.lan:5000/marathon:v0.7.5
 ```
 
-##### 7. Populate the gitolite repositories
+##### 5. Populate the gitolite repositories
 
 ```
 docker exec -it gito01 repoimport \
