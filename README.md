@@ -119,32 +119,10 @@ sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/image
 ```
 
 ##### 4. Populate the private docker registry
-Zookeeper:
-```
-docker pull jplock/zookeeper
-docker tag jplock/zookeeper regi01.demo.lan:5000/zookeeper
-docker push regi01.demo.lan:5000/zookeeper
-```
 
-Mesos master:
+Pull and push from public to private registry, check [`feed-regi`][feed-regi-code] for more details:
 ```
-docker pull mesosphere/mesos-master:0.20.1
-docker tag mesosphere/mesos-master:0.20.1 regi01.demo.lan:5000/mesos-master:0.20.1
-docker push regi01.demo.lan:5000/mesos-master:0.20.1
-```
-
-Mesos slave:
-```
-docker pull mesosphere/mesos-slave:0.20.1
-docker tag mesosphere/mesos-slave:0.20.1 regi01.demo.lan:5000/mesos-slave:0.20.1
-docker push regi01.demo.lan:5000/mesos-slave:0.20.1
-```
-
-Marathon:
-```
-docker pull mesosphere/marathon:v0.7.5
-docker tag mesosphere/marathon:v0.7.5 regi01.demo.lan:5000/marathon:v0.7.5
-docker push regi01.demo.lan:5000/marathon:v0.7.5
+cd booddies && ./bin/feed-regi
 ```
 
 ##### 5. Populate the gitolite repositories
@@ -219,6 +197,7 @@ limitations under the License.
 
 [feed-data-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-data
 [datasync-code]: https://github.com/h0tbird/docker-data/blob/master/rootfs/usr/sbin/datasync
+[feed-regi-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-regi
 [feed-gito-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-gito
 [gitosync-code]: https://github.com/h0tbird/docker-gito/blob/master/rootfs/usr/sbin/gitosync
 
