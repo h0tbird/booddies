@@ -86,14 +86,9 @@ sudo systemctl start boot data gito cgit regi
 
 ## Data synchronization
 ##### 1. Mirror external repositories
-About 15GB of data will be downloaded, check [`datasync`][datasync-code] for more details:
+About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [`datasync`][datasync-code] for more details:
 ```
-docker exec -it data01 datasync base
-docker exec -it data01 datasync updates
-docker exec -it data01 datasync puppetlabs-products
-docker exec -it data01 datasync puppetlabs-deps
-docker exec -it data01 datasync epel
-docker exec -it data01 datasync coreos
+cd booddies && ./bin/feed-data
 ```
 
 ##### 2. Package R10K
@@ -154,7 +149,7 @@ docker push regi01.demo.lan:5000/marathon:v0.7.5
 
 ##### 5. Populate the gitolite repositories
 
-This will clone the puppet code that will be applied in the target systems:
+This will clone code that will be applied to the target systems:
 ```
 cd booddies && ./bin/feed-gito
 ```
@@ -186,9 +181,9 @@ git submodule foreach git config --get remote.origin.url
 ```
 ##### Push local changes to mirror repos:
 ```
-docker exec -it gito01 su git -c '            
-for i in ~/repositories/*; do                 
-  pushd $i                                    
+docker exec -it gito01 su git -c '
+for i in ~/repositories/*; do
+  pushd $i
   target=$(git config --get gitolite.mirror.simple)
   [ -z "$target" ] || git push --mirror $target
   popd
@@ -221,6 +216,7 @@ limitations under the License.
 [gitolite-web]: http://gitolite.com
 [r10k-web]: https://github.com/puppetlabs/r10k
 [registry-web]: https://github.com/docker/docker-registry
+[feed-data-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-data
 [datasync-code]: https://github.com/h0tbird/docker-data/blob/master/rootfs/usr/sbin/datasync
 [fpm-web]: https://github.com/jordansissel/fpm
 

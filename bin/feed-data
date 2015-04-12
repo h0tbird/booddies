@@ -1,0 +1,9 @@
+#!/bin/bash
+
+docker exec -it data01 datasync base
+docker exec -it data01 datasync updates
+docker exec -it data01 datasync puppetlabs-products
+docker exec -it data01 datasync puppetlabs-deps
+docker exec -it data01 datasync epel
+docker exec -it data01 datasync misc
+docker exec -it data01 datasync coreos
