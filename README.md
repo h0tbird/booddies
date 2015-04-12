@@ -45,7 +45,7 @@ This is what you get when you install `booddies`:
 │           └── regi.service
 └── usr
     └── local
-        └── sbin <------------------ Pre-run, run and post-run logic.
+        └── sbin <------------------ Per container pre-run, run and post-run logic.
             ├── runctl-boot
             ├── runctl-cgit
             ├── runctl-data
