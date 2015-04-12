@@ -149,7 +149,7 @@ docker push regi01.demo.lan:5000/marathon:v0.7.5
 
 ##### 5. Populate the gitolite repositories
 
-This will clone code that will be applied to the target systems:
+Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][gitosync-code] for more details:
 ```
 cd booddies && ./bin/feed-gito
 ```
@@ -216,8 +216,12 @@ limitations under the License.
 [gitolite-web]: http://gitolite.com
 [r10k-web]: https://github.com/puppetlabs/r10k
 [registry-web]: https://github.com/docker/docker-registry
+
 [feed-data-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-data
 [datasync-code]: https://github.com/h0tbird/docker-data/blob/master/rootfs/usr/sbin/datasync
+[feed-gito-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-gito
+[gitosync-code]: https://github.com/h0tbird/docker-gito/blob/master/rootfs/usr/sbin/gitosync
+
 [fpm-web]: https://github.com/jordansissel/fpm
 
 [boot-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
