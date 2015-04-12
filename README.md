@@ -16,7 +16,7 @@ Six containers are planned:
 - [x] **gito:** A [`gitolite`][gitolite-web] server with [`R10K`][r10k-web] and Puppet code.
 - [x] **cgit:** An `apache` server acting as a frontend to `gitolite`.
 - [x] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
-- [ ] **ntpd:** A `ntpd` server to provide clock synchronization. 
+- [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
 ## Batteries included
 
@@ -55,13 +55,13 @@ This is what you get when you install `booddies`:
 
 And of course you also get the docker images:
 
-| Docker Image               | Status                          | ID     | Config file                | Systemd unit                                        | Run logic |
-| -------------------------- | ------------------------------- |:------:| -------------------------- | --------------------------- | ------------------------- |
-| [h0tbird/boot][boot-image] | [![boot][boot-image]][boot-web] | boot01 | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
-| [h0tbird/data][data-image] | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
-| [h0tbird/gito][gito-image] | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
-| [h0tbird/cgit][cgit-image] | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
-| [h0tbird/regi][regi-image] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
+| Docker Image             | Status                          | ID     | Config file                | Systemd unit                | Run logic                 |
+| ------------------------ | ------------------------------- |:------:| -------------------------- | --------------------------- | ------------------------- |
+| [h0tbird/boot][boot-web] | [![boot][boot-image]][boot-web] | boot01 | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
+| [h0tbird/data][data-web] | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
+| [h0tbird/gito][gito-web] | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
+| [h0tbird/cgit][cgit-web] | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
+| [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 ## Prerequisites
 * Start Docker with `--insecure-registry regi01.demo.lan:5000`.
