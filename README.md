@@ -67,7 +67,7 @@ And of course you also get the docker images:
 * Start Docker with `--insecure-registry regi01.demo.lan:5000`.
 * Also make sure you have about 20GB of free space in `/data`.
 
-## Installation
+## Step one: Install
 ##### 1. Clone and install
 A recursive git clone is needed in order to pull all git submodules:
 ```
@@ -84,8 +84,8 @@ The first time you start the services all docker images will be downloaded from 
 sudo systemctl start boot data gito cgit regi
 ```
 
-## Data synchronization
-##### 1. Mirror external repositories
+## Step two: Synchronize
+##### 1. Populate the YUM repositories
 About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [`datasync`][datasync-code] for more details:
 ```
 cd booddies && ./bin/feed-data
