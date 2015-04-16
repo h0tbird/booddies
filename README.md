@@ -77,8 +77,10 @@ This will provide the file and directory structure previously detailed:
 ```
 cd booddies && ./bin/install
 ```
+##### 2. Configure
+Todo ...
 
-##### 2. Start the services
+##### 3. Start the services
 The first time you start the services all docker images will be downloaded from docker hub:
 ```
 sudo systemctl start boot data gito cgit regi
