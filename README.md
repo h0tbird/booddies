@@ -93,41 +93,14 @@ About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [
 cd booddies && ./bin/feed-data
 ```
 
-##### 2. Package R10K
-R10K is not in EPEL so it must be provided by other means. Using docker and [`fpm`][fpm-web] is a very clean solution:
-```
-docker run -it --rm -e GEM=r10k \
--v /data/data/centos/7/misc:/newgems centos:7 bash -c "
-yum install -y ruby-devel gcc libffi-devel make rpm-build
-gem install --no-document --verbose fpm
-mkdir /tmp/gems
-gem install --no-document --verbose --install-dir /tmp/gems \$GEM
-cd /newgems
-find /tmp/gems -name '*.gem' | \
-xargs -rn1 fpm -d ruby -d rubygems --edit --prefix /usr/share/gems -s gem -t rpm"
-```
-
-Now the `misc` repository can be generated.
-```
-docker exec -it data01 datasync misc
-```
-
-##### 3. Kernel and initrd
-This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
-```
-sudo mkdir -p /data/boot/images/centos/7/x86_64
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/centos/7/x86_64/
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/centos/7/x86_64/
-```
-
-##### 4. Populate the private docker registry
+##### 2. Populate the private docker registry
 
 Pull and push from public to private registry, check [`feed-regi`][feed-regi-code] for more details:
 ```
 cd booddies && ./bin/feed-regi
 ```
 
-##### 5. Populate the gitolite repositories
+##### 3. Populate the gitolite repositories
 
 Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][gitosync-code] for more details:
 ```
@@ -159,6 +132,34 @@ Verify:
 ```
 git submodule foreach git config --get remote.origin.url
 ```
+
+Package R10K:
+R10K is not in EPEL so it must be provided by other means. Using docker and [`fpm`][fpm-web] is a very clean solution:
+```
+docker run -it --rm -e GEM=r10k \
+-v /data/data/centos/7/misc:/newgems centos:7 bash -c "
+yum install -y ruby-devel gcc libffi-devel make rpm-build
+gem install --no-document --verbose fpm
+mkdir /tmp/gems
+gem install --no-document --verbose --install-dir /tmp/gems \$GEM
+cd /newgems
+find /tmp/gems -name '*.gem' | \
+xargs -rn1 fpm -d ruby -d rubygems --edit --prefix /usr/share/gems -s gem -t rpm"
+```
+
+Now the `misc` repository can be generated.
+```
+docker exec -it data01 datasync misc
+```
+
+Kernel and initrd:
+This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
+```
+sudo mkdir -p /data/boot/images/centos/7/x86_64
+sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/centos/7/x86_64/
+sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/centos/7/x86_64/
+```
+
 ##### Push local changes to mirror repos:
 ```
 docker exec -it gito01 su git -c '
