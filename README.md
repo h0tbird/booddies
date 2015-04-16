@@ -78,7 +78,9 @@ This will provide the file and directory structure previously detailed:
 cd booddies && ./bin/install
 ```
 ##### 2. Configure
-Todo ...
+Chances are, you want to edit this files:
+* [`/etc/booddies/boot.conf`][boot-config]
+* [`/etc/booddies/gito.conf`][gito-config]
 
 ##### 3. Start the services
 The first time you start the services all docker images will be downloaded from docker hub:
