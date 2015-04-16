@@ -65,6 +65,7 @@ And of course you also get the docker images:
 
 ## Prerequisites
 * Start Docker with `--insecure-registry regi01.demo.lan:5000`.
+* Bridge your physical interface to the `br0` bridge interface.
 * Also make sure you have about 20GB of free space in `/data`.
 
 ## Step one: Install
