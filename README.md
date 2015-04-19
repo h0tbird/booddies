@@ -114,13 +114,16 @@ cd booddies && ./bin/feed-gito
 ##### Switch git repos to RW mode:
 First the parent:
 ```
-git remote set-url origin `git config --get remote.origin.url | sed s/github/h0tbird@github/`
+git remote set-url origin `git config --get remote.origin.url | \
+sed s/github/h0tbird@github/`
 ```
 
 Now the submodules:
 ```
 git submodule foreach git checkout master
+```
 
+```
 for i in containers data; do
   for j in `ls $i`; do
     pushd ${i}/${j}
@@ -134,25 +137,6 @@ done
 Verify:
 ```
 git submodule foreach git config --get remote.origin.url
-```
-
-Package R10K:
-R10K is not in EPEL so it must be provided by other means. Using docker and [`fpm`][fpm-web] is a very clean solution:
-```
-docker run -it --rm -e GEM=r10k \
--v /data/data/centos/7/misc:/newgems centos:7 bash -c "
-yum install -y ruby-devel gcc libffi-devel make rpm-build
-gem install --no-document --verbose fpm
-mkdir /tmp/gems
-gem install --no-document --verbose --install-dir /tmp/gems \$GEM
-cd /newgems
-find /tmp/gems -name '*.gem' | \
-xargs -rn1 fpm -d ruby -d rubygems --edit --prefix /usr/share/gems -s gem -t rpm"
-```
-
-Now the `misc` repository can be generated.
-```
-docker exec -it data01 datasync misc
 ```
 
 Kernel and initrd:
