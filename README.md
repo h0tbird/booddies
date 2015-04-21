@@ -93,21 +93,30 @@ sudo systemctl start boot data gito cgit regi
 ##### 1. Populate the YUM repositories
 About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [`datasync`][datasync-code] for more details:
 ```
-cd booddies && ./bin/feed-data
+./bin/feed-data
 ```
 
 ##### 2. Populate the private docker registry
 
 Pull and push from public to private registry, check [`feed-regi`][feed-regi-code] for more details:
 ```
-cd booddies && ./bin/feed-regi
+./bin/feed-regi
 ```
 
 ##### 3. Populate the gitolite repositories
 
 Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][gitosync-code] for more details:
 ```
-cd booddies && ./bin/feed-gito
+./bin/feed-gito
+```
+
+## Step three: Setup
+
+Populate your `pxelinux` files and your `kickstart` files:
+```
+# ll -d /data/{boot/pxelinux,data/kickstarts}
+drwxr-xr-x 2 root root 4.0K Apr 20 19:59 /data/boot/pxelinux/
+drwxr-xr-x 3 root root 4.0K Apr 12 11:36 /data/data/kickstarts/
 ```
 
 ## Devel:
