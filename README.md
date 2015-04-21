@@ -71,11 +71,11 @@ And of course you also get the docker images:
 ## Step one: Install
 ##### 1. Clone and install
 A recursive git clone is needed in order to pull all git submodules:
-```
+```bash
 git clone --recursive https://github.com/h0tbird/booddies.git
 ```
 This will provide the file and directory structure previously detailed:
-```
+```bash
 cd booddies && ./bin/install
 ```
 ##### 2. Configure
@@ -85,42 +85,42 @@ Chances are, you want to edit this files:
 
 ##### 3. Start the services
 The first time you start the services all docker images will be downloaded from docker hub:
-```
+```bash
 sudo systemctl start boot data gito cgit regi
 ```
 
 ## Step two: Synchronize
 ##### 1. Populate the YUM repositories
 About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [`datasync`][datasync-code] for more details:
-```
+```bash
 ./bin/feed-data
 ```
 
 ##### 2. Populate the private docker registry
 
 Pull and push from public to private registry, check [`feed-regi`][feed-regi-code] for more details:
-```
+```bash
 ./bin/feed-regi
 ```
 
 ##### 3. Populate the gitolite repositories
 
 Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][gitosync-code] for more details:
-```
+```bash
 ./bin/feed-gito
 ```
 
 ## Step three: Setup
 
 Populate your [`pxelinux`](https://github.com/h0tbird/pxelinux) files and your [`kickstart`](https://github.com/h0tbird/kickstart) files:
-```
+```bash
 # ll -d /data/{boot/pxelinux,data/kickstarts}
 drwxr-xr-x 2 root root 4.0K Apr 20 19:59 /data/boot/pxelinux/
 drwxr-xr-x 3 root root 4.0K Apr 12 11:36 /data/data/kickstarts/
 ```
 
 You might want to add some DHCP static definitions:
-```
+```bash
 cat /data/boot/dnsmasq/dhcp_hosts 
 a4:ba:db:1d:1f:aa,kvm01,infinite
 84:2b:2b:57:c0:fb,kvm02,infinite
@@ -129,17 +129,17 @@ a4:ba:db:1d:1f:aa,kvm01,infinite
 ## Devel:
 ##### Switch git repos to RW mode:
 First the parent:
-```
+```bash
 git remote set-url origin `git config --get remote.origin.url | \
 sed s/github/h0tbird@github/`
 ```
 
 Now the submodules:
-```
+```bash
 git submodule foreach git checkout master
 ```
 
-```
+```bash
 for i in containers data; do
   for j in `ls $i`; do
     pushd ${i}/${j}
@@ -151,20 +151,20 @@ done
 ```
 
 Verify:
-```
+```bash
 git submodule foreach git config --get remote.origin.url
 ```
 
 Kernel and initrd:
 This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
-```
+```bash
 sudo mkdir -p /data/boot/images/centos/7/x86_64
 sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/centos/7/x86_64/
 sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/centos/7/x86_64/
 ```
 
 ##### Push local changes to mirror repos:
-```
+```bash
 docker exec -it gito01 su git -c '
 for i in ~/repositories/*; do
   pushd $i
