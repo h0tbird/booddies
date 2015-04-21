@@ -112,11 +112,18 @@ Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][g
 
 ## Step three: Setup
 
-Populate your `pxelinux` files and your `kickstart` files:
+Populate your [`pxelinux`](https://github.com/h0tbird/pxelinux) files and your [`kickstart`](https://github.com/h0tbird/kickstart) files:
 ```
 # ll -d /data/{boot/pxelinux,data/kickstarts}
 drwxr-xr-x 2 root root 4.0K Apr 20 19:59 /data/boot/pxelinux/
 drwxr-xr-x 3 root root 4.0K Apr 12 11:36 /data/data/kickstarts/
+```
+
+You might want to add some DHCP static definitions:
+```
+cat /data/boot/dnsmasq/dhcp_hosts 
+a4:ba:db:1d:1f:aa,kvm01,infinite
+84:2b:2b:57:c0:fb,kvm02,infinite
 ```
 
 ## Devel:
