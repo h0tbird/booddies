@@ -1,21 +1,91 @@
 #!/bin/bash
 
-# Zookeeper:
-docker pull jplock/zookeeper
-docker tag jplock/zookeeper regi01.demo.lan:5000/zookeeper
-docker push regi01.demo.lan:5000/zookeeper
+#----------------------------------------------------------------------------
+# Globals:
+#----------------------------------------------------------------------------
 
-# Mesos master:
-docker pull mesosphere/mesos-master:0.20.1
-docker tag mesosphere/mesos-master:0.20.1 regi01.demo.lan:5000/mesos-master:0.20.1
-docker push regi01.demo.lan:5000/mesos-master:0.20.1
+registry='regi01.demo.lan:5000'
+images='jplock/zookeeper:3.4.6
+mesosphere/mesos-master:0.20.1
+mesosphere/mesos-slave:0.20.1
+mesosphere/marathon:v0.7.5'
 
-# Mesos slave:
-docker pull mesosphere/mesos-slave:0.20.1
-docker tag mesosphere/mesos-slave:0.20.1 regi01.demo.lan:5000/mesos-slave:0.20.1
-docker push regi01.demo.lan:5000/mesos-slave:0.20.1
+E_BAD_PULL=1
+E_BAD_TAG=1
+E_BAD_PUSH=1
 
-# Marathon:
-docker pull mesosphere/marathon:v0.7.5
-docker tag mesosphere/marathon:v0.7.5 regi01.demo.lan:5000/marathon:v0.7.5
-docker push regi01.demo.lan:5000/marathon:v0.7.5
+#----------------------------------------------------------------------------
+# Source miscellaneous bash functions:
+#----------------------------------------------------------------------------
+
+source ./bin/misclib.sh
+
+#---------------------------------------------------------------------------
+# Search, pull, tag and push:
+#---------------------------------------------------------------------------
+
+for img in ${images}; do
+
+  #---------
+  # Search:
+  #---------
+
+  msg="Searching '${img}' in private registry..."
+  misc::stat_busy "${msg}"
+  name=${img#*/}; name=${name%:*}
+
+  if curl -sX GET \
+  http://${registry}/v1/repositories/library/${name}/tags/${img#*:} | \
+  grep -qv error; then
+    misc::stat_done
+    continue
+  else
+    misc::stat_done
+  fi
+
+  #-------
+  # Pull:
+  #-------
+
+  msg="Pulling '${img}' image..."
+  misc::stat_busy "${msg}"
+
+  if ! docker pull ${img} >> /tmp/booddies.log; then
+    misc::log "[ERROR] ${msg}"
+    misc::stat_fail
+    exit "${E_BAD_PULL}"
+  else
+    misc::stat_done
+  fi
+
+  #------
+  # Tag:
+  #------
+
+  msg="Tagging '${img}' image..."
+  misc::stat_busy "${msg}"
+
+  if ! docker tag ${img} ${registry}/${img#*/} >> /tmp/booddies.log; then
+    misc::log "[ERROR] ${msg}"
+    misc::stat_fail
+    exit "${E_BAD_TAG}"
+  else
+    misc::stat_done
+  fi
+
+  #-------
+  # Push:
+  #-------
+
+  msg="Pushing '${registry}/${img#*/}' image..."
+  misc::stat_busy "${msg}"
+
+  if ! docker push ${registry}/${img#*/} >> /tmp/booddies.log; then
+    misc::log "[ERROR] ${msg}"
+    misc::stat_fail
+    exit "${E_BAD_PUSH}"
+  else
+    misc::stat_done
+  fi
+
+done
