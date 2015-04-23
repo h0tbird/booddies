@@ -18,7 +18,7 @@ source ./bin/misclib.sh
 
 for i in containers/*; do
   pushd $i &> /dev/null
-  sudo ./bin/install
+  ./bin/install
   popd &> /dev/null
 done
 
