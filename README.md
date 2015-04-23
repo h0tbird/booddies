@@ -90,7 +90,7 @@ sudo systemctl start boot data gito cgit regi
 ```
 
 ## Step two: Synchronize
-Downloading all this data allows `booddies` to be self-contained making it possible to bootstrap the target platform totally offline. You can tail the `/tmp/booddies.log` file for a more detailed progress.
+Downloading all this data allows `booddies` to be self-contained making it possible to bootstrap the target platform totally offline. You can tail the `/tmp/booddies.log` file for a more detailed progress log.
 
 ##### 1. Populate the YUM repositories
 About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [`datasync`][datasync-code] for more details.
