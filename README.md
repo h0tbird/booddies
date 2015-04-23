@@ -76,7 +76,7 @@ git clone --recursive https://github.com/h0tbird/booddies.git
 ```
 This will provide the file and directory structure previously detailed:
 ```
-cd booddies && ./bin/install
+cd booddies && sudo ./bin/install
 ```
 ##### 2. Configure
 Chances are, you want to edit this files:
