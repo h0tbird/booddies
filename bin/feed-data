@@ -19,7 +19,7 @@ source ./bin/misclib.sh
 for i in base updates puppetlabs-products puppetlabs-deps epel misc coreos; do
   msg="Synchronizing '${i}' data..."
   misc::stat_busy "${msg}"
-  if ! docker exec -it data01 datasync ${i} >> /tmp/booddies; then
+  if ! docker exec -it data01 datasync ${i} >> /tmp/booddies.log; then
     misc::log "[ERROR] ${msg}"
     misc::stat_fail
     exit "${E_BAD_SYNC}"
