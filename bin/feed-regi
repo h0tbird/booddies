@@ -4,15 +4,25 @@
 # Globals:
 #----------------------------------------------------------------------------
 
-registry='regi01.demo.lan:5000'
-images='jplock/zookeeper:3.4.6
+# Settings:
+readonly REGISTRY='regi01.demo.lan:5000'
+readonly LOG_FILE='/tmp/booddies.log'
+readonly IMAGES='
+jplock/zookeeper:3.4.6
 mesosphere/mesos-master:0.20.1
 mesosphere/mesos-slave:0.20.1
 mesosphere/marathon:v0.7.5'
 
-E_BAD_PULL=1
-E_BAD_TAG=1
-E_BAD_PUSH=1
+# Return codes:
+readonly E_BAD_CMD=10
+readonly E_BAD_PULL=11
+readonly E_BAD_TAG=12
+readonly E_BAD_PUSH=13
+readonly E_BAD_PURGE=14
+
+# Commands:
+readonly CMD_CURL=$(type -P curl); [ -z "${CMD_CURL}" ] && exit ${E_BAD_CMD}
+readonly CMD_DOCKER=$(type -P docker); [ -z "${CMD_DOCKER}" ] && exit ${E_BAD_CMD}
 
 #----------------------------------------------------------------------------
 # Source miscellaneous bash functions:
@@ -21,22 +31,22 @@ E_BAD_PUSH=1
 source ./bin/misclib.sh
 
 #---------------------------------------------------------------------------
-# Search, pull, tag and push:
+# Seek, pull, tag, push and purge:
 #---------------------------------------------------------------------------
 
-for img in ${images}; do
+for img in ${IMAGES}; do
 
-  #---------
-  # Search:
-  #---------
+  #-------
+  # Seek:
+  #-------
 
-  msg="Searching '${img}' in private registry..."
-  misc::stat_busy "${msg}"
   name=${img#*/}; name=${name%:*}
+  msg="Seeking '${name}/${img#*:}' private image..."
+  misc::stat_busy "${msg}"
 
-  if curl -sX GET \
-  http://${registry}/v1/repositories/library/${name}/tags/${img#*:} | \
-  grep -qv error; then
+  if ${CMD_CURL} -sX GET \
+  http://${REGISTRY}/v1/repositories/library/${name}/tags/${img#*:} | \
+  grep -qv 'error'; then
     misc::stat_done
     continue
   else
@@ -50,7 +60,7 @@ for img in ${images}; do
   msg="Pulling '${img}' image..."
   misc::stat_busy "${msg}"
 
-  if ! docker pull ${img} >> /tmp/booddies.log; then
+  if ! ${CMD_DOCKER} pull ${img} >> ${LOG_FILE}; then
     misc::log "[ERROR] ${msg}"
     misc::stat_fail
     exit "${E_BAD_PULL}"
@@ -65,7 +75,7 @@ for img in ${images}; do
   msg="Tagging '${img}' image..."
   misc::stat_busy "${msg}"
 
-  if ! docker tag ${img} ${registry}/${img#*/} >> /tmp/booddies.log; then
+  if ! ${CMD_DOCKER} tag -f ${img} ${REGISTRY}/${img#*/} >> ${LOG_FILE}; then
     misc::log "[ERROR] ${msg}"
     misc::stat_fail
     exit "${E_BAD_TAG}"
@@ -77,13 +87,28 @@ for img in ${images}; do
   # Push:
   #-------
 
-  msg="Pushing '${registry}/${img#*/}' image..."
+  msg="Pushing '${REGISTRY}/${img#*/}' image..."
   misc::stat_busy "${msg}"
 
-  if ! docker push ${registry}/${img#*/} >> /tmp/booddies.log; then
+  if ! ${CMD_DOCKER} push ${REGISTRY}/${img#*/} >> ${LOG_FILE}; then
     misc::log "[ERROR] ${msg}"
     misc::stat_fail
     exit "${E_BAD_PUSH}"
+  else
+    misc::stat_done
+  fi
+
+  #--------
+  # Purge:
+  #--------
+
+  msg="Purging '${name}/${img#*:}' local image..."
+  misc::stat_busy "${msg}"
+
+  if ! ${CMD_DOCKER} rmi ${img} ${REGISTRY}/${img#*/} >> ${LOG_FILE}; then
+    misc::log "[ERROR] ${msg}"
+    misc::stat_fail
+    exit "${E_BAD_PURGE}"
   else
     misc::stat_done
   fi
