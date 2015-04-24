@@ -4,7 +4,15 @@
 # Globals:
 #-----------------------------------------------------------------------------
 
-E_BAD_SYNC=1
+# Settings:
+readonly LOG_FILE='/tmp/booddies.log'
+
+# Return codes:
+readonly E_BAD_CMD=10
+readonly E_BAD_SYNC=11
+
+# Commands:
+readonly CMD_DOCKER=$(type -P docker); [ -z "${CMD_DOCKER}" ] && exit ${E_BAD_CMD}
 
 #------------------------------------------------------------------------------
 # Source miscellaneous bash functions:
@@ -17,13 +25,16 @@ source ./bin/misclib.sh
 #------------------------------------------------------------------------------
 
 for i in base updates puppetlabs-products puppetlabs-deps epel misc coreos; do
+
   msg="Synchronizing '${i}' data..."
   misc::stat_busy "${msg}"
-  if ! docker exec -it data01 datasync ${i} >> /tmp/booddies.log; then
+
+  if ! ${CMD_DOCKER} exec -it data01 datasync ${i} >> ${LOG_FILE}; then
     misc::log "[ERROR] ${msg}"
     misc::stat_fail
     exit "${E_BAD_SYNC}"
   else
     misc::stat_done
   fi
+
 done
