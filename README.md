@@ -159,7 +159,13 @@ git submodule foreach git config --get remote.origin.url
 
 Add a new user to gitolite:
 ```
-git clone /data/gito/repos/gitolite-admin.git
+cat << EOF > ~/myssh
+#!/bin/bash
+ssh -i ~/.ssh/gitolite.key \$@
+EOF
+
+chmod +x ~/myssh
+GIT_SSH=~/myssh git clone git@gito01.demo.lan:gitolite-admin
 cd gitolite-admin
 cp ~/.ssh/id_rsa.pub keydir/marc.pub
 vim conf/gitolite.conf
