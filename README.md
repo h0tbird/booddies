@@ -14,7 +14,7 @@ Six containers are planned:
 - [x] **boot:** A [`dnsmasq`][dnsmasq-web] server that handles PXE, DHCP, TFTP, and DNS.
 - [x] **data:** An [`apache`][apache-web] server with YUM repositories and other data.
 - [x] **gito:** A [`gitolite`][gitolite-web] server with [`R10K`][r10k-web] and Puppet code.
-- [x] **cgit:** An `apache` server with a [`cgit`][`cgit-web`] frontend to `gitolite`.
+- [x] **cgit:** An `apache` server with a [`cgit`][cgit-web] frontend to `gitolite`.
 - [x] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
