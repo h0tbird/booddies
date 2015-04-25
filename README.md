@@ -18,6 +18,11 @@ Six containers are planned:
 - [x] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
+## The target platform
+<p align="center">
+<img align="center" src="https://www.lucidchart.com/publicSegments/view/553bb492-af3c-4cbe-ad74-488c0a00ce79/image.png" />
+</p>
+
 ## Batteries included
 
 This is what you get when you install `booddies`:
