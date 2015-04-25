@@ -3,7 +3,7 @@
 [ ![Containers counter] [containers-counter] ] [containers]
 [ ![License] [license-image] ] [license]
 
-<img src="https://www.lucidchart.com/publicSegments/view/551701de-fe3c-4e49-84e1-431d0a008e9b/image.png"
+<img src="https://www.lucidchart.com/publicSegments/view/553bb3d2-a154-4ab0-99c6-1c420a004a17/image.png"
  alt="Booddies logo" title="Booddies" align="right" />
 
 Boot buddies or `booddies` is a set of Docker containers used to bootstrapp a [`DCOS`][dcos-web]-like platform.
