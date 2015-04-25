@@ -14,7 +14,7 @@ Six containers are planned:
 - [x] **boot:** A [`dnsmasq`][dnsmasq-web] server that handles PXE, DHCP, TFTP, and DNS.
 - [x] **data:** An [`apache`][apache-web] server with YUM repositories and other data.
 - [x] **gito:** A [`gitolite`][gitolite-web] server with [`R10K`][r10k-web] and Puppet code.
-- [x] **cgit:** An `apache` server acting as a frontend to `gitolite`.
+- [x] **cgit:** An `apache` server with a [`cgit`][`cgit-web`] frontend to `gitolite`.
 - [x] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
@@ -215,6 +215,7 @@ limitations under the License.
 [dnsmasq-web]: http://www.thekelleys.org.uk/dnsmasq/doc.html
 [apache-web]: http://httpd.apache.org
 [gitolite-web]: http://gitolite.com
+[cgit-web]: http://git.zx2c4.com/cgit/about
 [r10k-web]: https://github.com/puppetlabs/r10k
 [registry-web]: https://github.com/docker/docker-registry
 
