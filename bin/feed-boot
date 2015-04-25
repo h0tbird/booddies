@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#------------------------------------------------------------------------------
+# Globals:
+#------------------------------------------------------------------------------
+
+# Settings:
+readonly LOG_FILE='/tmp/booddies.log'
+
+# Return codes:
+readonly E_BAD_CMD=10
+readonly E_BAD_SYNC=11
+
+# Commands:
+readonly CMD_DOCKER=$(type -P docker); [ -z "${CMD_DOCKER}" ] && exit ${E_BAD_CMD}
+
+#-----------------------------------------------------------------------------
+# Source miscellaneous bash functions:
+#-----------------------------------------------------------------------------
+
+source ./bin/misclib.sh
+
+#-----------------------------------------------------------------------------
+# Synchronize all the data:
+#-----------------------------------------------------------------------------
+
+for i in vmlinuz initrd; do
+
+  msg="Synchronizing '${i}' data..."
+  misc::stat_busy "${msg}"
+
+  if ! ${CMD_DOCKER} exec -it boot01 bootsync ${i} >> ${LOG_FILE}; then
+    misc::log "[ERROR] ${msg}"
+    misc::stat_fail
+    exit "${E_BAD_SYNC}"
+  else
+    misc::stat_done
+  fi
+
+done
