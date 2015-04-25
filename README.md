@@ -99,7 +99,7 @@ About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [
 ```
 
 ##### 2. Kernel and ram disk:
-Download the kernel and ramdisk that will be used by `PXELinux.0`:
+Download the kernel and ramdisk that will be used by `PXELinux.0`. Check [`feed-boot`][feed-boot-code] and [`bootsync`][bootsync-code] for more details.
 ```
 ./bin/feed-boot
 ```
@@ -220,6 +220,8 @@ limitations under the License.
 
 [feed-data-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-data
 [datasync-code]: https://github.com/h0tbird/docker-data/blob/master/rootfs/usr/sbin/datasync
+[feed-boot-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-boot
+[bootsync-code]: https://github.com/h0tbird/docker-boot/blob/master/rootfs/usr/sbin/bootsync
 [feed-regi-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-regi
 [feed-gito-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-gito
 [gitosync-code]: https://github.com/h0tbird/docker-gito/blob/master/rootfs/usr/sbin/gitosync
