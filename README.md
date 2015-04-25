@@ -98,14 +98,19 @@ About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [
 ./bin/feed-data
 ```
 
-##### 2. Populate the private docker registry
+##### 2. Kickstart kernel and ram disk:
+```
+./bin/feed-boot
+```
+
+##### 3. Populate the private docker registry
 
 Pull and push from public to private registry, check [`feed-regi`][feed-regi-code] for more details:
 ```
 ./bin/feed-regi
 ```
 
-##### 3. Populate the gitolite repositories
+##### 4. Populate the gitolite repositories
 
 Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][gitosync-code] for more details:
 ```
@@ -172,14 +177,6 @@ vim conf/gitolite.conf
 git add conf/ keydir/
 git commit -am "Added user marc"
 GIT_SSH=~/myssh git push
-```
-
-Kernel and initrd:
-This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
-```
-sudo mkdir -p /data/boot/images/centos/7/x86_64
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/centos/7/x86_64/
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/centos/7/x86_64/
 ```
 
 ##### Push local changes to mirror repos:
