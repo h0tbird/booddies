@@ -20,7 +20,7 @@ Six containers are planned:
 
 ## The target platform
 <p align="center">
-<img align="center" src="https://www.lucidchart.com/publicSegments/view/553bb492-af3c-4cbe-ad74-488c0a00ce79/image.png" />
+<img align="center" src="https://www.lucidchart.com/publicSegments/view/553bb68f-ef10-4a37-bb83-1fa40a004a17/image.png" />
 </p>
 
 ## Batteries included
