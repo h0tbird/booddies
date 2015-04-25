@@ -171,7 +171,7 @@ cp ~/.ssh/id_rsa.pub keydir/marc.pub
 vim conf/gitolite.conf
 git add conf/ keydir/
 git commit -am "Added user marc"
-git push
+GIT_SSH=~/myssh git push
 ```
 
 Kernel and initrd:
