@@ -22,7 +22,9 @@ Six containers are planned:
 
 This is the platform that `booddies` will help you to deploy.
 
-![Target](https://www.lucidchart.com/publicSegments/view/553bb9d7-2c8c-4c79-8774-59400a00d9ba/image.png)
+<p align="center">
+<img src="https://www.lucidchart.com/publicSegments/view/553bb9d7-2c8c-4c79-8774-59400a00d9ba/image.png" />
+</p>
 
 ## Batteries included
 
