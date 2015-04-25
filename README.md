@@ -99,7 +99,7 @@ About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [
 ```
 
 ##### 2. Kernel and ram disk:
-Download the kernel and ramdisk that will be used by `PXELinux.0`. Check [`feed-boot`][feed-boot-code] and [`bootsync`][bootsync-code] for more details.
+Download the kernel and ramdisk used by `PXELinux.0`, check [`feed-boot`][feed-boot-code] and [`bootsync`][bootsync-code] for more details.
 ```
 ./bin/feed-boot
 ```
