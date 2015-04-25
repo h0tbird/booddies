@@ -6,7 +6,7 @@
 <img src="https://www.lucidchart.com/publicSegments/view/553bb3d2-a154-4ab0-99c6-1c420a004a17/image.png"
  alt="Booddies logo" title="Booddies" align="right" />
 
-Boot buddies or `booddies` is a set of Docker containers used to bootstrapp a [`DCOS`][dcos-web]-like platform.
+Boot buddies or `booddies` is a set of Docker containers used to bootstrapp a [`Mesos`][mesos-web] cluster.
 Although it can be used to boot any PXE compliant system, it is not intended to be a general purpose bootstrapping system.
 
 Six containers are planned:
@@ -216,7 +216,7 @@ limitations under the License.
 [containers]: https://hub.docker.com/u/h0tbird
 [license-image]: http://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: http://www.apache.org/licenses/LICENSE-2.0
-[dcos-web]: http://mesosphere.com/product
+[mesos-web]: http://mesos.apache.org
 [dnsmasq-web]: http://www.thekelleys.org.uk/dnsmasq/doc.html
 [apache-web]: http://httpd.apache.org
 [gitolite-web]: http://gitolite.com
