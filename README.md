@@ -163,7 +163,7 @@ Verify:
 git submodule foreach git config --get remote.origin.url
 ```
 
-Add a new user to gitolite:
+##### Add a new user to gitolite:
 ```
 cat << EOF > ~/myssh
 #!/bin/bash
