@@ -157,6 +157,17 @@ Verify:
 git submodule foreach git config --get remote.origin.url
 ```
 
+Add a new user to gitolite:
+```
+git clone /data/gito/repos/gitolite-admin.git
+cd gitolite-admin
+cp ~/.ssh/id_rsa.pub keydir/marc.pub
+vim conf/gitolite.conf
+git add conf/ keydir/
+git commit -am "Added user marc"
+git push
+```
+
 Kernel and initrd:
 This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
 ```
