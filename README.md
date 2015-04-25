@@ -98,7 +98,7 @@ About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [
 ./bin/feed-data
 ```
 
-##### 2. Kernel and initrd:
+##### 2. Kernel and initrd
 Kernel and ramdisk used by `PXELinux.0`, check [`feed-boot`][feed-boot-code] and [`bootsync`][bootsync-code] for more details.
 ```
 ./bin/feed-boot
@@ -106,14 +106,14 @@ Kernel and ramdisk used by `PXELinux.0`, check [`feed-boot`][feed-boot-code] and
 
 ##### 3. Populate the private docker registry
 
-Pull and push from public to private registry, check [`feed-regi`][feed-regi-code] for more details:
+Pull and push from public to private registry, check [`feed-regi`][feed-regi-code] for more details.
 ```
 ./bin/feed-regi
 ```
 
 ##### 4. Populate the gitolite repositories
 
-Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][gitosync-code] for more details:
+Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][gitosync-code] for more details.
 ```
 ./bin/feed-gito
 ```
