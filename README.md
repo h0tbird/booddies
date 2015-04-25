@@ -98,14 +98,20 @@ About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [
 ./bin/feed-data
 ```
 
-##### 2. Populate the private docker registry
+##### 2. Kernel and ram disk:
+Download the kernel and ramdisk that will be used by `PXELinux.0`:
+```
+./bin/feed-boot
+```
+
+##### 3. Populate the private docker registry
 
 Pull and push from public to private registry, check [`feed-regi`][feed-regi-code] for more details:
 ```
 ./bin/feed-regi
 ```
 
-##### 3. Populate the gitolite repositories
+##### 4. Populate the gitolite repositories
 
 Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][gitosync-code] for more details:
 ```
@@ -157,12 +163,21 @@ Verify:
 git submodule foreach git config --get remote.origin.url
 ```
 
-Kernel and initrd:
-This is needed because the kernel and the initrd provided by the `boot` service must match those on the instalation media.
+Add a new user to gitolite:
 ```
-sudo mkdir -p /data/boot/images/centos/7/x86_64
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/vmlinuz /data/boot/images/centos/7/x86_64/
-sudo ln /data/data/centos/7/os/x86_64/images/pxeboot/initrd.img /data/boot/images/centos/7/x86_64/
+cat << EOF > ~/myssh
+#!/bin/bash
+ssh -i ~/.ssh/gitolite.key \$@
+EOF
+
+chmod +x ~/myssh
+GIT_SSH=~/myssh git clone git@gito01.demo.lan:gitolite-admin
+cd gitolite-admin
+cp ~/.ssh/id_rsa.pub keydir/marc.pub
+vim conf/gitolite.conf
+git add conf/ keydir/
+git commit -am "Added user marc"
+GIT_SSH=~/myssh git push
 ```
 
 ##### Push local changes to mirror repos:
