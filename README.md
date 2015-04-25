@@ -19,9 +19,11 @@ Six containers are planned:
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
 ## The target platform
-<p align="center">
+
+This is the platform that `booddies` will help you to deploy.
+
+
 <img align="center" src="https://www.lucidchart.com/publicSegments/view/553bb68f-ef10-4a37-bb83-1fa40a004a17/image.png" />
-</p>
 
 ## Batteries included
 
