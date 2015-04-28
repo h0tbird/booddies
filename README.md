@@ -188,13 +188,23 @@ git commit -am "Added user marc"
 GIT_SSH=~/myssh git push
 ```
 
-##### Push local changes to mirror repos:
+##### Push local changes to GitHub:
 ```
 docker exec -it gito01 su git -c '
 for i in ~/repositories/*; do
   pushd $i
   target=$(git config --get gitolite.mirror.simple)
   [ -z "$target" ] || git push --mirror $target
+  popd
+done'
+```
+
+##### Fetch changes from gitHub:
+```
+docker exec -it gito01 su git -c '
+for i in ~/repositories/*; do
+  pushd $i
+  git fetch origin master:master
   popd
 done'
 ```
