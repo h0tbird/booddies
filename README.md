@@ -201,12 +201,13 @@ done'
 
 ##### Fetch changes from gitHub:
 ```
-docker exec -it gito01 su git -c '
+docker exec -it gito01 su git -c "
 for i in ~/repositories/*; do
-  pushd $i
-  git fetch origin master:master
+  pushd \${i}
+  git remote | grep -q origin && \
+  git fetch origin '*:*'
   popd
-done'
+done"
 ```
 
 ## License
