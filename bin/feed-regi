@@ -5,7 +5,7 @@
 #----------------------------------------------------------------------------
 
 # Settings:
-readonly REGISTRY='regi01.demo.lan:5000'
+readonly REGISTRY='regi01:5000'
 readonly LOG_FILE='/tmp/booddies.log'
 readonly IMAGES='
 jplock/zookeeper:3.4.6
