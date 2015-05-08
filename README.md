@@ -72,7 +72,7 @@ And of course you also get the docker images:
 | [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 ## Prerequisites
-* Start Docker with `--insecure-registry=regi01.demo.lan:5000`.
+* Start Docker with `--insecure-registry=regi01:5000`.
 * Bridge your physical interface to the `br0` bridge interface.
 * Also make sure you have about 20GB of free space in `/data`.
 
