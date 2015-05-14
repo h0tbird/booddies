@@ -199,7 +199,7 @@ for i in ~/repositories/*; do
 done'
 ```
 
-##### Fetch changes from gitHub:
+##### Fetch changes from GitHub:
 ```
 docker exec -it gito01 su git -c "
 for i in ~/repositories/*; do
