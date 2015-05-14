@@ -205,7 +205,7 @@ docker exec -it gito01 su git -c "
 for i in ~/repositories/*; do
   pushd \${i}
   git remote | grep -q origin && \
-  git fetch origin '*:*'
+  git fetch origin '+*:*'
   popd
 done"
 ```
