@@ -20,7 +20,7 @@ Six containers are planned:
 
 ## The target platform
 
-This is the platform that `booddies` will help you deploy.
+This is a simplified diagram of the exploitation platform that `booddies` will deploy.
 
 <p align="center">
 <img src="https://www.lucidchart.com/publicSegments/view/553bbb69-0dd8-46be-b8b3-76570a009639/image.png" />
