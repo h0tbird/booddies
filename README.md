@@ -18,9 +18,12 @@ Six containers are planned:
 - [x] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
+`Booddies` has been tested in:
+- Arch Linux
+
 ## The target platform
 
-This is a simplified diagram of the exploitation platform that `booddies` will deploy.
+This is a simplified diagram of the exploitation platform that `booddies` will deploy. The hypervisor layer is based on CentOS 7.
 
 <p align="center">
 <img src="https://www.lucidchart.com/publicSegments/view/553bbb69-0dd8-46be-b8b3-76570a009639/image.png" />
