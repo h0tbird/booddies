@@ -92,7 +92,12 @@ cd booddies && sudo ./bin/install
 ##### 2. Configure
 Chances are, you want to edit this files:
 * [`/etc/booddies/boot.conf`][boot-config]
+* [`/etc/booddies/cgit.conf`][cgit-config]
+* [`/etc/booddies/data.conf`][data-config]
 * [`/etc/booddies/gito.conf`][gito-config]
+* [`/etc/booddies/regi.conf`][regi-config]
+
+**Hint:** `sed -i 's/demo.lan/your.domain/' /etc/booddies/*`
 
 ##### 3. Start the services
 The first time you start the services all docker images will be downloaded from docker hub:
