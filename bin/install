@@ -4,7 +4,7 @@
 # Globals:
 #------------------------------------------------------------------------------
 
-E_BAD_SYSTEMCTL=1
+readonly E_BAD_SYSTEMCTL=1
 
 #------------------------------------------------------------------------------
 # Source miscellaneous bash functions:
@@ -17,7 +17,7 @@ source ./bin/misclib.sh
 #------------------------------------------------------------------------------
 
 for i in containers/*; do
-  pushd $i &> /dev/null
+  pushd ${i} &> /dev/null
   ./bin/install
   popd &> /dev/null
 done
