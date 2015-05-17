@@ -6,7 +6,7 @@
 <img src="https://www.lucidchart.com/publicSegments/view/553bb3d2-a154-4ab0-99c6-1c420a004a17/image.png"
  alt="Booddies logo" title="Booddies" align="right" />
 
-Boot buddies or `booddies` is a set of Docker containers used to bootstrapp a [`Mesos`][mesos-web] cluster.
+Boot buddies or `booddies` is a set of [`Docker`][docker-web] containers used to bootstrapp a [`Mesos`][mesos-web] cluster on top of Docker on top of [`CoreOS`][coreos-web] on top of [`KVM`][kvm-web] on top of bare metal.
 Although it can be used to boot any PXE compliant system, it is not intended to be a general purpose bootstrapping system.
 
 Six containers are planned:
@@ -18,9 +18,12 @@ Six containers are planned:
 - [x] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
+`Booddies` has been tested in:
+- Arch Linux
+
 ## The target platform
 
-This is the platform that `booddies` will help you deploy.
+This is a simplified diagram of the exploitation platform that `booddies` will deploy. The hypervisor layer and all the containers are based on CentOS 7.
 
 <p align="center">
 <img src="https://www.lucidchart.com/publicSegments/view/553bbb69-0dd8-46be-b8b3-76570a009639/image.png" />
@@ -68,7 +71,7 @@ And of course you also get the docker images:
 | [h0tbird/boot][boot-web] | [![boot][boot-image]][boot-web] | boot01 | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
 | [h0tbird/data][data-web] | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
 | [h0tbird/gito][gito-web] | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
-| [h0tbird/cgit][cgit-web] | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
+| [h0tbird/cgit][cgit-www] | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
 | [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 ## Prerequisites
@@ -89,7 +92,12 @@ cd booddies && sudo ./bin/install
 ##### 2. Configure
 Chances are, you want to edit this files:
 * [`/etc/booddies/boot.conf`][boot-config]
+* [`/etc/booddies/cgit.conf`][cgit-config]
+* [`/etc/booddies/data.conf`][data-config]
 * [`/etc/booddies/gito.conf`][gito-config]
+* [`/etc/booddies/regi.conf`][regi-config]
+
+**Hint:** `sed -i 's/demo.lan/your.domain/' /etc/booddies/*`
 
 ##### 3. Start the services
 The first time you start the services all docker images will be downloaded from docker hub:
@@ -230,7 +238,10 @@ limitations under the License.
 [containers]: https://hub.docker.com/u/h0tbird
 [license-image]: http://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: http://www.apache.org/licenses/LICENSE-2.0
+[docker-web]: https://www.docker.com
 [mesos-web]: http://mesos.apache.org
+[coreos-web]: https://coreos.com
+[kvm-web]: http://www.linux-kvm.org
 [dnsmasq-web]: http://www.thekelleys.org.uk/dnsmasq/doc.html
 [apache-web]: http://httpd.apache.org
 [gitolite-web]: http://gitolite.com
@@ -255,7 +266,7 @@ limitations under the License.
 [gito-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
 [cgit-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
-[cgit-web]: https://registry.hub.docker.com/u/h0tbird/cgit
+[cgit-www]: https://registry.hub.docker.com/u/h0tbird/cgit
 [regi-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
 [regi-web]: https://registry.hub.docker.com/u/h0tbird/regi
 
