@@ -71,7 +71,7 @@ And of course you also get the docker images:
 | [h0tbird/boot][boot-web] | [![boot][boot-image]][boot-web] | boot01 | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
 | [h0tbird/data][data-web] | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
 | [h0tbird/gito][gito-web] | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
-| [h0tbird/cgit][cgit-web] | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
+| [h0tbird/cgit][cgit-www] | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
 | [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 ## Prerequisites
@@ -261,7 +261,7 @@ limitations under the License.
 [gito-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
 [cgit-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
-[cgit-web]: https://registry.hub.docker.com/u/h0tbird/cgit
+[cgit-www]: https://registry.hub.docker.com/u/h0tbird/cgit
 [regi-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
 [regi-web]: https://registry.hub.docker.com/u/h0tbird/regi
 
