@@ -8,7 +8,7 @@
 readonly REGISTRY='regi01:5000'
 readonly LOG_FILE='/tmp/booddies.log'
 readonly IMAGES='
-jplock/zookeeper:3.4.6
+h0tbird/zookeeper:latest
 mesosphere/mesos-master:0.22.1-1.0.ubuntu1404
 mesosphere/mesos-slave:0.22.1-1.0.ubuntu1404
 mesosphere/marathon:v0.8.1'
