@@ -6,7 +6,7 @@
 <img src="https://www.lucidchart.com/publicSegments/view/553bb3d2-a154-4ab0-99c6-1c420a004a17/image.png"
  alt="Booddies logo" title="Booddies" align="right" />
 
-Boot buddies or `booddies` is a set of [`Docker`][docker-web] containers used to bootstrapp a [`Mesos`][mesos-web] cluster using docker containers on top of [`CoreOS`][coreos-web] on top of [`KVM`][kvm-web] on top of bare metal.
+Boot buddies or `booddies` is a set of [`Docker`][docker-web] containers used to bootstrapp a [`Mesos`][mesos-web] cluster using containers on top of [`CoreOS`][coreos-web] on top of [`KVM`][kvm-web] on top of bare metal.
 Although it can be used to boot any PXE compliant system, it is not intended to be a general purpose bootstrapping system.
 
 Six containers are planned:
