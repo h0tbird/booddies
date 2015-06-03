@@ -20,6 +20,7 @@ Six containers are planned:
 
 `Booddies` has been tested in:
 - Arch Linux
+- CentOS 7
 
 ## The target platform
 
