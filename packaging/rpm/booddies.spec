@@ -11,7 +11,10 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:  docker
 
 %description
-Boot buddies or booddies is a set of Docker containers used to bootstrapp a Mesos cluster using containers on top of CoreOS on top of KVM on top of bare metal. Although it can be used to boot any PXE compliant system, it is not intended to be a general purpose bootstrapping system.
+Boot buddies or booddies is a set of Docker containers used to bootstrapp a
+Mesos cluster using containers on top of CoreOS on top of KVM on top of bare
+metal. Although it can be used to boot any PXE compliant system, it is not
+intended to be a general purpose bootstrapping system.
 
 %prep
 %setup -q
