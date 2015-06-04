@@ -219,7 +219,7 @@ for i in ~/repositories/*; do
 done"
 ```
 
-##### Generate the RPM package
+##### Generate the RPM package:
 ```
 docker run -it --rm -e VERSION='0.1.0' \
 -v ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
