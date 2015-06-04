@@ -219,6 +219,18 @@ for i in ~/repositories/*; do
 done"
 ```
 
+##### Generate the RPM package
+```
+docker run -it --rm -e VERSION='0.1.0' \
+-v ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
+centos:7 /bin/bash -c "
+yum install -y rpm-build git
+git clone --recursive \
+https://github.com/h0tbird/booddies.git booddies-\${VERSION}
+tar czf booddies-\${VERSION}.tar.gz booddies-\${VERSION}
+rpmbuild -ta booddies-\${VERSION}.tar.gz"
+```
+
 ## License
 
 Copyright 2015 Marc Villacorta Morera
