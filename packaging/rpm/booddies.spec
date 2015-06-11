@@ -1,6 +1,6 @@
 Name:      booddies
 Version:   0.1.0
-Release:   1%{?dist}
+Release:   2%{?dist}
 Summary:   The bootstrapping fellowship
 Group:     Applications/Internet
 License:   Apache-2
@@ -35,6 +35,10 @@ intended to be a general purpose bootstrapping system.
 %{__install} -p -D -m 0644 containers/docker-data/data.conf %{buildroot}%{_sysconfdir}/booddies/data.conf
 %{__install} -p -D -m 0644 containers/docker-gito/gito.conf %{buildroot}%{_sysconfdir}/booddies/gito.conf
 %{__install} -p -D -m 0644 containers/docker-regi/regi.conf %{buildroot}%{_sysconfdir}/booddies/regi.conf
+%{__install} -p -D -m 0755 bin/feed-boot %{buildroot}/usr/local/sbin/feed-boot
+%{__install} -p -D -m 0755 bin/feed-data %{buildroot}/usr/local/sbin/feed-data
+%{__install} -p -D -m 0755 bin/feed-gito %{buildroot}/usr/local/sbin/feed-gito
+%{__install} -p -D -m 0755 bin/feed-regi %{buildroot}/usr/local/sbin/feed-regi
 
 %clean
 [ "${RPM_BUILD_ROOT}" != "/" ] && rm -rf "${RPM_BUILD_ROOT}"
@@ -45,8 +49,11 @@ systemctl daemon-reload
 %files
 %{_sysconfdir}/systemd/system/*.service
 /usr/local/sbin/runctl-*
+/usr/local/sbin/feed-*
 %config(noreplace) %{_sysconfdir}/booddies/*.conf
 
 %changelog
+* Thu Jun 11 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.0-2
+- Added feed-x scripts.
 * Thu Jun  4 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.0-1
 - Initial package.
