@@ -223,12 +223,21 @@ done"
 ```
 docker run -it --rm -e VERSION='0.1.0' \
 -v ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
+-v ${HOME}/.gnupg:/root/.gnupg \
 centos:7 /bin/bash -c "
-yum install -y rpm-build git
+yum install -y rpm-build rpm-sign git
+cat << EOF > ~/.rpmmacros
+%_signature gpg
+%_gpg_path \${HOME}/.gnupg
+%_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
+%_gpgbin /usr/bin/gpg
+%packager Marc Villacorta Morera <marc.villacorta@gmail.com>
+%_topdir \${HOME}/rpmbuild
+EOF
 git clone --recursive \
 https://github.com/h0tbird/booddies.git booddies-\${VERSION}
 tar czf booddies-\${VERSION}.tar.gz booddies-\${VERSION}
-rpmbuild -ta booddies-\${VERSION}.tar.gz"
+rpmbuild -ta --sign booddies-\${VERSION}.tar.gz"
 ```
 
 ## License
