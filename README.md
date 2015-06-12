@@ -299,11 +299,11 @@ docker run -it --rm -e GEM=r10k \
 h0tbird/rpmbuild:latest bash -c "
 cat << EOF > ~/.rpmmacros
 %_signature gpg
-%_gpg_path \${HOME}/.gnupg
+%_gpg_path ~/.gnupg
 %_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
 %_gpgbin /usr/bin/gpg
 %packager Marc Villacorta Morera <marc.villacorta@gmail.com>
-%_topdir \${HOME}/rpmbuild
+%_topdir ~/rpmbuild
 %dist .el7
 EOF
 mkdir /tmp/gems
