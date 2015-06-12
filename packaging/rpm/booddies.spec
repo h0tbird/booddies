@@ -1,7 +1,7 @@
 Name:      booddies
 Version:   0.1.0
 Release:   2%{?dist}
-Summary:   The bootstrapping fellowship
+Summary:   Boot buddies. The bootstrapping fellowship
 Group:     Applications/Internet
 License:   Apache-2
 URL:       https://github.com/h0tbird/booddies/blob/master/README.md
