@@ -270,13 +270,12 @@ EOF
 rpmbuild -ba ~/rpmbuild/SPECS/booddies-release.spec"
 ```
 
-##### Generate the RPM package:
+##### Generate booddies-0.1.0-2.el7.noarch.rpm:
 ```
 docker run -it --rm -e VERSION='0.1.0' \
 -v ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
 -v ${HOME}/.gnupg:/root/.gnupg \
-centos:7 /bin/bash -c "
-yum install -y rpm-build rpm-sign git
+h0tbird/rpmbuild:latest /bin/bash -c "
 cat << EOF > ~/.rpmmacros
 %_signature gpg
 %_gpg_path \${HOME}/.gnupg
