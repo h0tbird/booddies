@@ -303,7 +303,6 @@ cat << EOF > ~/.rpmmacros
 %_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
 %_gpgbin /usr/bin/gpg
 %_topdir ~/rpmbuild
-%dist .el7
 EOF
 mkdir /tmp/gems
 gem install --no-document --verbose --install-dir /tmp/gems \$GEM
