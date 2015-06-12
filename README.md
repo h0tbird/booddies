@@ -273,7 +273,7 @@ rpmbuild -ba ~/rpmbuild/SPECS/booddies-release.spec"
 ##### Generate booddies-x-y.el7.noarch.rpm:
 ```
 docker run -it --rm -e VERSION='0.1.0' \
--v ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
+-v ${PWD}/newrpm:/root/rpmbuild/RPMS/noarch \
 -v ${HOME}/.gnupg:/root/.gnupg \
 h0tbird/rpmbuild:latest /bin/bash -c "
 cat << EOF > ~/.rpmmacros
