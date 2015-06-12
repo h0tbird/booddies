@@ -230,7 +230,7 @@ gpg2 --output ~/RPM-GPG-KEY-booddies --armor --export marc.villacorta@gmail.com
 cat << EOF > ~/booddies.repo
 [booddies]
 name=Boot buddies. The bootstrapping fellowship.
-baseurl=http://yum-repositories.s3-website-eu-west-1.amazonaws.com/centos/7/booddies
+baseurl=http://yum-repositories.s3-website-eu-west-1.amazonaws.com/booddies
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-booddies
 gpgcheck=1
 enabled=1
