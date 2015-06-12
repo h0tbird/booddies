@@ -219,7 +219,7 @@ for i in ~/repositories/*; do
 done"
 ```
 
-##### Generate booddies-release-<version>-<release>.noarch.rpm
+##### Generate booddies-release-x-y.noarch.rpm
 ```
 docker run -it --rm \
 -v ${PWD}/newrpm:/root/rpmbuild/RPMS/noarch \
@@ -270,7 +270,7 @@ EOF
 rpmbuild -ba ~/rpmbuild/SPECS/booddies-release.spec"
 ```
 
-##### Generate booddies-<version>-<release>.noarch.rpm:
+##### Generate booddies-x-y.el7.noarch.rpm:
 ```
 docker run -it --rm -e VERSION='0.1.0' \
 -v ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
