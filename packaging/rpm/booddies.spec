@@ -8,6 +8,7 @@ URL:       https://github.com/h0tbird/booddies/blob/master/README.md
 Source0:   %{name}-%{version}.tar.gz
 Packager:  Marc Villacorta Morera <marc.villacorta@gmail.com>
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
+BuildArch: noarch
 Requires:  docker
 
 %description
