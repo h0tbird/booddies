@@ -219,7 +219,7 @@ for i in ~/repositories/*; do
 done"
 ```
 
-##### Generate booddies-release-1-1.noarch.rpm
+##### Generate booddies-release-<version>-<release>.noarch.rpm
 ```
 docker run -it --rm \
 -v ${PWD}/newrpm:/root/rpmbuild/RPMS/noarch \
@@ -270,7 +270,7 @@ EOF
 rpmbuild -ba ~/rpmbuild/SPECS/booddies-release.spec"
 ```
 
-##### Generate booddies-0.1.0-2.el7.noarch.rpm:
+##### Generate booddies-<version>-<release>.noarch.rpm:
 ```
 docker run -it --rm -e VERSION='0.1.0' \
 -v ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
@@ -283,6 +283,7 @@ cat << EOF > ~/.rpmmacros
 %_gpgbin /usr/bin/gpg
 %packager Marc Villacorta Morera <marc.villacorta@gmail.com>
 %_topdir \${HOME}/rpmbuild
+%dist .el7
 EOF
 git clone --recursive \
 https://github.com/h0tbird/booddies.git booddies-\${VERSION}
