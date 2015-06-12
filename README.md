@@ -291,6 +291,28 @@ tar czf booddies-\${VERSION}.tar.gz booddies-\${VERSION}
 rpmbuild -ta --sign booddies-\${VERSION}.tar.gz"
 ```
 
+##### Generate rubygem-r10k-2.0.1-1.noarch.rpm
+```
+docker run -it --rm -e GEM=r10k \
+-v ${PWD}/newrpm:/newgems \
+-v ${HOME}/.gnupg:/root/.gnupg \
+h0tbird/rpmbuild:latest bash -c "
+cat << EOF > ~/.rpmmacros
+%_signature gpg
+%_gpg_path \${HOME}/.gnupg
+%_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
+%_gpgbin /usr/bin/gpg
+%packager Marc Villacorta Morera <marc.villacorta@gmail.com>
+%_topdir \${HOME}/rpmbuild
+%dist .el7
+EOF
+mkdir /tmp/gems
+gem install --no-document --verbose --install-dir /tmp/gems \$GEM
+cd /newgems
+find /tmp/gems -name '*.gem' | \
+xargs -rn1 fpm -d ruby -d rubygems --force --rpm-sign --prefix /usr/share/gems -s gem -t rpm"
+```
+
 ## License
 
 Copyright 2015 Marc Villacorta Morera
