@@ -320,6 +320,14 @@ fpm \
 -s gem -t rpm"
 ```
 
+##### Create the repository metadata
+```
+docker exec -it data01 /bin/bash -c "
+DOCROOT='/var/www/data'
+createrepo -c \${DOCROOT}/booddies/cachedir --update \${DOCROOT}/booddies
+repoview -t misc \${DOCROOT}/booddies"
+```
+
 ## License
 
 Copyright 2015 Marc Villacorta Morera
