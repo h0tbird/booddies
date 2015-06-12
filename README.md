@@ -328,6 +328,11 @@ createrepo -c \${DOCROOT}/booddies/cachedir --update \${DOCROOT}/booddies
 repoview -t misc \${DOCROOT}/booddies"
 ```
 
+##### Push to S3 bucket
+```
+s3cmd -P sync /data/data/booddies/ s3://yum-repositories/booddies/ --delete-removed
+```
+
 ## License
 
 Copyright 2015 Marc Villacorta Morera
