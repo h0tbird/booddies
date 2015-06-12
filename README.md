@@ -294,7 +294,7 @@ rpmbuild -ta --sign booddies-\${VERSION}.tar.gz"
 ##### Generate rubygem-r10k-2.0.1-1.noarch.rpm
 ```
 docker run -it --rm -e GEM=r10k \
--v ${PWD}/newrpm:/newgems \
+-v ${PWD}/newrpm:/newrpm \
 -v ${HOME}/.gnupg:/root/.gnupg \
 h0tbird/rpmbuild:latest bash -c "
 cat << EOF > ~/.rpmmacros
@@ -302,15 +302,23 @@ cat << EOF > ~/.rpmmacros
 %_gpg_path ~/.gnupg
 %_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
 %_gpgbin /usr/bin/gpg
-%packager Marc Villacorta Morera <marc.villacorta@gmail.com>
 %_topdir ~/rpmbuild
 %dist .el7
 EOF
 mkdir /tmp/gems
 gem install --no-document --verbose --install-dir /tmp/gems \$GEM
-cd /newgems
+cd /newrpm
 find /tmp/gems -name '*.gem' | \
-xargs -rn1 fpm -d ruby -d rubygems --force --rpm-sign --prefix /usr/share/gems -s gem -t rpm"
+xargs -rn1 \
+fpm \
+--rpm-ignore-iteration-in-dependencies \
+--maintainer 'Marc Villacorta Morera <marc.villacorta@gmail.com>' \
+-d ruby \
+-d rubygems \
+--force \
+--rpm-sign \
+--prefix /usr/share/gems \
+-s gem -t rpm"
 ```
 
 ## License
