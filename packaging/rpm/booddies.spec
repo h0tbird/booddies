@@ -1,5 +1,5 @@
 Name:      booddies
-Version:   0.1.1
+Version:   0.1.2
 Release:   1%{?dist}
 Summary:   Boot buddies. The bootstrapping fellowship
 Group:     Applications/Internet
@@ -56,6 +56,8 @@ systemctl daemon-reload
 %{_sysconfdir}/booddies/booddies.sh
 
 %changelog
+* Tue Jun 16 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.2-1
+- Fix ssh key management.
 * Tue Jun 16 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.1-1
 - Added booddies.sh to /etc/booddies.
 - Added booddies repository synchronization.
