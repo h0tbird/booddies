@@ -10,7 +10,9 @@ readonly E_BAD_SYSTEMCTL=1
 # Source miscellaneous bash functions:
 #------------------------------------------------------------------------------
 
-source ./bin/misclib.sh
+[ -f booddies.sh ] && source booddies.sh
+[ -f ./bin/booddies.sh ] && source ./bin/booddies.sh
+[ -f /etc/booddies/booddies.sh ] && source /etc/booddies/booddies.sh
 
 #------------------------------------------------------------------------------
 # Install all the services:

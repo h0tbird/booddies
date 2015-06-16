@@ -1,6 +1,6 @@
 Name:      booddies
-Version:   0.1.0
-Release:   2%{?dist}
+Version:   0.1.1
+Release:   1%{?dist}
 Summary:   Boot buddies. The bootstrapping fellowship
 Group:     Applications/Internet
 License:   Apache-2
@@ -40,6 +40,7 @@ intended to be a general purpose bootstrapping system.
 %{__install} -p -D -m 0755 bin/feed-data %{buildroot}/usr/local/sbin/feed-data
 %{__install} -p -D -m 0755 bin/feed-gito %{buildroot}/usr/local/sbin/feed-gito
 %{__install} -p -D -m 0755 bin/feed-regi %{buildroot}/usr/local/sbin/feed-regi
+%{__install} -p -D -m 0644 bin/booddies.sh %{buildroot}%{_sysconfdir}/booddies/booddies.sh
 
 %clean
 [ "${RPM_BUILD_ROOT}" != "/" ] && rm -rf "${RPM_BUILD_ROOT}"
@@ -52,8 +53,13 @@ systemctl daemon-reload
 /usr/local/sbin/runctl-*
 /usr/local/sbin/feed-*
 %config(noreplace) %{_sysconfdir}/booddies/*.conf
+%{_sysconfdir}/booddies/booddies.sh
 
 %changelog
+* Tue Jun 16 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.1-1
+- Added booddies.sh to /etc/booddies.
+- Added booddies repository synchronization.
+- Added function ssh_key() to runctl-gito.
 * Thu Jun 11 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.0-2
 - Added feed-x scripts.
 * Thu Jun  4 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.0-1
