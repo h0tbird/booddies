@@ -188,7 +188,7 @@ ssh -i ~/.ssh/gitolite.key \$@
 EOF
 
 chmod +x ~/myssh
-GIT_SSH=~/myssh git clone git@gito01.demo.lan:gitolite-admin
+GIT_SSH=~/myssh git clone git@gito01:gitolite-admin
 cd gitolite-admin
 cp ~/.ssh/id_rsa.pub keydir/marc.pub
 vim conf/gitolite.conf
