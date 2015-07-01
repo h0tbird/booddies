@@ -332,6 +332,10 @@ repoview -t misc \${DOCROOT}/booddies"
 ```
 s3cmd -P sync /data/data/booddies/ s3://yum-repositories/booddies/ --delete-removed
 ```
+Remember to clean client metadata:
+```
+yum clean metadata
+```
 
 ## License
 
