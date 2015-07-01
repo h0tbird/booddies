@@ -18,7 +18,8 @@ declare -rA REPOS=(
 ['https://github.com/h0tbird/puppet-m_users.git']='Puppet users module repository','Puppet modules','true'
 ['https://github.com/h0tbird/puppet-m_ssh.git']='Puppet ssh module repository','Puppet modules','true'
 ['https://github.com/h0tbird/puppet-m_terminfo.git']='Puppet terminfo module repository','Puppet modules','true'
-['https://github.com/puppetlabs/puppetlabs-stdlib.git']='Puppet stdlib module repository','Puppet modules','false','puppet-m_stdlib')
+['https://github.com/puppetlabs/puppetlabs-stdlib.git']='Puppet stdlib module repository','Puppet modules','false','puppet-m_stdlib'
+['https://github.com/puppetlabs/puppetlabs-vcsrepo.git']='Puppet vcsrepo module repository','Puppet modules','false','puppet-m_vcsrepo')
 declare LOG_FILE='/tmp/booddies.log'
 
 # Return codes:
