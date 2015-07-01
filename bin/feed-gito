@@ -8,6 +8,8 @@
 declare -rA REPOS=(
 ['https://github.com/h0tbird/config-puppet.git']='Puppet config repository','Configurations','true'
 ['https://github.com/h0tbird/config-fleet.git']='Fleet unit files repository','Configurations','true'
+['https://github.com/h0tbird/config-kickstart.git']='Kickstart files repository','Configurations','true'
+['https://github.com/h0tbird/config-pxelinux.git']='PXELinux files repository','Configurations','true'
 ['https://github.com/h0tbird/r10k-kvm.git']='KVM control repository','R10K','true'
 ['https://github.com/h0tbird/puppet-r_kvm.git']='Puppet KVM role repository','Puppet roles','true'
 ['https://github.com/h0tbird/puppet-r_base.git']='Puppet base role repository','Puppet roles','true'
