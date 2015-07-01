@@ -11,10 +11,10 @@
 	path = containers/docker-cgit
 	url = https://github.com/h0tbird/docker-cgit.git
 [submodule "data/kickstart"]
-	path = data/kickstart
+	path = data/config-kickstart
 	url = https://github.com/h0tbird/kickstart
 [submodule "data/pxelinux"]
-	path = data/pxelinux
+	path = data/config-pxelinux
 	url = https://github.com/h0tbird/pxelinux
 [submodule "containers/docker-regi"]
 	path = containers/docker-regi
