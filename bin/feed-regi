@@ -11,7 +11,7 @@ readonly IMAGES='
 h0tbird/zookeeper:latest
 mesosphere/mesos-master:0.22.1-1.0.ubuntu1404
 mesosphere/mesos-slave:0.22.1-1.0.ubuntu1404
-mesosphere/marathon:v0.8.1'
+mesosphere/marathon:v0.8.2'
 
 # Return codes:
 readonly E_BAD_CMD=10
