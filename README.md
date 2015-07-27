@@ -24,7 +24,7 @@ Six containers are planned:
 
 ## The target platform
 
-This is a simplified diagram of the exploitation platform that `booddies` will deploy. The hypervisor layer and all the containers are based on CentOS 7.
+This is a simplified diagram of the exploitation platform that `booddies` will deploy. The hypervisor layer is based on CentOS 7.
 
 <p align="center">
 <img src="https://www.lucidchart.com/publicSegments/view/553bbb69-0dd8-46be-b8b3-76570a009639/image.png" />
