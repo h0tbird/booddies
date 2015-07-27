@@ -1,5 +1,5 @@
 Name:      booddies
-Version:   0.1.3
+Version:   0.1.4
 Release:   1%{?dist}
 Summary:   Boot buddies. The bootstrapping fellowship
 Group:     Applications/Internet
@@ -56,6 +56,10 @@ systemctl daemon-reload
 %{_sysconfdir}/booddies/booddies.sh
 
 %changelog
+* Mon Jul 27 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.4-1
+- Added FORCE_PULL_IMAGE and IFACE options.
+- Switch from Docker registry v1 to v2.
+- New 'feed-regi' script refactorization.
 * Wed Jul  1 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.3-1
 - Update to booddies 0.1.3
 * Tue Jun 16 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.2-1
