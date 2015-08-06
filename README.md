@@ -24,7 +24,7 @@ Six containers are planned:
 
 ## The target platform
 
-This is a simplified diagram of the exploitation platform that `booddies` will deploy. The hypervisor layer and all the containers are based on CentOS 7.
+This is a simplified diagram of the exploitation platform that `booddies` will deploy. The hypervisor layer is based on CentOS 7.
 
 <p align="center">
 <img src="https://www.lucidchart.com/publicSegments/view/553bbb69-0dd8-46be-b8b3-76570a009639/image.png" />
@@ -155,8 +155,7 @@ a4:ba:db:1d:1f:aa,kvm-1,infinite
 ##### Switch git repos to RW mode:
 First the parent:
 ```
-git remote set-url origin `git config --get remote.origin.url | \
-sed s/github/h0tbird@github/`
+git remote set-url origin $(git config --get remote.origin.url | sed s/github/h0tbird@github/)
 ```
 
 Now the submodules:
@@ -166,10 +165,9 @@ git submodule foreach git checkout master
 
 ```
 for i in containers data; do
-  for j in `ls $i`; do
+  for j in $(ls $i); do
     pushd ${i}/${j}
-    git remote set-url origin `git config --get remote.origin.url | \
-    sed s/github/h0tbird@github/`
+    git remote set-url origin $(git config --get remote.origin.url | sed s/github/h0tbird@github/)
     popd
   done
 done
