@@ -4,30 +4,21 @@
 # Globals:
 #------------------------------------------------------------------------------
 
-# Settings:
-declare -rA REPOS=(
-['https://github.com/h0tbird/config-puppet.git']='Puppet config repository','Configurations','true'
-['https://github.com/h0tbird/config-fleet.git']='Fleet unit files repository','Configurations','true'
-['https://github.com/h0tbird/config-kickstart.git']='Kickstart files repository','Configurations','true'
-['https://github.com/h0tbird/config-pxelinux.git']='PXELinux files repository','Configurations','true'
-['https://github.com/h0tbird/r10k-kvm.git']='KVM control repository','R10K','true'
-['https://github.com/h0tbird/puppet-r_kvm.git']='Puppet KVM role repository','Puppet roles','true'
-['https://github.com/h0tbird/puppet-r_base.git']='Puppet base role repository','Puppet roles','true'
-['https://github.com/h0tbird/puppet-p_ssh.git']='Puppet ssh profile repository','Puppet profiles','true'
-['https://github.com/h0tbird/puppet-m_misclib.git']='Puppet misclib module repository','Puppet modules','true'
-['https://github.com/h0tbird/puppet-m_users.git']='Puppet users module repository','Puppet modules','true'
-['https://github.com/h0tbird/puppet-m_ssh.git']='Puppet ssh module repository','Puppet modules','true'
-['https://github.com/h0tbird/puppet-m_terminfo.git']='Puppet terminfo module repository','Puppet modules','true'
-['https://github.com/puppetlabs/puppetlabs-stdlib.git']='Puppet stdlib module repository','Puppet modules','false','puppet-m_stdlib'
-['https://github.com/puppetlabs/puppetlabs-vcsrepo.git']='Puppet vcsrepo module repository','Puppet modules','false','puppet-m_vcsrepo')
-declare LOG_FILE='/tmp/booddies.log'
-
 # Return codes:
 readonly E_BAD_CMD=10
 readonly E_BAD_SYNC=11
 
 # Commands:
 readonly CMD_DOCKER=$(type -P docker); [ -z "${CMD_DOCKER}" ] && exit ${E_BAD_CMD}
+
+#------------------------------------------------------------------------------
+# Source and verify the configuration:
+#------------------------------------------------------------------------------
+
+[ -f /etc/booddies/gito.conf ] && \
+  source /etc/booddies/gito.conf || ${E_BAD_CONF}
+
+[[ -z "${!REPOS[@]}" ]] && echo 'Ops! REPOS is not set' && exit ${E_BAD_CONF}
 
 #-----------------------------------------------------------------------------
 # Source miscellaneous bash functions:
@@ -41,27 +32,27 @@ readonly CMD_DOCKER=$(type -P docker); [ -z "${CMD_DOCKER}" ] && exit ${E_BAD_CM
 # Fork all repositories:
 #----------------------------------------------------------------------------
 
-IFS=','; for repo in "${!REPOS[@]}"; do
+IFS=','; for REPO in "${!REPOS[@]}"; do
 
-  read -a array <<< "${REPOS["$repo"]}"
+  read -a array <<< "${REPOS["$REPO"]}"
 
-  desc=${array[0]}
-  cat=${array[1]}
-  mirror=${array[2]}
-  name=${array[3]}
+  DESC=${array[0]}
+  CATE=${array[1]}
+  MIRR=${array[2]}
+  NAME=${array[3]}
 
-  msg="Synchronizing '${repo}'..."
-  misc::stat_busy "${msg}"
+  MSG="Synchronizing '${REPO}'..."
+  misc::stat_busy "${MSG}"
 
   if ! ${CMD_DOCKER} exec -it gito01 gitosync \
   --admin admin \
   --owner 'The bootstrapping fellowship' \
-  --description "${desc}" \
-  --category "${cat}" \
-  --repo "${repo}" \
-  --mirror "${mirror}" \
-  --name "${name}" >> ${LOG_FILE}; then
-    misc::log "[ERROR] ${msg}"
+  --description \'${DESC}\' \
+  --category \'${CATE}\' \
+  --repo "${REPO}" \
+  --mirror "${MIRR}" \
+  --name "${NAME}" >> ${LOG_FILE}; then
+    misc::log "[ERROR] ${MSG}"
     misc::stat_fail
     exit "${E_BAD_SYNC}"
   else
