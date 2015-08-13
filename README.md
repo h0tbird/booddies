@@ -146,10 +146,10 @@ drwxr-xr-x 3 root root 4.0K Apr 12 11:36 /data/data/kickstarts/
 
 ## Devel:
 
-##### Switch git repos to RW mode:
-##### Add a new user to gitolite:
-##### Push and pull changes to GitHub:
-##### Packaging
+* [Switch git repos to RW mode](https://github.com/h0tbird/booddies/blob/master/docs/switch_git_to_rw_mode.md)
+* [Add a new user to gitolite](https://github.com/h0tbird/booddies/blob/master/docs/add_new_user_to_gitolite.md)
+* [Push and pull changes to GitHub](https://github.com/h0tbird/booddies/blob/master/docs/push_and_pull_from_gitolite_to_github.md)
+* [Packaging](https://github.com/h0tbird/booddies/blob/master/docs/packaging.md)
 
 ## License
 
