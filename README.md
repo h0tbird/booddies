@@ -144,78 +144,12 @@ drwxr-xr-x 2 root root 4.0K Apr 20 19:59 /data/boot/pxelinux/
 drwxr-xr-x 3 root root 4.0K Apr 12 11:36 /data/data/kickstarts/
 ```
 
-You might want to add some DHCP static definitions:
-```bash
-# cat /data/boot/dnsmasq/dhcp_hosts 
-a4:ba:db:1d:1f:aa,kvm-1,infinite
-84:2b:2b:57:c0:fb,kvm-2,infinite
-```
-
 ## Devel:
+
 ##### Switch git repos to RW mode:
-First the parent:
-```
-git remote set-url origin $(git config --get remote.origin.url | sed s/github/h0tbird@github/)
-```
-
-Now the submodules:
-```
-git submodule foreach git checkout master
-```
-
-```
-for i in containers data; do
-  for j in $(ls $i); do
-    pushd ${i}/${j}
-    git remote set-url origin $(git config --get remote.origin.url | sed s/github/h0tbird@github/)
-    popd
-  done
-done
-```
-
-Verify:
-```
-git submodule foreach git config --get remote.origin.url
-```
-
 ##### Add a new user to gitolite:
-```
-cat << EOF > ~/myssh
-#!/bin/bash
-ssh -i ~/.ssh/gitolite.key \$@
-EOF
-
-chmod +x ~/myssh
-GIT_SSH=~/myssh git clone git@gito01:gitolite-admin
-cd gitolite-admin
-cp ~/.ssh/id_rsa.pub keydir/marc.pub
-vim conf/gitolite.conf
-git add conf/ keydir/
-git commit -am "Added user marc"
-GIT_SSH=~/myssh git push
-```
-
-##### Push local changes to GitHub:
-```
-docker exec -it gito01 su git -c '
-for i in ~/repositories/*; do
-  pushd $i
-  target=$(git config --get gitolite.mirror.simple)
-  [ -z "$target" ] || git push --mirror $target
-  popd
-done'
-```
-
-##### Fetch changes from GitHub:
-```
-docker exec -it gito01 su git -c "
-for i in ~/repositories/*; do
-  pushd \${i}
-  git remote | grep -q origin && \
-  git fetch origin '+*:*'
-  popd
-done"
-```
+##### Push and pull changes to GitHub:
+##### Packaging
 
 ## License
 
