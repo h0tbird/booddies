@@ -11,7 +11,7 @@ Although it can be used to boot any PXE compliant system, it is not intended to 
 
 Six containers are planned:
 
-- [x] **boot:** A [`dnsmasq`][dnsmasq-web] server that handles PXE, DHCP, TFTP, and DNS.
+- [x] **boot:** A [`dnsmasq`][dnsmasq-web] server handles PXE, DHCP, TFTP, and DNS.
 - [x] **data:** An [`apache`][apache-web] server with YUM repositories and other data.
 - [x] **gito:** A [`gitolite`][gitolite-web] server with [`R10K`][r10k-web] and Puppet code.
 - [x] **cgit:** An `apache` server with a [`cgit`][cgit-web] frontend to `gitolite`.
