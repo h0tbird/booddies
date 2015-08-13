@@ -3,7 +3,7 @@
 [ ![Containers counter] [containers-counter] ] [containers]
 [ ![License] [license-image] ] [license]
 
-<img src="https://www.lucidchart.com/publicSegments/view/553bb3d2-a154-4ab0-99c6-1c420a004a17/image.png"
+<img src="https://www.lucidchart.com/publicSegments/view/55cc7030-0018-4915-983f-479c0a005a36/image.png"
  alt="Booddies logo" title="Booddies" align="right" />
 
 Boot buddies or `booddies` is a set of [`Docker`][docker-web] containers used to bootstrapp an on-premises [`Mesos`][mesos-web] cluster using containers on top of [`CoreOS`][coreos-web] on top of [`KVM`][kvm-web] on top of bare metal.
