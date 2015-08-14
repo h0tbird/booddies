@@ -15,7 +15,7 @@ Six containers are planned:
 - [x] **data:** An [`apache`][apache-web] server with YUM repositories and other data.
 - [x] **gito:** A [`gitolite`][gitolite-web] server with [`R10K`][r10k-web] and Puppet code.
 - [x] **cgit:** An `apache` server with a [`cgit`][cgit-web] frontend to `gitolite`.
-- [x] **regi:** A python [`docker registry`][registry-web] to distribute docker images.
+- [x] **regi:** A golang [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
 `Booddies` has been tested in:
@@ -36,33 +36,35 @@ This is what you get when you install `booddies`:
 
 ```
 /
-├── data <-------------------------- Persistent data directories mounted by containers.
-│   ├── boot/
-│   ├── data/
-│   ├── gito/
-│   └── regi/
 ├── etc
-│   ├── booddies <------------------ Per container configuration files.
-│   │   ├── boot.conf
-│   │   ├── cgit.conf
-│   │   ├── data.conf
-│   │   ├── gito.conf
-│   │   └── regi.conf
-│   └── systemd
-│       └── system <---------------- Per container systemd service unit files.
-│           ├── boot.service
-│           ├── cgit.service
-│           ├── data.service
-│           ├── gito.service
-│           └── regi.service
-└── usr
-    └── local
-        └── sbin <------------------ Per container pre-run, run and post-run logic.
-            ├── runctl-boot
-            ├── runctl-cgit
-            ├── runctl-data
-            ├── runctl-gito
-            └── runctl-regi
+│   ├── booddies <------------------ Per container configuration files.
+│   │   ├── boot.conf
+│   │   ├── cgit.conf
+│   │   ├── data.conf
+│   │   ├── gito.conf
+│   │   └── regi.conf
+│   └── systemd
+│       └── system <---------------- Per container systemd service unit files.
+│           ├── boot.service
+│           ├── cgit.service
+│           ├── data.service
+│           ├── gito.service
+│           └── regi.service
+├── usr
+│   └── local
+│       └── sbin <------------------ Per container pre-run, run and post-run logic.
+│           ├── runctl-boot
+│           ├── runctl-cgit
+│           ├── runctl-data
+│           ├── runctl-gito
+│           └── runctl-regi
+└── var
+    └── lib
+        └── booddies <-------------- Persistent data directories mounted by containers.
+            ├── boot
+            ├── data
+            ├── gito
+            └── regi
 ```
 
 And of course you also get the docker images:
@@ -78,7 +80,7 @@ And of course you also get the docker images:
 ## Preflight checklist
 * Start Docker with `--insecure-registry=regi01:5000`.
 * Bridge your physical interface to the `br0` bridge interface.
-* Also make sure you have about 20GB of free space in `/data`.
+* Also make sure you have about 20GB of free space in `/var/lib/booddies`.
 
 ## Step one: Install
 ##### 1. Clone and install
@@ -105,7 +107,7 @@ sudo systemctl start boot data gito cgit regi
 ```
 
 ## Step two: Synchronize
-Downloading all this data allows `booddies` to be self-contained making it possible to bootstrap the target platform totally offline. You can tail the `/tmp/booddies.log` file for a more detailed progress log.
+Downloading all this data allows `booddies` to be self-contained making it possible to bootstrap the target platform totally offline. You can tail the `/var/log/booddies/*.log` files for a more detailed progress logs.
 
 ##### 1. Populate the YUM repositories
 About 15GB of data will be downloaded, check [`feed-data`][feed-data-code] and [`datasync`][datasync-code] for more details.
@@ -137,9 +139,9 @@ Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][g
 
 Populate your [`pxelinux`](https://github.com/h0tbird/pxelinux) files and your [`kickstart`](https://github.com/h0tbird/kickstart) files:
 ```bash
-# ll -d /data/{boot/pxelinux,data/kickstarts}
-drwxr-xr-x 2 root root 4.0K Apr 20 19:59 /data/boot/pxelinux/
-drwxr-xr-x 3 root root 4.0K Apr 12 11:36 /data/data/kickstarts/
+# ll -d /var/lib/booddies/{boot/pxelinux,data/kickstart}
+drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/boot/pxelinux/
+drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/data/kickstart/
 ```
 
 ## Devel:
@@ -178,7 +180,7 @@ limitations under the License.
 [gitolite-web]: http://gitolite.com
 [cgit-web]: http://git.zx2c4.com/cgit/about
 [r10k-web]: https://github.com/puppetlabs/r10k
-[registry-web]: https://github.com/docker/docker-registry
+[registry-web]: https://github.com/docker/distribution
 
 [feed-data-code]: https://github.com/h0tbird/booddies/blob/master/bin/feed-data
 [datasync-code]: https://github.com/h0tbird/docker-data/blob/master/rootfs/usr/sbin/datasync
