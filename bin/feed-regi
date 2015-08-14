@@ -25,17 +25,9 @@ readonly CMD_JQ=$(type -P jq); [ -z "${CMD_JQ}" ] && exit ${E_BAD_CMD}
 #------------------------------------------------------------------------------
 
 [ -f /etc/booddies/regi.conf ] && \
-  source /etc/booddies/regi.conf || ${E_BAD_CONF}
+  source /etc/booddies/regi.conf || exit ${E_BAD_CONF}
 
 [ -z "${LOG_FILE}" ] && echo 'Ops! LOG_FILE is not set' && exit ${E_BAD_CONF}
-
-#------------------------------------------------------------------------------
-# Source and verify the configuration:
-#------------------------------------------------------------------------------
-
-[ -f /etc/booddies/regi.conf ] && \
-source /etc/booddies/regi.conf || ${E_BAD_CONF}
-
 [ -z "${IMAGES}" ] && echo 'Ops! IMAGES is not set' && exit ${E_BAD_CONF}
 
 #------------------------------------------------------------------------------
