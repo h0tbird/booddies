@@ -4,15 +4,22 @@
 # Globals:
 #-----------------------------------------------------------------------------
 
-# Settings:
-readonly LOG_FILE='/tmp/booddies.log'
-
 # Return codes:
 readonly E_BAD_CMD=10
-readonly E_BAD_SYNC=11
+readonly E_BAD_CONF=11
+readonly E_BAD_SYNC=12
 
 # Commands:
 readonly CMD_DOCKER=$(type -P docker); [ -z "${CMD_DOCKER}" ] && exit ${E_BAD_CMD}
+
+#------------------------------------------------------------------------------
+# Source and verify the configuration:
+#------------------------------------------------------------------------------
+
+[ -f /etc/booddies/data.conf ] && \
+  source /etc/booddies/data.conf || ${E_BAD_CONF}
+
+[ -z "${LOG_FILE}" ] && echo 'Ops! LOG_FILE is not set' && exit ${E_BAD_CONF}
 
 #------------------------------------------------------------------------------
 # Source miscellaneous bash functions:
