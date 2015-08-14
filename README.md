@@ -139,9 +139,9 @@ Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][g
 
 Populate your [`pxelinux`](https://github.com/h0tbird/pxelinux) files and your [`kickstart`](https://github.com/h0tbird/kickstart) files:
 ```bash
-# ll -d /data/{boot/pxelinux,data/kickstarts}
-drwxr-xr-x 2 root root 4.0K Apr 20 19:59 /data/boot/pxelinux/
-drwxr-xr-x 3 root root 4.0K Apr 12 11:36 /data/data/kickstarts/
+# ll -d /var/lib/booddies/{boot/pxelinux,data/kickstart}
+drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/boot/pxelinux/
+drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/data/kickstart/
 ```
 
 ## Devel:
