@@ -36,33 +36,35 @@ This is what you get when you install `booddies`:
 
 ```
 /
-├── data <-------------------------- Persistent data directories mounted by containers.
-│   ├── boot/
-│   ├── data/
-│   ├── gito/
-│   └── regi/
 ├── etc
-│   ├── booddies <------------------ Per container configuration files.
-│   │   ├── boot.conf
-│   │   ├── cgit.conf
-│   │   ├── data.conf
-│   │   ├── gito.conf
-│   │   └── regi.conf
-│   └── systemd
-│       └── system <---------------- Per container systemd service unit files.
-│           ├── boot.service
-│           ├── cgit.service
-│           ├── data.service
-│           ├── gito.service
-│           └── regi.service
-└── usr
-    └── local
-        └── sbin <------------------ Per container pre-run, run and post-run logic.
-            ├── runctl-boot
-            ├── runctl-cgit
-            ├── runctl-data
-            ├── runctl-gito
-            └── runctl-regi
+│   ├── booddies <------------------ Per container configuration files.
+│   │   ├── boot.conf
+│   │   ├── cgit.conf
+│   │   ├── data.conf
+│   │   ├── gito.conf
+│   │   └── regi.conf
+│   └── systemd
+│       └── system <---------------- Per container systemd service unit files.
+│           ├── boot.service
+│           ├── cgit.service
+│           ├── data.service
+│           ├── gito.service
+│           └── regi.service
+├── usr
+│   └── local
+│       └── sbin <------------------ Per container pre-run, run and post-run logic.
+│           ├── runctl-boot
+│           ├── runctl-cgit
+│           ├── runctl-data
+│           ├── runctl-gito
+│           └── runctl-regi
+└── var
+    └── lib
+        └── booddies <-------------- Persistent data directories mounted by containers.
+            ├── boot
+            ├── data
+            ├── gito
+            └── regi
 ```
 
 And of course you also get the docker images:
@@ -78,7 +80,7 @@ And of course you also get the docker images:
 ## Preflight checklist
 * Start Docker with `--insecure-registry=regi01:5000`.
 * Bridge your physical interface to the `br0` bridge interface.
-* Also make sure you have about 20GB of free space in `/data`.
+* Also make sure you have about 20GB of free space in `/var/lib/booddies`.
 
 ## Step one: Install
 ##### 1. Clone and install
