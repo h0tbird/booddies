@@ -124,5 +124,5 @@ repoview -t misc \${DOCROOT}/booddies"
 Once the repository is created it can be pushed to S3.
 
 ```
-s3cmd -P sync /data/data/booddies/ s3://yum-repositories/booddies/ --delete-removed
+s3cmd -P sync /var/lib/booddies/data/booddies/ s3://yum-repositories/booddies/ --delete-removed
 ```
