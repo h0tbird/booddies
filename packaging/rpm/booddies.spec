@@ -1,5 +1,5 @@
 Name:      booddies
-Version:   0.1.5
+Version:   0.1.6
 Release:   1%{?dist}
 Summary:   Boot buddies. The bootstrapping fellowship
 Group:     Applications/Internet
@@ -12,10 +12,10 @@ BuildArch: noarch
 Requires:  docker
 
 %description
-Boot buddies or booddies is a set of Docker containers used to bootstrapp a
-Mesos cluster using containers on top of CoreOS on top of KVM on top of bare
-metal. Although it can be used to boot any PXE compliant system, it is not
-intended to be a general purpose bootstrapping system.
+Boot buddies or booddies is a set of Docker containers used to bootstrapp an
+on-premises Mesos cluster using containers on top of CoreOS on top of KVM on
+top of bare metal. Although it can be used to boot any PXE compliant system,
+it is not intended to be a general purpose bootstrapping system.
 
 %prep
 %setup -q
@@ -56,6 +56,10 @@ systemctl daemon-reload
 %{_sysconfdir}/booddies/booddies.sh
 
 %changelog
+* Sun Aug 16 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.6-1
+- New DATA_DIR location '/var/lib/booddies/*'
+- New LOG_FILE location '/var/log/booddies/*.log'
+- New OUI option.
 * Sun Aug  9 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.5-1
 - Updated 'feed-gito' script.
 * Mon Jul 27 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.4-1
