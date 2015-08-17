@@ -77,8 +77,6 @@ And of course you also get the docker images:
 | [h0tbird/cgit][cgit-www] | [![cgit][cgit-image]][cgit-web] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
 | [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-web] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
-https://imagelayers.io/?images=h0tbird/boot:latest
-
 ## Preflight checklist
 * Start Docker with `--insecure-registry=regi01:5000`.
 * Bridge your physical interface to the `br0` bridge interface.
