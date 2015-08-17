@@ -100,6 +100,13 @@ Chances are, you want to edit this files:
 * [`/etc/booddies/gito.conf`][gito-config]
 * [`/etc/booddies/regi.conf`][regi-config]
 
+Populate your [`pxelinux`](https://github.com/h0tbird/pxelinux) files and your [`kickstart`](https://github.com/h0tbird/kickstart) files:
+```bash
+# ll -d /var/lib/booddies/{boot/pxelinux,data/kickstart}
+drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/boot/pxelinux/
+drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/data/kickstart/
+```
+
 ##### 3. Start the services
 The first time you start the services all docker images will be downloaded from docker hub:
 ```
@@ -133,15 +140,6 @@ Pull and push from public to private registry, check [`feed-regi`][feed-regi-cod
 Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][gitosync-code] for more details.
 ```
 ./bin/feed-gito
-```
-
-## Step three: Setup
-
-Populate your [`pxelinux`](https://github.com/h0tbird/pxelinux) files and your [`kickstart`](https://github.com/h0tbird/kickstart) files:
-```bash
-# ll -d /var/lib/booddies/{boot/pxelinux,data/kickstart}
-drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/boot/pxelinux/
-drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/data/kickstart/
 ```
 
 ## Devel:
