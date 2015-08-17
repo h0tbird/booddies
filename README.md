@@ -74,7 +74,7 @@ And of course you also get the docker images:
 | [h0tbird/boot][boot-web] | [![boot][boot-image]][boot-web] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
 | [h0tbird/data][data-web] | [![data][data-image]][data-web] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
 | [h0tbird/gito][gito-web] | [![gito][gito-image]][gito-web] | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
-| [h0tbird/cgit][cgit-www] | [![cgit][cgit-image]][cgit-web] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
+| [h0tbird/cgit][cgit-web] | [![cgit][cgit-image]][cgit-web] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
 | [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-web] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 ## Preflight checklist
@@ -200,7 +200,7 @@ limitations under the License.
 [gito-image]: https://badge.imagelayers.io/h0tbird/gito:latest.svg
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
 [cgit-image]: https://badge.imagelayers.io/h0tbird/cgit:latest.svg
-[cgit-www]: https://registry.hub.docker.com/u/h0tbird/cgit
+[cgit-web]: https://registry.hub.docker.com/u/h0tbird/cgit
 [regi-image]: https://badge.imagelayers.io/h0tbird/regi:latest.svg
 [regi-web]: https://registry.hub.docker.com/u/h0tbird/regi
 
