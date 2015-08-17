@@ -69,13 +69,15 @@ This is what you get when you install `booddies`:
 
 And of course you also get the docker images:
 
-| Docker Image             | Status                          | ID     | Config file                | Systemd unit                | Run logic                 |
-| ------------------------ | ------------------------------- |:------:| -------------------------- | --------------------------- | ------------------------- |
-| [h0tbird/boot][boot-web] | [![boot][boot-image]][boot-web] | boot01 | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
-| [h0tbird/data][data-web] | [![data][data-image]][data-web] | data01 | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
-| [h0tbird/gito][gito-web] | [![gito][gito-image]][gito-web] | gito01 | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
-| [h0tbird/cgit][cgit-www] | [![cgit][cgit-image]][cgit-web] | cgit01 | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
-| [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-web] | regi01 | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
+| Docker Image             | Status                          | Config file                | Systemd unit                | Run logic                 |
+| ------------------------ | ------------------------------- | -------------------------- | --------------------------- | ------------------------- |
+| [h0tbird/boot][boot-web] | [![boot][boot-image]][boot-web] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
+| [h0tbird/data][data-web] | [![data][data-image]][data-web] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
+| [h0tbird/gito][gito-web] | [![gito][gito-image]][gito-web] | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
+| [h0tbird/cgit][cgit-www] | [![cgit][cgit-image]][cgit-web] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
+| [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-web] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
+
+https://imagelayers.io/?images=h0tbird/boot:latest
 
 ## Preflight checklist
 * Start Docker with `--insecure-registry=regi01:5000`.
@@ -193,15 +195,15 @@ limitations under the License.
 
 [fpm-web]: https://github.com/jordansissel/fpm
 
-[boot-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
+[boot-image]: https://badge.imagelayers.io/h0tbird/boot:latest.svg
 [boot-web]: https://registry.hub.docker.com/u/h0tbird/boot
-[data-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
+[data-image]: https://badge.imagelayers.io/h0tbird/data:latest.svg
 [data-web]: https://registry.hub.docker.com/u/h0tbird/data
-[gito-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
+[gito-image]: https://badge.imagelayers.io/h0tbird/gito:latest.svg
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
-[cgit-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
+[cgit-image]: https://badge.imagelayers.io/h0tbird/cgit:latest.svg
 [cgit-www]: https://registry.hub.docker.com/u/h0tbird/cgit
-[regi-image]: https://img.shields.io/badge/build-unknown-lightgrey.svg
+[regi-image]: https://badge.imagelayers.io/h0tbird/regi:latest.svg
 [regi-web]: https://registry.hub.docker.com/u/h0tbird/regi
 
 [boot-config]: https://github.com/h0tbird/docker-boot/blob/master/boot.conf
