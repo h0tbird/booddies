@@ -150,6 +150,7 @@ drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/data/kickstart/
 * [Add a new user to gitolite](https://github.com/h0tbird/booddies/blob/master/docs/add_new_user_to_gitolite.md)
 * [Push and pull changes to GitHub](https://github.com/h0tbird/booddies/blob/master/docs/push_and_pull_from_gitolite_to_github.md)
 * [Packaging](https://github.com/h0tbird/booddies/blob/master/docs/packaging.md)
+* [Configuration hints](https://github.com/h0tbird/booddies/blob/master/docs/configuration_hints.md)
 
 ## License
 
