@@ -109,10 +109,10 @@ drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/data/kickstart/
 
 Map the physical server short host names to their own pxe-aware MAC and IP addresses:
 ```
-# cat /var/lib/booddies/boot/dnsmasq/dhcp_hosts
-84:2b:2b:59:a4:ae,kvm-1,infinite
-84:2b:2b:58:4a:a4,kvm-2,infinite
-78:2b:cb:23:65:46,kvm-3,infinite
+# cat /var/lib/booddies/boot/dnsmasq/dhcp_hosts 
+84:2b:2b:59:a4:ae,172.16.8.90,kvm-1,infinite
+84:2b:2b:58:4a:a4,172.16.8.91,kvm-2,infinite
+78:2b:cb:23:65:46,172.16.8.92,kvm-3,infinite
 ```
 
 ##### 3. Start the services
