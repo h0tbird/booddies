@@ -14,7 +14,7 @@ Six containers are planned:
 - [x] **boot:** A [`dnsmasq`][dnsmasq-web] server handles PXE, DHCP, TFTP, and DNS.
 - [x] **data:** An [`apache`][apache-web] server with YUM repositories and other data.
 - [x] **gito:** A [`gitolite`][gitolite-web] server with [`R10K`][r10k-web] and Puppet code.
-- [x] **cgit:** An `apache` server with a [`cgit`][cgit-web] frontend to `gitolite`.
+- [x] **cgit:** An `apache` server with a [`cgit`][cgit-www] frontend to `gitolite`.
 - [x] **regi:** A golang [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
@@ -71,11 +71,11 @@ And of course you also get the docker images:
 
 | Docker Image             | Status                          | Config file                | Systemd unit                | Run logic                 |
 | ------------------------ | ------------------------------- | -------------------------- | --------------------------- | ------------------------- |
-| [h0tbird/boot][boot-web] | [![boot][boot-image]][boot-web] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
-| [h0tbird/data][data-web] | [![data][data-image]][data-web] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
-| [h0tbird/gito][gito-web] | [![gito][gito-image]][gito-web] | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
-| [h0tbird/cgit][cgit-web] | [![cgit][cgit-image]][cgit-web] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
-| [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-web] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
+| [h0tbird/boot][boot-web] | [![boot][boot-image]][boot-lyr] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
+| [h0tbird/data][data-web] | [![data][data-image]][data-lyr] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
+| [h0tbird/gito][gito-web] | [![gito][gito-image]][gito-lyr] | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
+| [h0tbird/cgit][cgit-web] | [![cgit][cgit-image]][cgit-lyr] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
+| [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-lyr] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 ## Preflight checklist
 * Start Docker with `--insecure-registry=regi01:5000`.
@@ -179,7 +179,7 @@ limitations under the License.
 [dnsmasq-web]: http://www.thekelleys.org.uk/dnsmasq/doc.html
 [apache-web]: http://httpd.apache.org
 [gitolite-web]: http://gitolite.com
-[cgit-web]: http://git.zx2c4.com/cgit/about
+[cgit-www]: http://git.zx2c4.com/cgit/about
 [r10k-web]: https://github.com/puppetlabs/r10k
 [registry-web]: https://github.com/docker/distribution
 
@@ -195,14 +195,19 @@ limitations under the License.
 
 [boot-image]: https://badge.imagelayers.io/h0tbird/boot:latest.svg
 [boot-web]: https://registry.hub.docker.com/u/h0tbird/boot
+[boot-lyr]: https://imagelayers.io/?images=h0tbird/boot:latest
 [data-image]: https://badge.imagelayers.io/h0tbird/data:latest.svg
 [data-web]: https://registry.hub.docker.com/u/h0tbird/data
+[data-lyr]: https://imagelayers.io/?images=h0tbird/data:latest
 [gito-image]: https://badge.imagelayers.io/h0tbird/gito:latest.svg
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
+[gito-lyr]: https://imagelayers.io/?images=h0tbird/gito:latest
 [cgit-image]: https://badge.imagelayers.io/h0tbird/cgit:latest.svg
 [cgit-web]: https://registry.hub.docker.com/u/h0tbird/cgit
+[cgit-lyr]: https://imagelayers.io/?images=h0tbird/cgit:latest
 [regi-image]: https://badge.imagelayers.io/h0tbird/regi:latest.svg
 [regi-web]: https://registry.hub.docker.com/u/h0tbird/regi
+[regi-lyr]: https://imagelayers.io/?images=h0tbird/regi:latest
 
 [boot-config]: https://github.com/h0tbird/docker-boot/blob/master/boot.conf
 [data-config]: https://github.com/h0tbird/docker-data/blob/master/data.conf
