@@ -107,7 +107,7 @@ drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/boot/pxelinux/
 drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/data/kickstart/
 ```
 
-Map the physical server short host names to their own PXE MAC address:
+Map the physical server short host names to their own pxe-aware MAC address:
 ```
 # cat /var/lib/booddies/boot/dnsmasq/dhcp_hosts
 84:2b:2b:59:a4:ae,kvm-1,infinite
