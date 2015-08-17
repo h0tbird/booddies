@@ -22,9 +22,9 @@ Six containers are planned:
 - Arch Linux
 - CentOS 7
 
-## The target platform
+## The exploitation platform
 
-This is a simplified diagram of the exploitation platform that `booddies` will deploy. The hypervisor layer is based on CentOS 7.
+This is a simplified diagram of the target platform that `booddies` will deploy. The hypervisor layer is based on CentOS 7.
 
 <p align="center">
 <img src="https://www.lucidchart.com/publicSegments/view/553bbb69-0dd8-46be-b8b3-76570a009639/image.png" />
@@ -107,7 +107,7 @@ drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/boot/pxelinux/
 drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/data/kickstart/
 ```
 
-Map the physical server short host names to their own pxe-aware MAC address:
+Map the physical server short host names to their own pxe-aware MAC and IP addresses:
 ```
 # cat /var/lib/booddies/boot/dnsmasq/dhcp_hosts
 84:2b:2b:59:a4:ae,kvm-1,infinite
