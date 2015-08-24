@@ -150,8 +150,8 @@ Prometheus exporter for machine metrics.
 Written in Go with pluggable metric collectors.
 
 %install
-rm -rf %{buildroot}
-mkdir -p %{buildroot}%{_sysconfdir}/prometheus/
+%{__rm} -rf %{buildroot}
+%{__mkdir_p} %{buildroot}%{_sysconfdir}/prometheus/
 %{__install} -p -D -m 0755 \${GOPATH}/bin/node_exporter %{buildroot}/sbin/node_exporter
 %{__install} -p -D -m 0644 \${GOPATH}/src/\${PACKAGE}/node_exporter.conf %{buildroot}%{_sysconfdir}/prometheus/node_exporter.conf
 
