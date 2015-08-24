@@ -108,6 +108,59 @@ fpm \
 -s gem -t rpm"
 ```
 
+##### Package the Prometheus node exporter
+
+```
+docker run -it --rm -e VERSION='0.11.0' \
+-v ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
+-v ${HOME}/.gnupg:/root/.gnupg \
+centos:7 /bin/bash -c "
+yum install -y git golang make mercurial rpm-build rpm-sign
+cd && mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+cat << EOF > ~/.rpmmacros
+%_signature gpg
+%_gpg_path ~/.gnupg
+%_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
+%_gpgbin /usr/bin/gpg
+%_topdir /root/rpmbuild
+EOF
+git clone https://github.com/prometheus/node_exporter.git
+cd node_exporter
+git checkout tags/\${VERSION}
+make
+cat << EOF > ~/rpmbuild/SPECS/prometheus_node_exporter.spec
+Name: prometheus-node-exporter
+Version: \$VERSION
+Release: 1
+License: Apache-2
+Summary: Prometheus exporter for machine metrics.
+Packager: %{_gpg_name}
+Group: System Environment/Base
+BuildArch: x86_64
+BuildRoot: %{_topdir}/%{name}-%{version}%{release}-root
+
+%description
+Prometheus exporter for machine metrics.
+Written in Go with pluggable metric collectors.
+
+%install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_sysconfdir}/prometheus/
+%{__install} -p -D -m 0755 ~/node_exporter/node_exporter %{buildroot}/sbin/node_exporter
+%{__install} -p -D -m 0644 ~/node_exporter/node_exporter.conf %{buildroot}%{_sysconfdir}/prometheus/node_exporter.conf
+
+%files
+%defattr(-,root,root,-)
+%{_sysconfdir}/prometheus/node_exporter.conf
+/sbin/node_exporter
+
+%changelog
+* Thu Aug 13 2015 Marc Villacorta <marc.villacorta@gmail.com>
+- First release.
+EOF
+rpmbuild -ba --sign ~/rpmbuild/SPECS/prometheus_node_exporter.spec"
+```
+
 ##### Create the repository metadata
 
 This is used to generate the repository metadata.
