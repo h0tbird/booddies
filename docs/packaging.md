@@ -108,14 +108,18 @@ fpm \
 -s gem -t rpm"
 ```
 
-##### Package the Prometheus node exporter
+##### Package prometheus-node-exporter-0.11.0-1.x86_64.rpm
+
+This will generate the Prometheus node exporter package.
 
 ```
-docker run -it --rm -e VERSION='0.11.0' \
--v ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
--v ${HOME}/.gnupg:/root/.gnupg \
+docker run -it --rm \
+--env PACKAGE='github.com/prometheus/node_exporter' \
+--env VERSION='0.11.0' \
+--volume ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
+--volume ${HOME}/.gnupg:/root/.gnupg \
 centos:7 /bin/bash -c "
-yum install -y git golang make mercurial rpm-build rpm-sign
+yum install -y git golang mercurial rpm-build rpm-sign
 cd && mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 cat << EOF > ~/.rpmmacros
 %_signature gpg
@@ -124,13 +128,15 @@ cat << EOF > ~/.rpmmacros
 %_gpgbin /usr/bin/gpg
 %_topdir /root/rpmbuild
 EOF
-git clone https://github.com/prometheus/node_exporter.git
-cd node_exporter
+export GOPATH=\${HOME}/go
+export PATH=\${PATH}:\${GOPATH}/bin
+go get -d \${PACKAGE}
+cd \${GOPATH}/src/\${PACKAGE}
 git checkout tags/\${VERSION}
-make
+go install
 cat << EOF > ~/rpmbuild/SPECS/prometheus_node_exporter.spec
 Name: prometheus-node-exporter
-Version: \$VERSION
+Version: \${VERSION}
 Release: 1
 License: Apache-2
 Summary: Prometheus exporter for machine metrics.
@@ -146,8 +152,8 @@ Written in Go with pluggable metric collectors.
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/prometheus/
-%{__install} -p -D -m 0755 ~/node_exporter/node_exporter %{buildroot}/sbin/node_exporter
-%{__install} -p -D -m 0644 ~/node_exporter/node_exporter.conf %{buildroot}%{_sysconfdir}/prometheus/node_exporter.conf
+%{__install} -p -D -m 0755 \${GOPATH}/bin/node_exporter %{buildroot}/sbin/node_exporter
+%{__install} -p -D -m 0644 \${GOPATH}/src/\${PACKAGE}/node_exporter.conf %{buildroot}%{_sysconfdir}/prometheus/node_exporter.conf
 
 %files
 %defattr(-,root,root,-)
