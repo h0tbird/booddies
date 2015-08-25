@@ -1,0 +1,40 @@
+#!/bin/bash
+
+docker run -it --rm \
+--env GEM='r10k' \
+--volume ${PWD}/newrpm:/newrpm \
+--volume ${HOME}/.gnupg:/root/.gnupg \
+h0tbird/rpmbuild:latest bash -c "
+
+  #---------
+  # Install
+  #---------
+
+  mkdir /tmp/gems
+  gem install --no-document --verbose --install-dir /tmp/gems \$GEM
+
+  #--------------
+  # ~/.rpmmacros
+  #--------------
+
+  cat <<- EOF > ~/.rpmmacros
+	%_signature gpg
+	%_gpg_path ~/.gnupg
+	%_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
+	%_gpgbin /usr/bin/gpg
+	%_topdir ~/rpmbuild
+	EOF
+
+  #--------------------
+  # Build the packages
+  #--------------------
+
+  cd /newrpm && find /tmp/gems -name '*.gem' | xargs -rn1 fpm \
+    --rpm-ignore-iteration-in-dependencies \
+    --maintainer 'Marc Villacorta Morera <marc.villacorta@gmail.com>' \
+    --depends ruby \
+    --depends rubygems \
+    --force \
+    --rpm-sign \
+    --prefix /usr/share/gems \
+    -s gem -t rpm"
