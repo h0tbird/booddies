@@ -135,11 +135,17 @@ Wants=basic.target
 After=basic.target network.target
 
 [Service]
-ExecStart=/usr/bin/node_exporter
+EnvironmentFile=-/etc/sysconfig/node_exporter
+ExecStart=/usr/bin/node_exporter $NODE_EXPORTER_OPTS
 KillMode=process
 
 [Install]
 WantedBy=multi-user.target
+EOF
+cat << EOF > /tmp/node_exporter
+# Settings for the node_exporter daemon.
+# NODE_EXPORTER_OPTS: any extra command-line startup arguments
+NODE_EXPORTER_OPTS=
 EOF
 export GOPATH=\${HOME}/go
 export PATH=\${PATH}:\${GOPATH}/bin
@@ -169,6 +175,7 @@ Written in Go with pluggable metric collectors.
 %{__rm} -rf %{buildroot}
 %{__install} -p -D -m 0755 \${GOPATH}/bin/node_exporter %{buildroot}/%{_bindir}/node_exporter
 %{__install} -p -D -m 0644 /tmp/node_exporter.service %{buildroot}/%{_unitdir}/node_exporter.service
+%{__install} -p -D -m 0644 /tmp/node_exporter %{buildroot}/%{_sysconfdir}/sysconfig/node_exporter
 
 %post
 %systemd_post node_exporter.service
@@ -183,6 +190,7 @@ Written in Go with pluggable metric collectors.
 %defattr(-,root,root,-)
 %{_bindir}/node_exporter
 %{_unitdir}/node_exporter.service
+%{_sysconfdir}/sysconfig/node_exporter
 
 %changelog
 * Tue Aug 25 2015 Marc Villacorta <marc.villacorta@gmail.com>
