@@ -1,0 +1,35 @@
+#!/bin/bash
+
+docker run -it --rm \
+--env VERSION='0.1.6' \
+--volume ${PWD}/newrpm:/root/rpmbuild/RPMS/noarch \
+--volume ${HOME}/.gnupg:/root/.gnupg \
+h0tbird/rpmbuild:latest /bin/bash -c "
+
+  #---------
+  # Install
+  #---------
+
+  git clone --recursive \
+  https://github.com/h0tbird/booddies.git booddies-\${VERSION}
+  tar czf booddies-\${VERSION}.tar.gz booddies-\${VERSION}
+
+  #--------------
+  # ~/.rpmmacros
+  #--------------
+
+  cat <<- EOF > ~/.rpmmacros
+	%_signature gpg
+	%_gpg_path \${HOME}/.gnupg
+	%_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
+	%_gpgbin /usr/bin/gpg
+	%packager Marc Villacorta Morera <marc.villacorta@gmail.com>
+	%_topdir \${HOME}/rpmbuild
+	%dist .el7
+	EOF
+
+  #-------------------
+  # Build the package
+  #-------------------
+
+  rpmbuild -ta --sign booddies-\${VERSION}.tar.gz"
