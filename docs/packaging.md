@@ -119,82 +119,112 @@ docker run -it --rm \
 --volume ${PWD}/newrpm:/root/rpmbuild/RPMS/x86_64 \
 --volume ${HOME}/.gnupg:/root/.gnupg \
 centos:7 /bin/bash -c "
-yum install -y git golang mercurial rpm-build rpm-sign
-cd && mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-cat << EOF > ~/.rpmmacros
-%_signature gpg
-%_gpg_path ~/.gnupg
-%_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
-%_gpgbin /usr/bin/gpg
-%_topdir /root/rpmbuild
-EOF
-cat << EOF > /tmp/node_exporter.service
-[Unit]
-Description=Prometheus exporter for machine metrics
-Wants=basic.target
-After=basic.target network.target
 
-[Service]
-EnvironmentFile=-/etc/sysconfig/node_exporter
-ExecStart=/usr/bin/node_exporter $NODE_EXPORTER_OPTS
-KillMode=process
+  #---------
+  # Install
+  #---------
 
-[Install]
-WantedBy=multi-user.target
-EOF
-cat << EOF > /tmp/node_exporter
-# Settings for the node_exporter daemon.
-# NODE_EXPORTER_OPTS: any extra command-line startup arguments
-NODE_EXPORTER_OPTS=
-EOF
-export GOPATH=\${HOME}/go
-export PATH=\${PATH}:\${GOPATH}/bin
-go get -d \${PACKAGE}
-cd \${GOPATH}/src/\${PACKAGE}
-git checkout tags/\${VERSION}
-go install
-cat << EOF > ~/rpmbuild/SPECS/prometheus_node_exporter.spec
-Name: node_exporter
-Version: \${VERSION}
-Release: 1
-License: Apache-2
-Summary: Prometheus exporter for machine metrics.
-Packager: %{_gpg_name}
-Group: System Environment/Base
-BuildArch: x86_64
-BuildRoot: %{_topdir}/%{name}-%{version}%{release}-root
-Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
+  yum install -y git golang mercurial rpm-build rpm-sign
+  mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+  export GOPATH=\${HOME}/go
+  export PATH=\${PATH}:\${GOPATH}/bin
+  go get -d \${PACKAGE}
+  cd \${GOPATH}/src/\${PACKAGE}
+  git checkout tags/\${VERSION}
+  go install
 
-%description
-Prometheus exporter for machine metrics.
-Written in Go with pluggable metric collectors.
+  #--------------
+  # ~/.rpmmacros
+  #--------------
 
-%install
-%{__rm} -rf %{buildroot}
-%{__install} -p -D -m 0755 \${GOPATH}/bin/%{name} %{buildroot}/%{_bindir}/%{name}
-%{__install} -p -D -m 0644 /tmp/%{name}.service %{buildroot}/%{_unitdir}/%{name}.service
-%{__install} -p -D -m 0644 /tmp/%{name} %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
+  cat <<- EOF > ~/.rpmmacros
+	%_signature gpg
+	%_gpg_path ~/.gnupg
+	%_gpg_name Marc Villacorta Morera <marc.villacorta@gmail.com>
+	%_gpgbin /usr/bin/gpg
+	%_topdir /root/rpmbuild
+	EOF
 
-%post
-%systemd_post %{name}.service
-%preun
-%systemd_preun %{name}.service
-%postun
-%systemd_postun_with_restart %{name}.service
+  #----------------------------
+  # /tmp/node_exporter.service
+  #----------------------------
 
-%files
-%defattr(-,root,root,-)
-%{_bindir}/%{name}
-%{_unitdir}/%{name}.service
-%{_sysconfdir}/sysconfig/%{name}
+  cat <<- EOF > /tmp/node_exporter.service
+	[Unit]
+	Description=Prometheus exporter for machine metrics
+	Wants=basic.target
+	After=basic.target network.target
 
-%changelog
-* Tue Aug 25 2015 Marc Villacorta <marc.villacorta@gmail.com>
-- First release.
-EOF
-rpmbuild -ba --sign ~/rpmbuild/SPECS/prometheus_node_exporter.spec"
+	[Service]
+	EnvironmentFile=-/etc/sysconfig/node_exporter
+	ExecStart=/usr/bin/node_exporter $NODE_EXPORTER_OPTS
+	KillMode=process
+
+	[Install]
+	WantedBy=multi-user.target
+	EOF
+
+  #--------------------
+  # /tmp/node_exporter
+  #--------------------
+
+  cat <<- EOF > /tmp/node_exporter
+	# Settings for the node_exporter daemon.
+	# NODE_EXPORTER_OPTS: any extra command-line startup arguments
+	NODE_EXPORTER_OPTS=
+	EOF
+
+  #------------------------------------------------
+  # ~/rpmbuild/SPECS/prometheus_node_exporter.spec
+  #------------------------------------------------
+
+  cat <<- EOF > ~/rpmbuild/SPECS/prometheus_node_exporter.spec
+	Name: node_exporter
+	Version: \${VERSION}
+	Release: 1
+	License: Apache-2
+	Summary: Prometheus exporter for machine metrics.
+	Packager: %{_gpg_name}
+	Group: System Environment/Base
+	BuildArch: x86_64
+	BuildRoot: %{_topdir}/%{name}-%{version}%{release}-root
+	Requires(post): systemd
+	Requires(preun): systemd
+	Requires(postun): systemd
+
+	%description
+	Prometheus exporter for machine metrics.
+	Written in Go with pluggable metric collectors.
+
+	%install
+	%{__rm} -rf %{buildroot}
+	%{__install} -p -D -m 0755 \${GOPATH}/bin/%{name} %{buildroot}/%{_bindir}/%{name}
+	%{__install} -p -D -m 0644 /tmp/%{name}.service %{buildroot}/%{_unitdir}/%{name}.service
+	%{__install} -p -D -m 0644 /tmp/%{name} %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
+
+	%post
+	%systemd_post %{name}.service
+	%preun
+	%systemd_preun %{name}.service
+	%postun
+	%systemd_postun_with_restart %{name}.service
+
+	%files
+	%defattr(-,root,root,-)
+	%{_bindir}/%{name}
+	%{_unitdir}/%{name}.service
+	%{_sysconfdir}/sysconfig/%{name}
+
+	%changelog
+	* Tue Aug 25 2015 Marc Villacorta <marc.villacorta@gmail.com>
+	- First release.
+	EOF
+
+  #-------------------
+  # Build the package
+  #-------------------
+
+  rpmbuild -ba --sign ~/rpmbuild/SPECS/prometheus_node_exporter.spec"
 ```
 
 ##### Create the repository metadata
