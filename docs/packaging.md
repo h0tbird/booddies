@@ -108,7 +108,7 @@ fpm \
 -s gem -t rpm"
 ```
 
-##### Package prometheus-node-exporter-0.11.0-1.x86_64.rpm
+##### Package node_exporter-0.11.0-1.x86_64.rpm
 
 This will generate the Prometheus node exporter package.
 
@@ -154,7 +154,7 @@ cd \${GOPATH}/src/\${PACKAGE}
 git checkout tags/\${VERSION}
 go install
 cat << EOF > ~/rpmbuild/SPECS/prometheus_node_exporter.spec
-Name: prometheus-node-exporter
+Name: node_exporter
 Version: \${VERSION}
 Release: 1
 License: Apache-2
@@ -173,24 +173,22 @@ Written in Go with pluggable metric collectors.
 
 %install
 %{__rm} -rf %{buildroot}
-%{__install} -p -D -m 0755 \${GOPATH}/bin/node_exporter %{buildroot}/%{_bindir}/node_exporter
-%{__install} -p -D -m 0644 /tmp/node_exporter.service %{buildroot}/%{_unitdir}/node_exporter.service
-%{__install} -p -D -m 0644 /tmp/node_exporter %{buildroot}/%{_sysconfdir}/sysconfig/node_exporter
+%{__install} -p -D -m 0755 \${GOPATH}/bin/%{name} %{buildroot}/%{_bindir}/%{name}
+%{__install} -p -D -m 0644 /tmp/%{name}.service %{buildroot}/%{_unitdir}/%{name}.service
+%{__install} -p -D -m 0644 /tmp/%{name} %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
 
 %post
-%systemd_post node_exporter.service
-
+%systemd_post %{name}.service
 %preun
-%systemd_preun node_exporter.service
-
+%systemd_preun %{name}.service
 %postun
-%systemd_postun_with_restart node_exporter.service
+%systemd_postun_with_restart %{name}.service
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/node_exporter
-%{_unitdir}/node_exporter.service
-%{_sysconfdir}/sysconfig/node_exporter
+%{_bindir}/%{name}
+%{_unitdir}/%{name}.service
+%{_sysconfdir}/sysconfig/%{name}
 
 %changelog
 * Tue Aug 25 2015 Marc Villacorta <marc.villacorta@gmail.com>
