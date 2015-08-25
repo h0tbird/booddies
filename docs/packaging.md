@@ -128,6 +128,19 @@ cat << EOF > ~/.rpmmacros
 %_gpgbin /usr/bin/gpg
 %_topdir /root/rpmbuild
 EOF
+cat << EOF > /tmp/node_exporter.service
+[Unit]
+Description=Prometheus exporter for machine metrics
+Wants=basic.target
+After=basic.target network.target
+
+[Service]
+ExecStart=/usr/bin/node_exporter
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+EOF
 export GOPATH=\${HOME}/go
 export PATH=\${PATH}:\${GOPATH}/bin
 go get -d \${PACKAGE}
@@ -144,6 +157,9 @@ Packager: %{_gpg_name}
 Group: System Environment/Base
 BuildArch: x86_64
 BuildRoot: %{_topdir}/%{name}-%{version}%{release}-root
+Requires(post): systemd
+Requires(preun): systemd
+Requires(postun): systemd
 
 %description
 Prometheus exporter for machine metrics.
@@ -151,17 +167,25 @@ Written in Go with pluggable metric collectors.
 
 %install
 %{__rm} -rf %{buildroot}
-%{__mkdir_p} %{buildroot}%{_sysconfdir}/prometheus/
-%{__install} -p -D -m 0755 \${GOPATH}/bin/node_exporter %{buildroot}/sbin/node_exporter
-%{__install} -p -D -m 0644 \${GOPATH}/src/\${PACKAGE}/node_exporter.conf %{buildroot}%{_sysconfdir}/prometheus/node_exporter.conf
+%{__install} -p -D -m 0755 \${GOPATH}/bin/node_exporter %{buildroot}/%{_bindir}/node_exporter
+%{__install} -p -D -m 0644 /tmp/node_exporter.service %{buildroot}/%{_unitdir}/node_exporter.service
+
+%post
+%systemd_post node_exporter.service
+
+%preun
+%systemd_preun node_exporter.service
+
+%postun
+%systemd_postun_with_restart node_exporter.service
 
 %files
 %defattr(-,root,root,-)
-%{_sysconfdir}/prometheus/node_exporter.conf
-/sbin/node_exporter
+%{_bindir}/node_exporter
+%{_unitdir}/node_exporter.service
 
 %changelog
-* Thu Aug 13 2015 Marc Villacorta <marc.villacorta@gmail.com>
+* Tue Aug 25 2015 Marc Villacorta <marc.villacorta@gmail.com>
 - First release.
 EOF
 rpmbuild -ba --sign ~/rpmbuild/SPECS/prometheus_node_exporter.spec"
