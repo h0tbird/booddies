@@ -1,5 +1,3 @@
-##### Package booddies-release-x-y.noarch.rpm
-
 ##### Create the repository metadata
 
 This is used to generate the repository metadata.
