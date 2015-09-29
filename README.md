@@ -159,6 +159,7 @@ Clone external git repos, check [`feed-gito`][feed-gito-code] and [`gitosync`][g
 * [Add a new user to gitolite](https://github.com/h0tbird/booddies/blob/master/docs/add_new_user_to_gitolite.md)
 * [Push and pull changes to GitHub](https://github.com/h0tbird/booddies/blob/master/docs/push_and_pull_from_gitolite_to_github.md)
 * [Packaging](https://github.com/h0tbird/booddies/blob/master/docs/packaging.md)
+* [Packaging scripts](https://github.com/h0tbird/booddies/tree/master/packaging/scripts)
 * [Configuration hints](https://github.com/h0tbird/booddies/blob/master/docs/configuration_hints.md)
 
 ## License
