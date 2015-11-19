@@ -37,4 +37,5 @@ h0tbird/rpmbuild:latest bash -c "
     --force \
     --rpm-sign \
     --prefix /usr/share/gems \
+    --iteration 1.el7 \
     -s gem -t rpm"
