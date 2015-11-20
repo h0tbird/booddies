@@ -70,13 +70,13 @@ This is what you get when you install `booddies`:
 
 And of course you also get the docker images:
 
-| Docker Image             | Status                          | Config file                | Systemd unit                | Run logic                 |
+| Docker Image             | Build status                    | Config file                | Systemd unit                | Run logic                 |
 | ------------------------ | ------------------------------- | -------------------------- | --------------------------- | ------------------------- |
-| [h0tbird/boot][boot-web] | [![boot][boot-image]][boot-lyr] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
-| [h0tbird/data][data-web] | [![data][data-image]][data-lyr] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
-| [h0tbird/gito][gito-web] | [![gito][gito-image]][gito-lyr] | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
-| [h0tbird/cgit][cgit-web] | [![cgit][cgit-image]][cgit-lyr] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
-| [h0tbird/regi][regi-web] | [![regi][regi-image]][regi-lyr] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
+| [h0tbird/boot][boot-web] | [![build][boot-badge]][boot-travis] [![boot][boot-image]][boot-lyr] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
+| [h0tbird/data][data-web] | [![build][data-badge]][data-travis] [![data][data-image]][data-lyr] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
+| [h0tbird/gito][gito-web] | [![build][gito-badge]][gito-travis] [![gito][gito-image]][gito-lyr] | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
+| [h0tbird/cgit][cgit-web] | [![build][cgit-badge]][cgit-travis] [![cgit][cgit-image]][cgit-lyr] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
+| [h0tbird/regi][regi-web] | [![build][regi-badge]][regi-travis] [![regi][regi-image]][regi-lyr] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 Browse [here](https://imagelayers.io/?images=h0tbird%2Fboot:latest,h0tbird%2Fdata:latest,h0tbird%2Fgito:latest,h0tbird%2Fcgit:latest,h0tbird%2Fregi:latest) all the images layers.
 
@@ -206,18 +206,32 @@ limitations under the License.
 [boot-image]: https://badge.imagelayers.io/h0tbird/boot:latest.svg
 [boot-web]: https://registry.hub.docker.com/u/h0tbird/boot
 [boot-lyr]: https://imagelayers.io/?images=h0tbird/boot:latest
+[boot-badge]: https://travis-ci.org/h0tbird/docker-boot.svg?branch=master
+[boot-travis]: https://travis-ci.org/h0tbird/docker-boot
+
 [data-image]: https://badge.imagelayers.io/h0tbird/data:latest.svg
 [data-web]: https://registry.hub.docker.com/u/h0tbird/data
 [data-lyr]: https://imagelayers.io/?images=h0tbird/data:latest
+[data-badge]: https://travis-ci.org/h0tbird/docker-data.svg?branch=master
+[data-travis]: https://travis-ci.org/h0tbird/docker-data
+
 [gito-image]: https://badge.imagelayers.io/h0tbird/gito:latest.svg
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
 [gito-lyr]: https://imagelayers.io/?images=h0tbird/gito:latest
+[gito-badge]: https://travis-ci.org/h0tbird/docker-gito.svg?branch=master
+[gito-travis]: https://travis-ci.org/h0tbird/docker-gito
+
 [cgit-image]: https://badge.imagelayers.io/h0tbird/cgit:latest.svg
 [cgit-web]: https://registry.hub.docker.com/u/h0tbird/cgit
 [cgit-lyr]: https://imagelayers.io/?images=h0tbird/cgit:latest
+[cgit-badge]: https://travis-ci.org/h0tbird/docker-cgit.svg?branch=master
+[cgit-travis]: https://travis-ci.org/h0tbird/docker-cgit
+
 [regi-image]: https://badge.imagelayers.io/h0tbird/regi:latest.svg
 [regi-web]: https://registry.hub.docker.com/u/h0tbird/regi
 [regi-lyr]: https://imagelayers.io/?images=h0tbird/regi:latest
+[regi-badge]: https://travis-ci.org/h0tbird/docker-regi.svg?branch=master
+[regi-travis]: https://travis-ci.org/h0tbird/docker-regi
 
 [boot-config]: https://github.com/h0tbird/docker-boot/blob/master/boot.conf
 [data-config]: https://github.com/h0tbird/docker-data/blob/master/data.conf
