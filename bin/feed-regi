@@ -54,8 +54,8 @@ for IMG in ${IMAGES}; do
 
   if ${CMD_CURL} -sX GET \
   http://${REGISTRY}/v2/${NAME}/tags/list | \
-  ${CMD_JQ} ".tags | contains([\"${TAG}\"])" 2> /dev/null | \
-  grep -q 'true'; then
+  ${CMD_JQ} "select([.tags[] == \"${TAG}\"] | any)" | \
+  grep -qF "${TAG}"; then
     misc::stat_done
     continue
   else
