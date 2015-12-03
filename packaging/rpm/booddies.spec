@@ -1,5 +1,5 @@
 Name:      booddies
-Version:   0.1.7
+Version:   0.1.8
 Release:   1%{?dist}
 Summary:   Boot buddies. The bootstrapping fellowship
 Group:     Applications/Internet
@@ -56,6 +56,8 @@ systemctl daemon-reload
 %{_sysconfdir}/booddies/booddies.sh
 
 %changelog
+* Thu Dec 03 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.8-1
+- Fix false positive when searching the registry.
 * Tue Sep 29 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.7-1
 - Added DOCKER_VOLUME_RBD_VERSION option.
 * Sun Aug 16 2015 Marc Villacorta Morera <marc.villacorta@gmail.com> - 0.1.6-1
