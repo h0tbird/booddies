@@ -1,7 +1,7 @@
 #!/bin/bash
 
 docker run -it --rm \
---env VERSION='0.1.7' \
+--env VERSION='0.1.8' \
 --volume ${PWD}/newrpm:/root/rpmbuild/RPMS/noarch \
 --volume ${HOME}/.gnupg:/root/.gnupg \
 h0tbird/rpmbuild:latest /bin/bash -c "
