@@ -13,8 +13,8 @@ fleetctl stop ceph-mon
 
 ```
 etcdctl rm --recursive /ceph-config
-loopssh sudo rm -rf /etc/ceph/*
-loopssh sudo rm -rf /var/lib/ceph/*
+loopssh sudo rm -rf /etc/ceph
+loopssh sudo rm -rf /var/lib/ceph
 loopssh sudo umount /dev/sdb
 loopssh sudo parted /dev/sdb -s mklabel gpt
 loopssh sudo partprobe /dev/sdb
