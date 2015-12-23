@@ -1,6 +1,6 @@
 #### Re-deploy a Ceph cluster:
 
-Below I use [loopssh](https://github.com/h0tbird/puppet-r_kvm/blob/7af814a9655975117445f4e338466f0ec45b8b9e/templates/coreos/cloud-config.erb#L106-L114). It is ssh in a for loop.
+Below I use [loopssh](https://github.com/h0tbird/puppet-r_kvm/blob/7af814a9655975117445f4e338466f0ec45b8b9e/templates/coreos/cloud-config.erb#L106-L114). It is `ssh` in a for loop.
 
 ##### Stop:
 
