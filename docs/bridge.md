@@ -1,6 +1,6 @@
 ##### Ephemeral bridge
 
-The system where you run `booddies` for the first time is a throwaway system. `booddies` will transfer itself into every hipervisor it deploys. However, it will only be activated in the first hipervisor (`kvm-1`).  
+The system where you run `booddies` for the first time is a throwaway system. `booddies` will transfer itself into every hypervisor it deploys. However, it will only be activated in the first hypervisor (`kvm-1`).  
 
 Find below a fast way to create a VLAN tagged bridge in your throwaway system:
 
