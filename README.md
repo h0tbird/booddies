@@ -25,7 +25,7 @@ Six containers are planned:
 ## The exploitation platform
 
 This is a simplified diagram of the target platform that `booddies` will deploy. The hypervisor layer is based on CentOS 7.
-Click [here](https://www.lucidchart.com/publicSegments/view/9d12123b-8007-4cbc-a7c7-96c060a23f2f/image.png) for a much more detailed functional diagram. 
+Click [here](https://www.lucidchart.com/publicSegments/view/9d12123b-8007-4cbc-a7c7-96c060a23f2f/image.png) for a much more detailed functional diagram.
 
 <p align="center">
 <img src="https://www.lucidchart.com/publicSegments/view/553bbb69-0dd8-46be-b8b3-76570a009639/image.png" />
@@ -82,7 +82,7 @@ Browse [here](https://imagelayers.io/?images=h0tbird%2Fboot:latest,h0tbird%2Fdat
 
 ## Preflight checklist
 * Start Docker with `--insecure-registry=regi01:5000`.
-* Bridge your physical interface to the `br0` bridge interface.
+* Bridge your physical interface to the `br0` bridge interface ([sample](https://github.com/h0tbird/booddies/blob/master/docs/bridge.md)).
 * Also make sure you have about 20GB of free space in `/var/lib/booddies`.
 
 ## Step one: Install
@@ -112,7 +112,7 @@ drwxr-xr-x 2 root root 4.0K Aug 14 15:40 /var/lib/booddies/data/kickstart/
 
 Map the physical server short host names to their own pxe-aware MAC and IP addresses:
 ```
-# cat /var/lib/booddies/boot/dnsmasq/dhcp_hosts 
+# cat /var/lib/booddies/boot/dnsmasq/dhcp_hosts
 84:2b:2b:59:a4:ae,172.16.8.90,kvm-1,infinite
 84:2b:2b:58:4a:a4,172.16.8.91,kvm-2,infinite
 78:2b:cb:23:65:46,172.16.8.92,kvm-3,infinite
