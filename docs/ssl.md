@@ -47,4 +47,5 @@ mkdir certs && openssl req -config ssl.conf \
 Verify the result:
 ```
 openssl x509 -in certs/server-crt.pem -text -noout
+openssl verify certs/server-crt.pem
 ```
