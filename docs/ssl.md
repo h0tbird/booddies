@@ -5,7 +5,7 @@ Edit the configuration file to meet your needs:
 ```
 cat << EOF > ssl.conf
 [ req ]
-default_bits       = 2048
+default_bits       = 4096
 default_keyfile    = server-key.pem
 distinguished_name = req_subj
 req_extensions     = req_ext
