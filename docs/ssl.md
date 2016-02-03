@@ -20,7 +20,6 @@ CN = Company
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid,issuer
 basicConstraints       = CA:false
-keyUsage               = digitalSignature, keyEncipherment
 subjectAltName         = @alternate_names
 
 [ alternate_names ]
