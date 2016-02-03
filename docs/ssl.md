@@ -11,21 +11,20 @@ x509_extensions    = x509_ext
 
 [ req_subj ]
 C  = ES
-ST = Catalunya
 L  = Barcelona
-O  = Demo
+O  = Mesos
 CN = Company
 
 [ x509_ext ]
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid,issuer
-basicConstraints       = CA:false
+basicConstraints       = CA:true
 subjectAltName         = @alternate_names
 
 [ alternate_names ]
 DNS.1 = *.marathon
-DNS.2 = *.cell-1.dc-1.mesos
-DNS.3 = *.*.cell-1.dc-1.mesos
+DNS.2 = *.marathon.cell-1.dc-1.mesos
+DNS.3 = *.cell-1.dc-1.mesos
 DNS.4 = *.cell-1.dc-1.demo.lan
 DNS.5 = localhost
 IP.1  = 127.0.0.1
