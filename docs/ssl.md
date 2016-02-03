@@ -5,34 +5,37 @@ Edit the configuration file to meet your needs:
 ```
 cat << EOF > ssl.conf
 [ req ]
-default_bits       = 4096
-default_keyfile    = server-key.pem
+prompt             = no
 distinguished_name = req_subj
 req_extensions     = req_ext
 x509_extensions    = x509_ext
-string_mask        = utf8only
 
 [ req_subj ]
+C  = ES
+ST = Catalunya
+L  = Barcelona
+O  = Demo
+CN = Company
 
 [ x509_ext ]
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid,issuer
-basicConstraints       = CA:FALSE
+basicConstraints       = CA:false
 keyUsage               = digitalSignature, keyEncipherment
 subjectAltName         = @alternate_names
-nsComment              = "OpenSSL Generated Certificate"
 
 [ req_ext ]
 subjectKeyIdentifier = hash
-basicConstraints     = CA:FALSE
+basicConstraints     = CA:false
 keyUsage             = digitalSignature, keyEncipherment
 subjectAltName       = @alternate_names
-nsComment            = "OpenSSL Generated Certificate"
 
 [ alternate_names ]
 DNS.1 = *.cell-1.dc-1.mesos
 DNS.2 = *.*.cell-1.dc-1.mesos
 DNS.3 = *.cell-1.dc-1.demo.lan
+DNS.4 = localhost
+IP.1  = 127.0.0.1
 EOF
 ```
 
@@ -40,7 +43,6 @@ Create a self signed certificate:
 ```
 mkdir certs && openssl req -config ssl.conf \
 -new -x509 -nodes -sha256 -days 365 -newkey rsa:4096 \
--subj '/C=ES/ST=CAT/L=Barcelona/O=Demo/CN=Company' \
 -keyout certs/server-key.pem -out certs/server-crt.pem
 ```
 
