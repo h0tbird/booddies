@@ -7,7 +7,6 @@ cat << EOF > ssl.conf
 [ req ]
 prompt             = no
 distinguished_name = req_subj
-req_extensions     = req_ext
 x509_extensions    = x509_ext
 
 [ req_subj ]
@@ -23,12 +22,6 @@ authorityKeyIdentifier = keyid,issuer
 basicConstraints       = CA:false
 keyUsage               = digitalSignature, keyEncipherment
 subjectAltName         = @alternate_names
-
-[ req_ext ]
-subjectKeyIdentifier = hash
-basicConstraints     = CA:false
-keyUsage             = digitalSignature, keyEncipherment
-subjectAltName       = @alternate_names
 
 [ alternate_names ]
 DNS.1 = *.cell-1.dc-1.mesos
