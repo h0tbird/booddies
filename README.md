@@ -203,7 +203,7 @@ limitations under the License.
 
 [fpm-web]: https://github.com/jordansissel/fpm
 
-[boot-image]: https://badge.imagelayers.io/h0tbird/boot:latest.svg
+[boot-image]: https://img.shields.io/imagelayers/image-size/h0tbird/boot/latest.svg
 [boot-web]: https://registry.hub.docker.com/u/h0tbird/boot
 [boot-lyr]: https://imagelayers.io/?images=h0tbird/boot:latest
 [boot-badge]: https://travis-ci.org/h0tbird/docker-boot.svg?branch=master
