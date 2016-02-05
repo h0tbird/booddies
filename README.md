@@ -217,21 +217,21 @@ limitations under the License.
 [data-badge]: https://travis-ci.org/h0tbird/docker-data.svg?branch=master
 [data-travis]: https://travis-ci.org/h0tbird/docker-data
 
-[gito-image]: https://badge.imagelayers.io/h0tbird/gito:latest.svg
+[gito-image]: https://img.shields.io/imagelayers/image-size/h0tbird/gito/latest.svg
 [gito-cnt]: https://img.shields.io/imagelayers/layers/h0tbird/gito/latest.svg
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
 [gito-lyr]: https://imagelayers.io/?images=h0tbird/gito:latest
 [gito-badge]: https://travis-ci.org/h0tbird/docker-gito.svg?branch=master
 [gito-travis]: https://travis-ci.org/h0tbird/docker-gito
 
-[cgit-image]: https://badge.imagelayers.io/h0tbird/cgit:latest.svg
+[cgit-image]: https://img.shields.io/imagelayers/image-size/h0tbird/cgit/latest.svg
 [cgit-cnt]: https://img.shields.io/imagelayers/layers/h0tbird/cgit/latest.svg
 [cgit-web]: https://registry.hub.docker.com/u/h0tbird/cgit
 [cgit-lyr]: https://imagelayers.io/?images=h0tbird/cgit:latest
 [cgit-badge]: https://travis-ci.org/h0tbird/docker-cgit.svg?branch=master
 [cgit-travis]: https://travis-ci.org/h0tbird/docker-cgit
 
-[regi-image]: https://badge.imagelayers.io/h0tbird/regi:latest.svg
+[regi-image]: https://img.shields.io/imagelayers/image-size/h0tbird/regi/latest.svg
 [regi-cnt]: https://img.shields.io/imagelayers/layers/h0tbird/regi/latest.svg
 [regi-web]: https://registry.hub.docker.com/u/h0tbird/regi
 [regi-lyr]: https://imagelayers.io/?images=h0tbird/regi:latest
