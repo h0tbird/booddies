@@ -72,8 +72,8 @@ And of course you also get the docker images:
 
 | Docker Image             | Build status                    | Config file                | Systemd unit                | Run logic                 |
 | ------------------------ | ------------------------------- | -------------------------- | --------------------------- | ------------------------- |
-| [h0tbird/boot][boot-web] | [![build][boot-badge]][boot-travis] [![boot][boot-image]][boot-lyr] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
-| [h0tbird/data][data-web] | [![build][data-badge]][data-travis] [![data][data-image]][data-lyr] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
+| [h0tbird/boot][boot-web] | [![][boot-badge]][boot-travis] [![][boot-image]][boot-lyr] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
+| [h0tbird/data][data-web] | [![][data-badge]][data-travis] [![][data-image]][data-lyr] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
 | [h0tbird/gito][gito-web] | [![build][gito-badge]][gito-travis] [![gito][gito-image]][gito-lyr] | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
 | [h0tbird/cgit][cgit-web] | [![build][cgit-badge]][cgit-travis] [![cgit][cgit-image]][cgit-lyr] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
 | [h0tbird/regi][regi-web] | [![build][regi-badge]][regi-travis] [![regi][regi-image]][regi-lyr] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
@@ -209,7 +209,7 @@ limitations under the License.
 [boot-badge]: https://travis-ci.org/h0tbird/docker-boot.svg?branch=master
 [boot-travis]: https://travis-ci.org/h0tbird/docker-boot
 
-[data-image]: https://badge.imagelayers.io/h0tbird/data:latest.svg
+[data-image]: https://img.shields.io/imagelayers/image-size/h0tbird/data/latest.svg
 [data-web]: https://registry.hub.docker.com/u/h0tbird/data
 [data-lyr]: https://imagelayers.io/?images=h0tbird/data:latest
 [data-badge]: https://travis-ci.org/h0tbird/docker-data.svg?branch=master
