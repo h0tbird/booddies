@@ -72,11 +72,11 @@ And of course you also get the docker images:
 
 | Docker Image             | Build status                    | Config file                | Systemd unit                | Run logic                 |
 | ------------------------ | ------------------------------- | -------------------------- | --------------------------- | ------------------------- |
-| [h0tbird/boot][boot-web] | [![][boot-badge]][boot-travis] [![][boot-image]][boot-lyr] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
-| [h0tbird/data][data-web] | [![][data-badge]][data-travis] [![][data-image]][data-lyr] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
-| [h0tbird/gito][gito-web] | [![build][gito-badge]][gito-travis] [![gito][gito-image]][gito-lyr] | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
-| [h0tbird/cgit][cgit-web] | [![build][cgit-badge]][cgit-travis] [![cgit][cgit-image]][cgit-lyr] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
-| [h0tbird/regi][regi-web] | [![build][regi-badge]][regi-travis] [![regi][regi-image]][regi-lyr] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
+| [h0tbird/boot][boot-web] | [![][boot-badge]][boot-travis] [![][boot-image]][boot-lyr] [![][boot-cnt]][boot-lyr] | [*boot.conf*][boot-config] | [*boot.service*][boot-unit] | [*runctl-boot*][boot-run] |
+| [h0tbird/data][data-web] | [![][data-badge]][data-travis] [![][data-image]][data-lyr] [![][data-cnt]][data-lyr] | [*data.conf*][data-config] | [*data.service*][data-unit] | [*runctl-data*][data-run] |
+| [h0tbird/gito][gito-web] | [![][gito-badge]][gito-travis] [![][gito-image]][gito-lyr] [![][gito-cnt]][gito-lyr] | [*gito.conf*][gito-config] | [*gito.service*][gito-unit] | [*runctl-gito*][gito-run] |
+| [h0tbird/cgit][cgit-web] | [![][cgit-badge]][cgit-travis] [![][cgit-image]][cgit-lyr] [![][cgit-cnt]][cgit-lyr] | [*cgit.conf*][cgit-config] | [*cgit.service*][cgit-unit] | [*runctl-cgit*][cgit-run] |
+| [h0tbird/regi][regi-web] | [![][regi-badge]][regi-travis] [![][regi-image]][regi-lyr] [![][regi-cnt]][regi-lyr] | [*regi.conf*][regi-config] | [*regi.service*][regi-unit] | [*runctl-regi*][regi-run] |
 
 Browse [here](https://imagelayers.io/?images=h0tbird%2Fboot:latest,h0tbird%2Fdata:latest,h0tbird%2Fgito:latest,h0tbird%2Fcgit:latest,h0tbird%2Fregi:latest) all the images layers.
 
@@ -204,30 +204,35 @@ limitations under the License.
 [fpm-web]: https://github.com/jordansissel/fpm
 
 [boot-image]: https://img.shields.io/imagelayers/image-size/h0tbird/boot/latest.svg
+[boot-cnt]: https://img.shields.io/imagelayers/layers/h0tbird/boot/latest.svg
 [boot-web]: https://registry.hub.docker.com/u/h0tbird/boot
 [boot-lyr]: https://imagelayers.io/?images=h0tbird/boot:latest
 [boot-badge]: https://travis-ci.org/h0tbird/docker-boot.svg?branch=master
 [boot-travis]: https://travis-ci.org/h0tbird/docker-boot
 
 [data-image]: https://img.shields.io/imagelayers/image-size/h0tbird/data/latest.svg
+[data-cnt]: https://img.shields.io/imagelayers/layers/h0tbird/data/latest.svg
 [data-web]: https://registry.hub.docker.com/u/h0tbird/data
 [data-lyr]: https://imagelayers.io/?images=h0tbird/data:latest
 [data-badge]: https://travis-ci.org/h0tbird/docker-data.svg?branch=master
 [data-travis]: https://travis-ci.org/h0tbird/docker-data
 
 [gito-image]: https://badge.imagelayers.io/h0tbird/gito:latest.svg
+[gito-cnt]: https://img.shields.io/imagelayers/layers/h0tbird/gito/latest.svg
 [gito-web]: https://registry.hub.docker.com/u/h0tbird/gito
 [gito-lyr]: https://imagelayers.io/?images=h0tbird/gito:latest
 [gito-badge]: https://travis-ci.org/h0tbird/docker-gito.svg?branch=master
 [gito-travis]: https://travis-ci.org/h0tbird/docker-gito
 
 [cgit-image]: https://badge.imagelayers.io/h0tbird/cgit:latest.svg
+[cgit-cnt]: https://img.shields.io/imagelayers/layers/h0tbird/cgit/latest.svg
 [cgit-web]: https://registry.hub.docker.com/u/h0tbird/cgit
 [cgit-lyr]: https://imagelayers.io/?images=h0tbird/cgit:latest
 [cgit-badge]: https://travis-ci.org/h0tbird/docker-cgit.svg?branch=master
 [cgit-travis]: https://travis-ci.org/h0tbird/docker-cgit
 
 [regi-image]: https://badge.imagelayers.io/h0tbird/regi:latest.svg
+[regi-cnt]: https://img.shields.io/imagelayers/layers/h0tbird/regi/latest.svg
 [regi-web]: https://registry.hub.docker.com/u/h0tbird/regi
 [regi-lyr]: https://imagelayers.io/?images=h0tbird/regi:latest
 [regi-badge]: https://travis-ci.org/h0tbird/docker-regi.svg?branch=master
