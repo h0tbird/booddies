@@ -18,7 +18,7 @@ Six containers are planned:
 - [x] **regi:** A golang [`docker registry`][registry-web] to distribute docker images.
 - [ ] **ntpd:** A `ntpd` server to provide clock synchronization.
 
-`Booddies` has been tested in:
+`Booddies` has been tested on:
 - Arch Linux
 - CentOS 7
 
